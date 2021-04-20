@@ -1,0 +1,37 @@
+\begin{exercise}
+עבור מטריצה
+$A \in M_n\prs{\mbb{F}}$
+נסמן ב־%
+$M_{i,j}$
+את דטרמיננטת המטריצה המתקבלת מ־%
+$A$
+על ידי מחיקת השורה ה-%
+$i$
+והעמודה ה־%
+$j$.
+הניחו כי מתקיים
+\begin{align*}
+\det\prs{A} = \sum_{k=0}^n \prs{A}_{i,k} \prs{-1}^{i+k} M_{i,k}
+\end{align*}
+לכל
+$i \in [n]$.
+
+\begin{enumerate}
+\item נגדיר את
+\emph{המטריצה המצורפת של
+$A$}
+להיות
+$\mrm{adj}\prs{A} \in M_n\prs{\mbb{F}}$
+עם
+$\prs{\mrm{adj}\prs{A}}_{i,j} = \prs{-1}^{i+j} M_{j,i}$.
+הראו שמתקיים
+\[\text{.} A \cdot \mrm{adj}\prs{A} = \det\prs{A} I\]
+
+\item תהי
+$A \in M_n\prs{\mbb{Z}}$
+מטריצה בעלת מקדמים שלמים. הוכיחו כי
+$A$
+הפיכה מעל השלמים אם ורק אם
+$\det\prs{A} in \set{\pm 1}$.
+\end{enumerate}
+\end{exercise}

@@ -1,0 +1,192 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 2 \\
+מטריצות מייצגות, ערכים עצמיים וסכומים ישרים
+\\
+\small{18.4.2020}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+יהיו
+$V,W$
+מרחבים וקטוריים ממימד
+$n \in \mbb{N}_+$
+מעל שדה
+$\mbb{F}$
+ותהי
+$T \in \hom\prs{V,W}$.
+הוכיחו כי יש בסיסים
+$B,C$
+ל־%
+$V,W$
+בהתאמה עבורם
+\[\prs{\brs{T}^B_C}_{i,j} = \fcases{1 & i = j \in \brs{\dim \im T} \\ 0 & \text{otherwise}}\]
+לכל
+$i,j \in \brs{n}$.
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V = \mbb{F}_n\brs{x}$
+ותהי
+$A \subseteq \mbb{F}$
+מגודל
+$n+1$.
+יהיו
+$A_1, \ldots, A_k \subseteq \mbb{F}$
+זרות עבורן
+$A = \bigsqcup_{i \in [k]} A_i$.
+לכל
+$i \in [k]$
+נגדיר
+\[\text{.} V_i \ceq \set{p \in V}{\forall x \in A \setminus A_i : p\prs{x} = 0}\]
+
+\begin{enumerate}
+\item יהי
+$L$
+שדה סגור אלגברית המכיל את
+$\mbb{F}$
+ויהי
+$p \in L_n\brs{x}$.
+יהיו
+$a_1, \ldots, a_{n+1} \in L$
+איברים שונים עבורם
+$p\prs{a_i} = 0$.
+הראו כי
+$p = 0$.
+
+\item יהי
+$p \in \mbb{F}_n\brs{x}$
+ויהיו
+$a_1, \ldots, a_{n+1} \in \mbb{F}$
+שונים עבורם
+$p\prs{a_i} = 0$.
+הראו כי
+$p = 0$.
+
+\item הראו כי
+\[\text{.} V_i \cap \sum_{j \in [k] \setminus \set{i}} V_j = \set{0}\]
+
+\item חשבו את
+$\dim_{\mbb{F}} V_i$
+לכל
+$i \in [k]$
+והסיקו כי
+\[\text{.} V = \bigoplus_{i \in [k]} V_i\]
+
+\end{enumerate}
+
+\end{exercise}
+
+\begin{exercise}[מרחבי העתקות]
+יהיו
+$V,W$
+מרחבים וקטוריים מעל אותו שדה
+$\mbb{F}$.
+יהי
+$C = \prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+ויהי
+$D = \prs{w_1, \ldots, w_m}$
+בסיס של
+$W$.
+
+\begin{enumerate}
+\item עבור
+$i \in [n], j \in [m]$
+נגדיר
+\begin{align*}
+\mu_{i,j} \colon V &\to W \\
+\text{.} \sum_{k \in [n]} \alpha_k v_k &\mapsto \alpha_i w_j
+\end{align*}
+הראו כי
+\[B \ceq \prs{\mu_{1,1}, \ldots, \mu_{1,m}, \mu_{2,1}, \ldots, \mu_{2,m}, \ldots, \mu_{n,1}, \ldots, \mu_{n,m}}\]
+בסיס של
+$\hom_{\mbb{F}}\prs{V,W}$.
+\item הסיקו כי
+\[\text{.} \dim\hom_{\mbb{F}}\prs{V,W} = \dim_{\mbb{F}}\prs{V} \cdot \dim_{\mbb{F}}\prs{W}\]
+\item תהי
+\begin{align*}
+S \colon \mbb{R}^2 &\to \mbb{R}^2 \\
+\prs{x,y} &\mapsto \prs{-2y, x}
+\end{align*}
+ונגדיר
+\begin{align*}
+T \colon \endo_{\mbb{R}}\prs{\mbb{R}^2} &\to \endo_{\mbb{R}}\prs{\mbb{R}^2} \\
+\text{.} \hphantom{lalalalalalal} U &\mapsto SU
+\end{align*}
+יהי
+\[B \ceq \prs{\mu_{1,1}, \mu_{1,2}, \mu_{2,1}, \mu_{2,2}}\]
+כמו בסעיף הראשון עבור
+$V=W=\mbb{R}^2$.
+מצאו את
+$\brs{S}_E$
+ואת
+$\brs{T}_B$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+יהיו
+$V,V_1,V_2,W,W_1,W_2$
+מרחבים וקטוריים מעל שדה
+$\mbb{F}$.
+\begin{enumerate}
+\item הראו שמתקיים
+\[\text{.} \dim_{\mbb{F}}\prs{V \oplus W} = \dim_{\mbb{F}}\prs{V} + \dim_{\mbb{F}}\prs{W}\]
+\item הראו שמתקיים
+\[\text{.} \hom_{\mbb{F}}\prs{V_1 \oplus V_2, W} \cong \hom_{\mbb{F}}\prs{V_1, W} \oplus \hom_{\mbb{F}}\prs{V_2, W}\]
+\item הראו שמתקיים
+\[\text{.} \hom_{\mbb{F}}\prs{V, W_1 \oplus W_2} \cong \hom_{\mbb{F}}\prs{V, W_1} \oplus \hom_{\mbb{F}}\prs{V, W_2}\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+יהיו
+$V_1, \ldots, V_n$
+מרחבים וקטוריים מעל שדה
+$\mbb{F}$.
+לכל
+$i \in [n]$
+תהי
+$T \in \endo_{\mbb{F}}\prs{V_i}$.
+\begin{enumerate}
+\item הראו כי
+\[\text{.} \ker\prs{\bigoplus_{i \in [n]} T_i} = \bigoplus_{i \in [n]} \ker\prs{T_i}\]
+\item הראו כי
+\[\text{.} \im\prs{\bigoplus_{i \in [n]} T_i} = \bigoplus_{i \in [n]} \im\prs{T_i}\]
+\end{enumerate}
+\end{exercise}
+
+\end{document}

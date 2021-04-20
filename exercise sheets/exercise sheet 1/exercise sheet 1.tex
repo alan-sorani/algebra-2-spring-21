@@ -1,0 +1,244 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 1 \\
+מטריצות מייצגות וכלל קרמר
+\\
+\vspace{1cm}
+\large{תאריך הגשה: 6.4.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{R}$
+ותהי
+$T \colon V \to V$
+לינארית המקיימת
+$T^2 = -5 \id_V$.
+\begin{enumerate}
+\item הוכיחו כי לכל
+$v \in V \setminus \set{0}$
+הקבוצה
+$\set{v, Tv}$
+בלתי־תלויה לינארית.
+\item נתון גם כי
+$\dim V = 2$.
+הוכיחו כי קיים בסיס בו
+$T$
+מיוצגת על ידי
+$\pmat{0 & 1 \\ -5 & 0}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+יהי
+$B = \prs{v_i}_{i \in [n]}$
+בסיס למרחב וקטורי
+$V$.
+נתונה
+$T \colon V \to V$
+הפיכה המקיימת
+\[\text{.} T\prs{v_1 + 2 v_2} = \sum_{i \in [n]} v_i\]
+מצאו את סכום איברי
+$\brs{T^{-1}}_B$.
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+מעל שדה
+$\mbb{F}$
+ויהי
+$B$
+בסיס של
+$V$.
+
+\begin{enumerate}
+\item 
+תהי
+\begin{align*}
+\rho_B \colon V &\to \mbb{F}^n \\
+\text{.} v &\mapsto \brs{v}_B
+\end{align*}
+הראו ש־%
+$\rho_B$
+חד־חד ערכית ועל.
+
+\item תהיינה
+$T,S \colon V \to V$
+העתקות לינאריות עבורן
+$\brs{T}_B = \brs{S}_B$.
+הסיקו שמתקיים
+$T = S$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[כלל קרמר]
+תהי
+$Ax = b$
+מערכת משוואות כאשר
+$A \in M_n\prs{\mbb{F}}$
+הפיכה.
+
+לכל
+$i \in [n]$
+תהי
+\begin{align*}
+K_{A,i} \colon \mbb{F}^n &\to \mbb{F} \\
+b &\mapsto \frac{\det\pmat{\vert & & \vert & \vert & \vert & & \vert \\ A_1 & \cdots & A_{i-1} & b & A_{i+1} & \cdots & A_n \\ \vert & & \vert & \vert & \vert & & \vert}}{\det\prs{A}}
+\end{align*}
+ותהי
+\begin{align*}
+K_A \colon \mbb{F}^n &\to \mbb{F}^n \\
+\text{.} \hphantom{lalala} b &\mapsto \pmat{K_{A,1}\prs{b} \\ K_{A,2}\prs{b} \\ \vdots \\ K_{A, n-1}\prs{b} \\ K_{A,n}\prs{b}}
+\end{align*}
+
+נראה שהפתרון היחיד למערכת נתון על ידי
+$x = K_{A}\prs{b}$.
+
+\begin{enumerate}
+\item הראו שלכל
+$i \in [n]$
+ההעתקה
+$K_{A,i}$
+לינארית.
+\item
+הסיקו ש־%
+$K_A$
+העתקה לינארית.
+\item
+תהי
+\begin{align*}
+L_A \colon \mbb{F}^n &\to \mbb{F}^n \\
+\text{.} \hphantom{lalala} v &\mapsto Av
+\end{align*}
+
+הראו ש־%
+$K_A \circ L_A = \id_{\mbb{F}^n}$
+על ידי בדיקה על הבסיס הסטנדרטי, והסיקו שמתקיים
+$K_A = \prs{L_A}^{-1}$.
+\item הסיקו שמתקיים
+$\brs{K_A}_E = A^{-1}$
+כאשר
+$E$
+הבסיס הסטנדרטי של
+$\mbb{F}^n$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+תהי
+$T \colon V \to V$
+העתקה לינארית ויהיו
+$B,C$
+בסיסים של
+$V$.
+הראו כי
+\[\tr\prs{\brs{T}_B} = \tr\prs{\brs{T}_C}\]
+וגם
+\[\text{.} \det\prs{\brs{T}_B} = \det\prs{\brs{T}_C}\]
+
+אז נוכל להגדיר
+\begin{align*}
+\tr T &\ceq \tr\prs{\brs{T}_B} \\
+\text{.} \det T &\ceq \det\prs{\brs{T}_B}
+\end{align*}
+\end{exercise}
+
+\begin{exercise}[מטריצות בלוקים]
+מטריצה
+$A \in M_n\prs{\mbb{F}}$
+נקראת
+\emph{אלכסונית בלוקים
+$\prs{n_1, \ldots, n_k}$
+}
+אם היא מהצורה
+\[A = \pmat{A_{1} & 0 & \cdots & & 0 \\ 0 & A_{2} &  & 0 & \vdots \\ \vdots & & \ddots & & \\ & 0 & & A_{k-1} & 0 \\ 0 & \cdots & & 0 & A_k} \]
+כאשר
+$A_i \in M_{n_i}\prs{\mbb{F}}$
+לכל
+$i \in [k]$.
+
+תהי
+$A \in M_n\prs{\mbb{F}}$
+אלכסונית בלוקים
+$\prs{n_1, \ldots, n_k}$
+עם בלוקים
+$A_i \in M_{n_i}\prs{\mbb{F}}$.
+
+\begin{enumerate}
+\item
+הראו שמתקיים
+\[\text{.} \det\prs{A} = \prod_{i \in [k]} \det\prs{A_i}\]
+\item הראו שמתקיים
+\[\text{.} \tr\prs{A} = \sum_{i \in [k]} \tr\prs{A_i}\]
+\item
+תהי
+$B \in M_n\prs{\mbb{F}}$
+אלכסונית בלוקים
+$\prs{n_1, \ldots, n_k}$
+עם בלוקים
+$B_i \in M_{n_i}\prs{\mbb{F}}$.
+הראו שמתקיים
+\begin{align*}
+\text{.} AB &= \pmat{A_1 B_1 & 0 & \cdots & & 0 \\ 0 & A_2 B_2 &  & 0 & \vdots \\ \vdots & & \ddots & & \\ & 0 & & A_{k-1} B_{k-1} & 0 \\ 0 & \cdots & & 0 & A_k B_k} 
+\end{align*}
+
+\item הסיקו שלכל
+$m \in \mbb{N}$
+מתקיים
+\[\text{.} A^m = \pmat{A_{1}^m & 0 & \cdots & & 0 \\ 0 & A_{2}^m &  & 0 & \vdots \\ \vdots & & \ddots & & \\ & 0 & & A_{k-1}^m & 0 \\ 0 & \cdots & & 0 & A_k^m} \]
+
+\item הסיקו שאם
+$\prs{P_i}_{i \in [k]}$
+מטריצות הפיכות כך ש־%
+$P_i \in M_{n_i}\prs{\mbb{F}}$
+לכל
+$i \in [k]$
+ו־%
+$P \in M_n\prs{\mbb{F}}$
+מטריצה אלכסונית בלוקים
+$\prs{n_1, \ldots, n_k}$
+עם בלוקים
+$P_i$,
+אז
+$P$
+הפיכה ומתקיים
+\[\text{.} P A P^{-1} = \pmat{P_1 A_1 P_1^{-1} & 0 & \cdots & & 0 \\ 0 & P_2 A_{2} P_2^{-1} &  & 0 & \vdots \\ \vdots & & \ddots & & \\ & 0 & & P_{k-1} A_{k-1} P_{k-1}^{-1} & 0 \\ 0 & \cdots & & 0 & P_k A_k P_k^{-1}} \]
+\end{enumerate}
+\end{exercise}
+
+\end{document}

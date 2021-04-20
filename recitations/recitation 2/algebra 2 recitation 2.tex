@@ -1,0 +1,631 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 2 \textenglish{---} וקטורים עצמיים, שקילות בין העתקות וסכומים ישרים
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{ערכים ווקטורים עצמיים}
+
+\begin{definition}[ערך ווקטור עצמיים]
+יהי
+$V$
+מרחב וקטורי ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+$\lambda \in \mbb{F}$
+נקרא
+\emph{ערך עצמי של
+$T$}
+אם קיים
+$v \in V \setminus \set{0}$
+עבורו
+$Tv = \lambda v$.
+$v$
+כזה נקרא
+\emph{וקטור עצמי
+(של $T$)
+עבור הערך העצמי
+$\lambda$}.
+\end{definition}
+
+\begin{definition}[מרחב עצמי]
+יהי
+$\lambda$
+ערך עצמי של העתקה
+$T \in \endo\prs{V}$.
+אוסף הוקטורים העצמיים של
+$T$
+עם ערך עצמי
+$\lambda$
+הוא תת־מרחב וקטורי של
+$V$
+שנקרא
+\emph{המרחב העצמי של הערך העצמי
+$\lambda$
+(עבור $T$)}.
+נסמנו בדרך כלל
+$V_\lambda$.
+\end{definition}
+
+\begin{remark}
+בסימון הנ"ל לא מצוין מה ההעתקה
+$T$.
+נבהיר מה ההעתקה כשהדבר אינו ברור מהקונטקסט.
+\end{remark}
+
+\begin{exercise}
+תהיינה
+$T,S,P \in \endo_{\mbb{F}}\prs{V}$
+כך שמתקיים
+\[T = P^{-1}SP\]
+הוכיחו כי
+$v \in V$
+וקטור עצמי של
+$T$
+עם ערך עצמי
+$\lambda$
+אם ורק אם
+$Pv$
+וקטור עצמי של
+$S$
+עם ערך עצמי
+$\lambda$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$v \in V$
+וקטור עצמי של
+$T$
+עם ערך עצמי
+$\lambda$.
+מתקיים
+\begin{align*}
+\text{.} SPv = \prs{PTP^{-1}}Pv = PTv = P \lambda v = \lambda \prs{Pv} 
+\end{align*}
+
+יהי
+$v \in V$
+כך ש־%
+$Pv$
+וקטור עצמי של
+$S$
+עם ערך עצמי
+$\lambda$.
+מתקיים
+\begin{align*}
+\text{.} Tv = P^{-1}SPv = P^{-1}\lambda Pv = \lambda P^{-1} P v = \lambda v
+\end{align*}
+\end{solution}
+
+\begin{definition}[שדה סגור אלגברית]
+שדה
+$\mbb{F}$
+נקרא
+\emph{סגור אלגברית}
+אם לכל פולינום
+$p \in \mbb{F}\brs{x} \setminus \set{0}$
+יש
+$\deg\prs{p}$
+שורשים מעל
+$\mbb{F}$.
+\end{definition}
+
+\begin{remark}
+באופן שקול,
+$\mbb{F}$
+סגור אלגברית אם לכל פולינום שאינו קבוע יש שורש מעל
+$\mbb{F}$.
+\end{remark}
+
+\begin{fact}
+יהי
+$\mbb{F}$
+שדה סגור אלגברי ויהי
+$V$
+מרחב וקטורי מעל
+$\mbb{F}$.
+לכל
+$T \in \endo_{\mbb{F}}\prs{V}$
+יש ערך עצמי.
+\end{fact}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי ממימד
+$n > 1$
+מעל שדה סגור אלגברית
+$\mbb{F}$
+ותהי
+$T \in \endo\prs{V}$.
+הראו כי
+\[\text{.} \set{p\prs{T}}{p \in \mbb{F}\brs{x}} \neq \endo\prs{V}\]
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item אם ל־%
+$T$
+יש ערך עצמי יחיד
+$\lambda$
+מריבוי גיאומטרי מלא, יש בסיס
+$B$
+של
+$V$
+בו
+$\brs{T}_B = \lambda I$.
+אז
+\[\brs{p\prs{T}}_B = p\prs{\brs{T}_B} = p\prs{\lambda I} = p\prs{\lambda} I\]
+מטריצה סקלארית.
+אבל, לא כל אנדומורפיזם מיוצג על ידי מטריצה סקלארית, לכן אין שוויון.
+
+\item
+יהי
+$\lambda \in \mbb{F}$
+ערך עצמי של
+$T$
+ויהי
+$v \in V$
+וקטור עצמי עבור
+$\lambda$.
+מהרדוקציה הקודמת, הריבוי הגיאומטרי של
+$\lambda$
+אינו
+$n$.
+נראה שיש העתקה
+$S \in \endo_{\mbb{F}}\prs{V}$
+שאינה מתחלפת עם
+$T$,
+וכיוון שכל פולינום ב־%
+$T$
+מתחלף עם
+$T$
+נקבל
+\[\text{.} S \notin \set{p\prs{T}}{p \in \mbb{F}\brs{x}}\]
+$\lambda$
+מריבוי גיאומטרי קטן מ־%
+$n$
+לכן יש
+$w \in V \setminus V_\lambda$.
+אז
+$\prs{v, w}$
+בלתי־תלויה לינארית ולכן ניתן להשלים אותה לבסיס
+\[\text{.} B = \prs{v,w, u_3, \ldots, u_n}\]
+תהי
+\begin{align*}
+S \colon V &\to V \\
+v &\mapsto w \\
+w &\mapsto v \\
+\text{.} \hphantom{lala} u_i &\mapsto u_i
+\end{align*}
+אכן
+\begin{align*}
+ST\prs{v} &= S\lambda v = \lambda Sv = \lambda w \\
+TS\prs{v} &= Tw \neq \lambda w
+\end{align*}
+כאשר האי־שוויון נכון כי
+$w \notin V_\lambda$.
+לכן
+$S$
+אינה פולינום ב־%
+$T$.
+\end{itemize}
+\end{solution}
+
+\section{שקילות בין העתקות}
+
+\begin{exercise}
+נאמר שהעתקות
+$T \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$S \in \endo_{\mbb{F}}\prs{W}$
+\emph{צמודות}
+ונסמן
+$T \sim S$
+אם קיים איזומורפיזם
+$P \colon V \to W$
+עבורו
+$T = P^{-1} S P$.
+
+\begin{enumerate}
+\item הראו כי
+$\sim$
+יחס שקילות.
+\item ראיתם בהרצאה שמטריצות מייצגות של העתקות צמודות הן צמודות.
+הסיקו שכל שתי מטריצות מייצגות של אותה העתקה הן צמודות.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+\begin{description}
+\item[רפלקסיביות:]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+מתקיים
+\[T = \id_V^{-1} \circ T \circ \id_V\]
+לכן
+$T \sim T$.
+\item[סימטריות:]
+תהיינה
+$T \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$S \in \endo_{\mbb{F}}\prs{W}$
+עבורן
+$T \sim S$.
+קיים איזומורפיזם
+$P \colon V \to W$
+עבורו
+$T = P^{-1} S P$.
+אז
+$S = P T P^{-1}$.
+נסמן
+$Q = P^{-1}$
+ונקבל
+\[\text{.} S = Q^{-1} T Q\]
+\item[טרנזיטיביות:]
+תהיינה
+\begin{align*}
+T &\in \endo_{\mbb{F}}\prs{U} \\
+S &\in \endo_{\mbb{F}}\prs{V} \\
+R &\in \endo_{\mbb{F}}\prs{W}
+\end{align*}
+המקיימות
+$T \sim S$
+וגם
+$S \sim R$.
+קיימים איזומורפיזמים
+$P \colon U \to V$
+ו־%
+$Q \colon V \to W$
+עבורם
+$T = P^{-1} S P$
+וגם
+$S = Q^{-1} R Q$.
+אז
+\[T = P^{-1}\prs{Q^{-1} R Q}P = \prs{QP}^{-1} R \prs{QP}\]
+כאשר
+$QP$
+איזומורפיזם כהרכבת איזומורפיזמים.
+לכן
+$T \sim R$.
+\end{description}
+
+\item
+מרפלקסיביות נקבל
+$T \sim T$.
+לכן, מהטענה בכיתה, כל שתי מטריצות מייצגות של
+$T$
+צמודות.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+מטריצות
+$A_1, A_2 \in M_n\prs{\mbb{F}}$
+נקראות
+\emph{צמודות}
+אם יש
+$P \in M_n\prs{\mbb{F}}$
+הפיכה עבורה
+$A_1 = P^{-1} A_2 P$.
+במקרה זה נסמן
+$A_1 \sim A_2$.
+
+יהיו
+$A_1, A_2 \in M_n\prs{\mbb{F}}$
+צמודות. הראו שיש העתקה
+$T \colon \mbb{F}^n \to \mbb{F}^n$
+ובסיסים
+$B,C$
+של
+$\mbb{F}^n$
+עבורם
+$\brs{T}_B = A_1, \brs{T}_C = A_2$.
+\end{exercise}
+
+\begin{solution}
+נתון
+$A_1 \sim A_2$
+לכן קיימת
+$P$
+הפיכה עבורה
+$A_1 = P A_2 P^{-1}$.
+תהי
+$T = L_{A_1}$
+ויהי
+$B = E$
+הבסיס הסטנדרטי של
+$\mbb{F}^n$.
+אז
+\[\text{.} \brs{T}_B = \brs{L_{A_1}}_E = A_1\]
+$P$
+הפיכה לכן יש בסיס
+$C$
+עבורו
+$P = P^C_E$.
+אז מתקיים
+\begin{align*}
+A_2 \brs{v}_C &= P^{-1} A_1 P \brs{v}_C
+\\&= P^E_C A_1 P^C_E \brs{v}_C
+\\&= P^E_C \brs{L_{A_1}}_E \brs{v}_E
+\\&= P^E_C \brs{L_{A_1} v}_E
+\\&= \brs{L_{A_1} v}_C
+\\&= \brs{T v}_C
+\end{align*}
+לכן
+$A_2 = \brs{T}_C$.
+\end{solution}
+
+\begin{exercise}
+תהיינה
+$T \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$S \in \endo_{\mbb{F}}\prs{W}$
+ויהי
+$B$
+בסיס של
+$V$.
+הראו שמתקיים
+$T \sim S$
+אם ורק אם יש בסיס
+$C$
+של
+$W$
+עבורו
+\[\text{.} \brs{T}_B = \brs{S}_C\]
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item נניח כי
+$T \sim S$
+ויהי
+$P \colon V \riso W$
+המקיים
+$T = P^{-1} S P$.
+כיוון ש־%
+$I$
+הפיכה ו־%
+$P$
+איזומורפיזם,
+ראינו שיש בסיס
+$C$
+של
+$W$
+עבורו
+$\brs{P}^B_C = I$.
+אז מתקיים
+\begin{align*}
+\brs{T}_B &= \brs{P^{-1} S P}_B
+\\&= \brs{P^{-1}}_B^C \brs{S}_C \brs{P}^B_C
+\\&= I^{-1} \brs{S}_C I
+\\&= \brs{S}_C
+\end{align*}
+כנדרש.
+\item
+נניח כי יש בסיס
+$C$
+של
+$W$
+עבורו
+$\brs{T}_B = \brs{S}_C$.
+נכתוב
+\begin{align*}
+B &= \prs{v_1, \ldots, v_n} \\
+C &= \prs{w_1, \ldots, w_n}
+\end{align*}
+ותהי
+\begin{align*}
+P \colon V &\to W \\
+\text{.} v_i &\mapsto w_i
+\end{align*}
+אז
+$P$
+איזומורפיזם כי היא שולחת בסיס לבסיס.
+מתקיים
+\begin{align*}
+\brs{P^{-1} S P}_B &= \brs{P^{-1}}^C_B \brs{S}_C \brs{P}^B_C
+\\&= I \brs{S}_C I
+\\&= \brs{S}_C
+\\&= \brs{T}_B
+\end{align*}
+לכן לפי תרגיל משיעורי הבית
+\[\text{.} P^{-1} S P = T\]
+\end{itemize}
+\end{solution}
+
+\section{סכומים ישרים}
+
+\begin{definition}
+יהיו
+$B_1 \ceq \prs{v_1, \ldots, v_m}$
+ו־%
+$B_2 \ceq \prs{w_1, \ldots, w_n}$
+קבוצות סדורות.
+נגדיר את
+\emph{השרשור שלהן}
+להיות
+\[\text{.} B_1 * B_2 = \prs{v_1, \ldots, v_m, w_1, \ldots, w_m}\]
+\end{definition}
+
+\begin{definition}[סכום ישר]
+יהי
+$V$
+מרחב וקטורי ויהיו
+$V_1, V_2 \leq V$.
+אם
+$V_1 \cap V_2 = \set{0}$
+נקרא לסכום
+$V_1 + V_2$
+\emph{סכום ישר}
+ונסמנו
+$V_1 \oplus V_2$.
+\end{definition}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ויהיו
+$V_1, \ldots, V_n \leq V$
+עבורם
+\[\text{.} V = \bigoplus_{i \in [n]} V_i \ceq V_1 \oplus \ldots \oplus V_n\]
+לכל
+$i \in [n]$
+יהי
+$B_i$
+בסיס של
+$V_i$.
+הראו כי
+\[B \ceq B_1 * \ldots * B_n\]
+בסיס של
+$V$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$v \in V$.
+יש
+$v_1, \ldots, v_n \in V$
+כך ש־%
+$v_i \in V_i$
+ויש
+$\prs{\alpha_i}_{i \in [n]} \in \mbb{F}$
+כך שמתקיים
+\[\text{.} v = \sum_{i \in [n]} \alpha_i v_i\]
+נכתוב
+\[\text{.} B_i = \prs{u_{i,1}, \ldots, u_{i, n_i}}\]
+לכל
+$i \in [n]$
+אפשר כתוב
+\[\text{.} v_i = \sum_{j \in [n_i]} \beta_j u_{i,j}\]
+אז
+\[\text{.} v = \sum_{i \in [n]} \sum_{j \in [n_i]} \alpha_i \beta_j u_{i,j}\]
+לכן
+$\spn B = V$.
+
+נראה כי
+$B$
+בלתי־תלויה לינארית.
+נניח כי יש
+$\alpha_{i,j}$
+כך ש־%
+\begin{align*}
+\text{.} \sum_{i \in [n]} \sum_{j \in [n_i]} \alpha_{i,j} u_{i,j} = 0
+\end{align*}
+מהגדרת הסכום הישר, לכל
+$i \in [n]$
+מתקיים
+\begin{align*}
+\text{.} \sum_{j \in [n_i]} \alpha_{i,j} u_{i,j} = 0
+\end{align*}
+כיוון ש־%
+$B_i$
+בסיס נקבל מכך
+$\alpha_{i,j} = 0$
+לכל
+$j \in [n_i]$.
+לכן כל המקדמים שווים
+$0$,
+ולכן
+$B$
+בלתי־תלויה לינארית.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ויהיו
+$W,U \leq V$
+עם בסיסים
+$B,C$
+בהתאמה.
+נניח כי
+$B * C$
+בסיס של
+$V$.
+הראו כי
+\[\text{.} V = W \oplus U\]
+\end{exercise}
+
+\begin{solution}
+נסמן
+\begin{align*}
+B &= \prs{w_1, \ldots, w_k} \\
+\text{.} C &= \prs{u_1, \ldots, u_\ell}
+\end{align*}
+יהי
+$v \in V$.
+אפשר לכתוב
+\[v = \sum_{i \in [k]} \alpha_i w_i + \sum_{i \in [\ell]} \beta_i u_i \in W + U\]
+לכן
+$V = W + U$.
+
+אם
+$v \in W \cap U$
+נוכל לכתוב
+\[v = \sum_{i\in[k]} \alpha_i w_i = \sum_{i \in [\ell]} \beta_i u_i\]
+ואז
+\[\text{.} 0 = \sum_{i \in [k]} \alpha_i w_i - \sum_{i \in [\ell]} \beta_i u_i \]
+כיוון ש־%
+$B * C$
+בסיס של
+$V$
+זאת קבוצה בלתי־תלויה לינארית ולכן נקבל
+$\alpha_i, \beta_i = 0$
+לכל
+$i$.
+לכן
+$v = 0$,
+כלומר
+$W \cap U = \set{0}$.
+לכן הסכום ישר.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ויהי
+$W \leq V$.
+הראו שקיים
+$U \leq V$
+עבורו
+$V = W \oplus U$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$B$
+בסיס של
+$W$.
+אז
+$B$
+קבוצה בת"ל ב־%
+$V$
+וראינו באלגברה ב' שאפשר להשלים קבוצה כזאת לבסיס של
+$V$.
+לכן יש
+$B'$
+בת"ל כך ש־%
+$B * B'$
+בסיס של
+$V$.
+מהתרגיל הקודם נקבל
+\[\text{.} V = W \oplus \spn B'\]
+\end{solution}
+
+\end{document}

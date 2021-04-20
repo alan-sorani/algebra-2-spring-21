@@ -1,0 +1,604 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 1 \textenglish{---} חזרה - מטריצות מייצגות
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{1}
+
+\section*{מטריצות מייצגות}
+
+\subsection*{הגדרות וסימונים}
+
+\begin{definition}[בסיס של מרחב וקטורי]
+יהי
+$V$
+מרחב וקטורי מעל שדה
+$\mbb{F}$.
+\emph{בסיס של
+$V$}
+הוא קבוצה
+\textbf{סדורה}
+$B$
+כך שכל
+$v \in V$
+ניתן לכתיבה באופן
+\textbf{יחיד}
+כצירוף לינארי של (מספר סופי של) איברי
+$B$.
+\end{definition}
+
+\begin{notation}[מרחב מטריצות]
+יהי
+$\mbb{F}$
+שדה ויהיו
+$n,m \in \mbb{N}_+$.
+נסמן ב־%
+$M_{n,m}\prs{\mbb{F}}$
+מטריצות מעל
+$\mbb{F}$
+עם
+$n$
+שורות ו־%
+$m$
+עמודות.
+נסמן גם
+$M_n\prs{\mbb{F}} \ceq M_{n,n}\prs{\mbb{F}}$.
+\end{notation}
+
+\begin{notation}[מרחב העתקות לינאריות]
+יהיו
+$V,W$
+מרחבים וקטוריים מעל שדה
+$\mbb{F}$.
+נסמן ב־%
+$\hom_{\mbb{F}}\prs{V,W}$
+את מרחב ההעתקות הלינאריות
+$V \to W$.
+
+נסמן לפעמים
+\[\endo_{\mbb{F}}\prs{V} \ceq \hom_{\mbb{F}}\prs{V,V}\]
+ונקרא לאיברי מרחב זה
+\emph{אנדומורפיזמים של
+$V$}.
+\end{notation}
+
+\begin{notation}
+נסמן
+$\mbb{F}^n \ceq M_{n,1}\prs{\mbb{F}}$
+וגם
+$\prs{\mbb{F}^n}^\perp \ceq M_{1,n}\prs{\mbb{F}}$.
+\end{notation}
+
+\begin{definition}[מטריצה מייצגת]
+יהיו
+$V,W$
+מרחבים וקטוריים מעל שדה
+$\mbb{F}$
+עם בסיסים
+\begin{align*}
+B &= \prs{v_1, \ldots, v_n}, \\
+C &= \prs{w_1, \ldots, w_m}
+\end{align*}
+בהתאמה.
+\emph{המטריצה המייצגת של
+$T$
+לפי הבסיסים
+$B,C$}
+היא המטריצה
+$A \ceq \brs{T}_B^C \in M_{m,n}\prs{\mbb{F}}$
+שמוגדרת על ידי
+\begin{align*}
+\text{.} \forall j \in \brs{n} \colon T v_j = \sum_{i \in [m]} A_{i,j} w_i
+\end{align*}
+\end{definition}
+
+\begin{notation}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי עם בסיס
+$B$.
+נסמן
+$\brs{T}_B \ceq \brs{T}^B_B$.
+\end{notation}
+
+\begin{definition}[וקטור קואורדינטות]
+יהי
+$V$
+מרחב וקטורי מעל שדה
+$\mbb{F}$
+עם בסיס
+$B = \prs{v_1, \ldots, v_n}$.
+עבור
+$u \in V$
+נסמן
+$\brs{u}_B \in \mbb{F}^n$
+את
+\emph{וקטור הקואורדינטות של
+$u$
+לפי הבסיס
+$B$}
+שמוגדר על ידי
+\begin{align*}
+\text{.} u &= \sum_{i \in [n]} \prs{\brs{u}_B}_i v_i
+\end{align*}
+\end{definition}
+
+\begin{definition}[מטריצת מעבר]
+יהיו
+$V$
+מרחב וקטורי
+עם בסיסים
+$B,C$.
+נסמן
+\[P^B_C \ceq \brs{\id_V}^B_C\]
+ונקרא לה
+\emph{מטריצת המעבר מ־%
+$B$
+ל־%
+$C$}.
+\end{definition}
+
+\begin{definition}[העתקות המתאימות למטריצה]
+יהי
+$\mbb{F}$
+שדה, יהי
+$n \in \mbb{N}_+$
+ותהי
+$A \in M_n\prs{\mbb{F}}$.
+נגדיר
+\begin{align*}
+L_A \colon \mbb{F}^n &\to \mbb{F}^n \\
+v &\mapsto Av
+\end{align*}
+וגם
+\begin{align*}
+R_A \colon \prs{\mbb{F}^n}^\perp &\to \prs{\mbb{F}^n}^\perp \\
+\text{.} v &\mapsto vA
+\end{align*}
+\end{definition}
+
+\begin{definition}
+יהי
+$V$
+מרחב וקטורי
+$n$%
+־מימדי מעל שדה
+$\mbb{F}$.
+נגדיר
+\begin{align*}
+\rho_B \colon V &\to \mbb{F}^n \\
+\text{.} v &\mapsto \brs{v}_B
+\end{align*}
+\end{definition}
+
+\begin{remark}
+$\rho_B$
+שולחת בסיס לבסיס, ולכן הינה איזומורפיזם.
+\end{remark}
+
+\begin{exercisex}
+תהי
+$T \colon V \to W$
+העתקה בין מרחבים וקטוריים ויהיו
+$B,C$
+בסיסים עבור
+$V,W$
+בהתאמה.
+לכל
+$v \in V$
+מתקיים
+\[ \text{.} \brs{T}^B_C \brs{v}_B = \brs{Tv}_C\]
+להיפך, אם
+$A$
+מטריצה המקיימת
+\[  A \brs{v}_B = \brs{Tv}_C\]
+לכל
+$v \in V$,
+אז
+$A = \brs{T}_C^B$.
+\end{exercisex}
+
+\begin{corollary} \label{corollary:representing_composition}
+יהיו
+$U,V,W$
+מרחבים וקטוריים מעל שדה
+$\mbb{F}$
+ותהיינה
+\begin{align*}
+T \colon U &\to V \\
+S \colon V &\to W
+\end{align*}
+העתקות לינאריות.
+יהיו
+$B,C,D$
+בסיסים של
+$U,V,W$
+בהתאמה.
+אז
+\begin{align*}
+\text{.} \brs{S \circ T}^B_D = \brs{S}^C_D \brs{T}^B_C
+\end{align*}
+\end{corollary}
+
+\begin{proof}
+לכל
+$v \in V$
+מתקיים
+\begin{align*}
+\brs{S}^C_D \brs{T}^B_C \brs{v}_B &= \brs{S}^C_D \brs{Tv}_C
+\\&= \brs{S \circ T v}_D
+\end{align*}
+לכן
+\[\text{,}\brs{S}^C_D \brs{T}^B_C = \brs{S \circ T}^B_D\]
+כנדרש.
+\end{proof}
+
+\subsection*{תרגילים}
+
+\begin{exercise}
+תהי
+$A \in M_{n}\prs{\mbb{F}}$
+הפיכה.
+\begin{enumerate}
+\item הראו שלכל בסיס
+$B$
+של
+$\mbb{F}^n$
+קייo בסיס
+$C$
+של
+$\mbb{F}^n$
+כך שמתקיים
+\begin{align*}
+\text{.}A &= \brs{\id_V}^B_C
+\end{align*}
+\item יהי
+$V$
+מרחב וקטורי
+$n$%
+־מימדי מעל
+$\mbb{F}$
+ויהי
+$B$
+בסיס של
+$V$.
+מצאו בסיס
+$B'$
+של
+$V$
+כך ש־%
+$A = P^B_{B'}$.
+\item יהי
+$T \colon V \to W$
+איזומורפיזם בין מרחבים וקטוריים ממימד
+$n \in \mbb{N}_+$
+מעל
+$\mbb{F}$.
+יהי
+$B$
+בסיס של
+$V$.
+מצאו בסיס
+$C$
+של
+$W$
+כך שמתקיים
+\[\text{.} A = \brs{T}^B_{C}\]
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item%1
+$A$
+מטריצה הפיכה, לכן
+$L_A$
+איזומורפיזם, ולכן שולחת בסיס לבסיס.
+ידוע כי
+$\rho_B$
+איזומורפיזם ולכן גם היא שולחת בסיס לבסיס.
+מתקיים
+\begin{align*}
+\brs{\id_V}^B_C &= \brs{\rho_B^{-1} \circ \rho_B}^B_C
+\\&= \brs{\rho_B^{-1}}^E_C \brs{\rho_B}^B_E
+\\&= \brs{\rho_B^{-1}}^E_C I_n
+\\&= \brs{\rho_B^{-1}}^E_C
+\end{align*}
+לכן מספיק למצוא
+$C$
+עבורו
+\[\text{.} \brs{\rho_B^{-1}}^E_C = A\]
+יהי
+\[\text{.} C \ceq \prs{\rho_B^{-1} \circ L_A^{-1}\prs{e_1}, \ldots, \rho_B^{-1} \circ L_A^{-1}\prs{e_n}}\]
+לכל
+$i \in [n]$
+נקבל
+\begin{align*}
+\brs{\rho_B^{-1}}^E_C A^{-1} e_i &= \brs{\rho_B^{-1}}^E_C \brs{A^{-1} e_i}_E
+\\&= \brs{\rho_B^{-1} A^{-1} e_i}_C
+\\\text{.} \hphantom{\brs{\rho_B^{-1}}^E_C A^{-1} e_i} &= e_i
+\end{align*}
+לכן
+$\brs{\rho_B^{-1}}^E_C A^{-1} e_i = e_i$
+לכל
+$i \in [n]$,
+לכן
+\[\text{.} \brs{\rho_B^{-1}}^E_C = \prs{A^{-1}}^{-1} = A\]
+
+\textbf{מוטיבציה:}
+
+מהסתכלות על המקרה
+$B = E$
+רואים שבמקרה זה עובדת הבחירה
+\[\text{.} C \ceq \prs{L_A^{-1}\prs{e_1}, \ldots, L_A^{-1}\prs{e_n}}\]
+באופן כללי, הדבר לא עובד. אבל כיוון שיש איזומורפיזם של
+$\mbb{F}^n$
+ששולח את הבסיס
+$B$
+לבסיס
+$E$,
+נוכל להיעזר בו כדי למצוא בסיס
+$C$
+מתאים, בעזרת הצמדה.
+$C$
+שבחרנו הוא בעצם
+\[\text{.} C = \prs{\rho_B^{-1} \circ L_A^{-1} \circ \rho_B\prs{v_1}, \ldots, \rho_B^{-1} L_A^{-1} \rho_B\prs{v_n}}\]
+
+בדרך כלל כאשר אנו יודעים משהו עבור אוביקט, ורוצים להראות אותו עבור אוביקט איזומורפי, נוכל להיעזר בהצמדה באופן דומה.
+
+\item%2
+יהי
+$E$
+הבסיס הסטנדרטי של
+$\mbb{F}^n$
+ויהי
+$E' = \prs{u_1, \ldots, u_n}$
+בסיס עבורו
+$\brs{\id_{\mbb{F}^n}}^E_{E'} = A$,
+שקיים לפי הסעיף הקודם.
+יהי
+\[B' = \prs{\rho_B^{-1} \prs{u_1}, \ldots, \rho_B^{-1} \prs{u_n}}\]
+בסיס של
+$V$
+כי
+$\rho_B^{-1}$
+איזומופריזם.
+\[
+\begin{tikzcd}[row sep=large, column sep = large]
+V \arrow[d,swap,"\rho_B"] \arrow[r, "\rho_B^{-1} \circ L_A \circ \rho_B"] & V \\
+\mbb{F}^n \arrow[r, "L_A"] & \mbb{F}^n \arrow[u, swap, "\rho_B^{-1}"]
+\end{tikzcd}
+\]
+אז מתקיים
+\begin{align*}
+\brs{\id_V}^B_{B'} &\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} \brs{\rho_B^{-1} \circ \id_{\mbb{F}^n} \circ \rho_B}^B_{B'}
+\\&\underset{\eqref{corollary:representing_composition}}{=} \brs{\rho_B^{-1}}^{E'}_{B'} \brs{\id_{\mbb{F}^n}}^E_{E'} \brs{\rho_B}^B_E
+\\&\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} \brs{\id}^E_{E'}
+\\&\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} P^E_{E'}
+\\ \text{.} \hphantom{\brs{\id_V}^B_{B'} } &\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} A
+\end{align*}
+\item%3
+יהי
+\[B' = \prs{u_1, \ldots, u_n}\]
+הבסיס של
+$V$
+מהסעיף הקודם.
+יהי
+\[C = \prs{T\prs{u_1}, \ldots, T\prs{u_n}}\]
+בסיס של
+$W$
+כי
+$T$
+איזומורפיזם.
+מתקיים
+\begin{align*}
+\brs{T}^B_C &\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} \brs{T \circ \id_V}^B_C
+\\&\underset{\eqref{corollary:representing_composition}}{=} \brs{T}^{B'}_C \brs{\id_V}^B_{B'}
+\\&\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} I_n A
+\\ \text{.} \hphantom{\brs{T}^B_C} &\underset{\hphantom{\eqref{corollary:representing_composition}}}{=} A
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+תהי
+$D \in \hom\prs{\mbb{R}_3\brs{x}, \mbb{R}_2\brs{x}}$
+העתקת הגזירה, המוגדרת על ידי
+$Dp = p'$.
+מצאו בסיסים של
+$\mbb{R}_3\brs{x}, \mbb{R}_2\brs{x}$
+לפיהם המטריצה המייצגת של
+$T$
+היא
+\[\text{.} \pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0}\]
+\end{exercise}
+
+\begin{solution}
+יהי
+$U \ceq \mbb{R} \leq \mbb{R}_3\brs{x}$
+התת־מרחב של הפולינומים הקבועים.
+מתקיים
+$U = \ker D$.
+יהי
+\[W = \spn\set{x, x^2, x^3} \leq \mbb{R}_3\brs{x}\]
+כך שמתקיים
+$U \oplus W = \mbb{R}_3\brs{x}$.
+נגדיר
+\begin{align*}
+T \ceq \rest{D}{W} \colon W &\to \mbb{R}_3\brs{x}
+\end{align*}
+וזה איזומורפיזם כי
+$\dim_{\mbb{R}} W = \dim_{\mbb{R}} \mbb{R}_2\brs{x} = 3$
+וכי
+$\ker T = \set{0}$.
+
+תהי
+$A = I_3 \in M_3\prs{\mbb{R}}$.
+מהתרגיל הקודם, יש בסיסים
+$\tilde{B}, C$
+של
+$U, \mbb{R}_2\brs{x}$
+בהתאמה כך ש־%
+$\brs{T}^{\tilde{B}}_C = A$.
+נכתוב
+\[\tilde{B} = \prs{v_1, v_2, v_3}\]
+ואז
+\[B \ceq \prs{v_1, v_2, v_3, 1}\]
+נותן את המבוקש.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי סוף מימדי ויהי
+$v \in V$.
+הראו שקיים בסיס
+$B$
+של
+$V$
+עבורו
+$\brs{v}_B = \pmat{1 \\ \vdots \\ 1}$.
+\end{exercise}
+
+\begin{solution}
+נשלים את
+$\prs{v}$
+לבסיס
+\[B_0 = \prs{v_1, \ldots, v_n}\]
+של
+$V$,
+עם
+$v_1 = v$.
+תהי
+\begin{align*}
+\text{.} A \ceq \pmat{1 & & & & \\
+1 & 1 & & 0 & \\
+\vdots & & \ddots & & \\
+1 & & & 1 & \\
+1 & 0 & \cdots & 0 & 1} \in M_n\prs{\mbb{F}}
+\end{align*}
+$A$
+הפיכה, ולכן מתרגיל קודם קיים בסיס
+$B$
+של
+$V$
+עבורו
+$\brs{\id_V}^{B_0}_B = A$.
+נקבל
+\begin{align*}
+\brs{v}_B &= \brs{\id_V v}_B
+\\&=
+\brs{\id_V}^{B_0}_{B} \brs{w}_{B_0}
+\\&= A \pmat{1 \\ 0 \\ \vdots \\ 0}
+\\&= \pmat{1 \\ \vdots \\ 1}
+\end{align*}
+לכן
+$B$
+הבסיס שחיפשנו.
+\end{solution}
+
+\begin{exercise}
+יהיו
+$V,W$
+מרחבים וקטוריים סוף־מימדיים מעל שדה
+$\mbb{F}$,
+ותהי
+$T \in \hom_{\mbb{F}}\prs{V,W}$.
+הראו כי
+$\rank T = 1$
+אם ורק אם יש בסיסים
+$B,C$
+ל־%
+$V,W$
+בהתאמה כך שכל מקדמי
+$\brs{T}^B_C$
+הם
+$1$.
+\end{exercise}
+
+\begin{solution}
+נניח כי יש בסיסים
+$B,C$
+כמתואר. אז
+$\rank T = \rank \brs{T}^B_C = 1$.
+
+בכיוון השני, נניח כי
+$\rank T = 1$.
+כלומר,
+$\dim \im T = 1$.
+ממשפט המימדים מתקיים
+$\dim V = \dim \ker T + \dim \im T$,
+לכן
+\[\text{.} \dim \ker T = \dim V - \dim \im T = \dim V - 1\]
+יהי
+$n \ceq \dim V$
+ויהי
+\[\tilde{B} \ceq \prs{u_1, \ldots, u_{n-1}}\]
+בסיס של
+$\ker T$.
+
+יהי
+$w$
+וקטור פורש של
+$\im T$
+ויהי
+$C$
+בסיס של
+$W$
+כך שמתקיים
+$\brs{w}_C = \pmat{1 \\ \vdots \\ 1}$,
+שקיים לפי התרגיל הקודם.
+יהי
+$v \ceq T^{-1}\prs{w}$,
+ואז
+$\prs{v, u_1, \ldots, u_{n-1}}$
+בלתי־תלויים לינארית, כי
+$v \notin \ker T$.
+לכן זה בסיס של
+$V$.
+אז גם
+$B \ceq \prs{v, v + u_1, \ldots, v + u_{n-1}}$
+בסיס של
+$V$
+כי
+המטריצה
+\[\pmat{\vert & & \vert \\ \brs{v}_{\tilde{B}} & \cdots & \brs{v + u_{n-1}}_{\tilde{B}} \\ \vert & & \vert} = \pmat{1 & 1 & \cdots & 1 & 1 \\ 0 & 1 & & 0 & 0 \\ \vdots & & \ddots & & \vdots \\& 0 & & 1 & 0 \\
+0 & & \cdots & 0 & 1}\]
+הפיכה.
+
+נסמן
+$C = \prs{w_1, \ldots, w_m}$.
+מתקיים
+\[T\prs{v} = w = w_1 + \ldots + w_m\]
+ולכל
+$i \in [n-1]$
+מתקיים
+\begin{align*}
+T \prs{v + u_i} &= T\prs{v} + T\prs{u_i}
+\\&= T\prs{v} + 0
+\\&= T\prs{v}
+\\&= w_1 + \ldots + w_m
+\end{align*}
+לכן
+$
+\brs{T}^B_C
+$
+מטריצה שכל מקדמיה הם
+$1$.
+\end{solution}
+
+\end{document}

@@ -1,0 +1,624 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 4 \textenglish{---} הטלות ומרחבים עצמיים מוכללים
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{הטלות}
+
+\subsection{חזרה}
+
+\begin{definition}[הטלה במקביל לתת־מרחב]
+יהיו
+$V$
+מרחב וקטורי מעל
+$\mbb{F}$
+ו־%
+$U,W \leq V$
+עבורם
+$U \oplus W = V$.
+נגדיר את
+\emph{ההטלה על
+$U$
+במקביל ל־%
+$W$}
+להיות ההעתקה
+\begin{align*}
+P_U \colon V &\to V \\
+\text{.} \hphantom{lala} u+w &\mapsto u
+\end{align*}
+\end{definition}
+
+\begin{remark}
+ההטלה
+$P_U$
+תלויה ב־%
+$W$.
+\end{remark}
+
+\begin{example}
+יהי
+$V = \mbb{R}^2$
+ויהיו
+\begin{align*}
+U &= \spn\prs{e_1} \\
+W_1 &= \spn\prs{e_2} \\
+W_2 &= \spn\prs{e_1 + e_2}
+\end{align*}
+ויהיו
+$P_1, P_2$
+ההטלות על
+$U$
+במקביל ל־%
+$W_1, W_2$
+בהתאמה.
+
+מתקיים
+\[P_1 \prs{e_1 + e_2} = e_1\]
+אבל
+\[\text{.} P_2 \prs{e_1 + e_2} = e_1 + e_2\]
+\end{example}
+
+\begin{definition}[הטלה]
+העתקה
+$P \in \endo_{\mbb{F}}\prs{V}$
+נקראת הטלה אם קיימים
+$U,W \leq V$
+עבורם
+$P = P_U$.
+\end{definition}
+
+\begin{fact}
+העתקה
+$P \in \endo_{\mbb{F}}\prs{V}$
+היא הטלה אם ורק אם
+$P^2 = P$.
+\end{fact}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+מצאו את כל הערכים העצמיים האפשריים של הטלה.
+\end{exercise}
+
+\begin{solution}
+יהי
+$\lambda$
+ערך עצמי של הטלה
+$P$
+עם וקטור עצמי
+$v$.
+אז
+\[\lambda^2 v = P^2 v = P v = \lambda v\]
+לכן
+$\lambda \in \set{0,1}$.
+
+אפשר לקחת
+$P = \id_V$
+או
+$P = 0_V$
+ולקבל את שתי האופציות האלו.
+\end{solution}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה.
+הראו כי
+$P$
+הטלה על
+$U \leq V$
+במקביל ל־%
+$W \leq V$
+אם ורק אם
+$U = \im P$
+וגם
+$W = \ker P$.
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item נניח כי
+$P$
+הטלה על
+$U$
+במקביל ל־%
+$W$.
+לכל
+$u \in U$
+מתקיים
+\[P\prs{u} = P\prs{u+0} = u\]
+לכן
+$U \subseteq \im P$.
+להיפך, אם
+$v \in \im P$
+יש
+$u \in U, w \in W$
+עבורם
+$v = P\prs{u+w} = u \in U$
+לכן
+$\im P = U$.
+
+יהי
+$w \in W$.
+מתקיים
+\[P\prs{w} = P\prs{0+w} = 0\]
+לכן
+$W \subseteq \ker\prs{P}$.
+להיפך, נניח כי
+$v \in \ker P$
+ונכתוב
+$v = u + w$.
+אז
+\[0 = Pv = u\]
+לכן
+$v = w \in W$,
+לכן
+$\ker P = \im P$.
+
+\item נניח כי
+$\ker P = W$
+וכי
+$\im P = U$.
+נניח כי
+$v \in U \cap W$.
+ראינו כי
+$\rest{P}{\im P} = \id_{\im P}$
+לכן
+$Pv = v$.
+אבל גם
+$Pv = 0$,
+לכן
+$v = 0$
+ולכן
+$U,W$
+זרים.
+ממשפטי המימדים מתקיים
+\begin{align*}
+\dim \prs{\im P + \ker P} &=
+\dim\prs{\im P} + \dim\prs{\ker P} - \dim\prs{\im P \cap \ker P}
+\\&=
+\dim\prs{\im P} + \dim\prs{\ker P}
+\\ \text{.} \hphantom{\dim \prs{\im P + \ker P}} &= V
+\end{align*}
+לכן
+$V = U \oplus W$.
+עבור
+$u \in U, w \in W$
+נכתוב
+$u = P\prs{u'}$.
+אז
+\begin{align*}
+P\prs{u + w} &= P\prs{u} + P\prs{w}
+\\&= P\prs{u}
+\\&= u
+\end{align*}
+כאשר השוויון האחרון נכון כי
+$\rest{P}{\im P} = \id_{\im P}$.
+לכן
+$P$
+ההטלה על
+$\im P$
+בניצב ל־%
+$\ker P$.
+\end{itemize}
+\end{solution}
+
+\begin{remark}
+בכיוון השני בפתרון הראינו שעבור הטלה
+$P$
+מתקיים
+$V = \im P \oplus \ker P$.
+\end{remark}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה.
+הראו כי
+$P$
+לכסינה.
+\end{exercise}
+
+\begin{solution}
+יהי
+$B$
+בסיס עבור
+$\im P$
+ויהי
+$C$
+בסיס עבור
+$\ker P$.
+ראינו כי
+$\rest{P}{\im P} = \id$
+וכי
+$\rest{P}{\ker P} = 0$
+לכן המטריצה המייצגת של
+$P$
+בבסיס
+$B * C$
+היא
+\begin{align*}
+\text{.} \pmat{1 & 0 & & \cdots & & 0 \\ 0 & \ddots & 0 & \cdots & & 0 \\ & & 1 & 0 & \cdots & 0 \\ \vdots & & & 0 & & \vdots \\ & & & & \ddots & \\ 0 & & \cdots & & & 0}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+כלשהי.
+הראו כי
+$\ker P$
+הוא
+$T$%
+־שמור אם ורק אם יש
+$\hat{T} \colon \ker P \to \ker P$
+לינארית המקיימת
+\[\text{.} \hat{T} \circ P = P \circ T\]
+כלומר, כך שהדיאגרמה
+\[\begin{tikzcd}
+V \arrow[r, "T"] \arrow[d, swap, "P"] & V \arrow[d, "P"] \\
+\im P \arrow[r, swap, "\hat{T}"] & \im P
+\end{tikzcd}
+\]
+מתחלפת.
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item נניח כי
+$W$
+הוא
+$T$%
+־שמור ויהי
+$u \in \im P$.
+יש
+$v \in V$
+עבורו
+$P\prs{v} = u$,
+ואז
+$P\prs{u} = P^2\prs{u} = P\prs{v} = u$.
+נגדיר
+\[\text{.} \hat{T}\prs{u} = P \circ T\prs{u}\]
+
+יהי
+$v \in V$,
+צריך להראות שמתקיים
+\[\text{.} P \circ T \prs{v} = \hat{T} \circ P\prs{v}\]
+נכתוב
+$v = u+w$
+כאשר
+$u \in \im P, w \in \ker P$.
+אז
+\[\hat{T} \circ P \prs{v} = \hat{T} \prs{u} = P \circ T \prs{u}\]
+וגם
+\[T\prs{w} \in \ker P\]
+לכן
+\[\text{.} P \circ T \prs{u} = P \circ T \prs{u} + P \circ T \prs{w} = P \circ T \prs{u+w} = P \circ T\prs{v}\]
+בסך הכל
+\[\text{,} \hat{T} \circ P \prs{v} = P \circ T \prs{u} = P \circ T \prs{v}\]
+כנדרש.
+
+\item נניח כי יש העתקה
+$\hat{T}$
+כמתואר ויהי
+$w \in \ker P$.
+אז
+\[PT\prs{w} = \hat{T}P\prs{w} = \hat{T}\prs{0} = 0\]
+ולכן
+$T\prs{w} \in \ker P$.
+נקבל
+$T\prs{\ker P} \subseteq \ker P$.
+\end{itemize}
+\end{solution}
+
+\section{מרחבים עצמיים מוכללים והפולינום האופייני}
+
+\subsection{תזכורת}
+
+\begin{definition}[מרחב עצמי מוכלל]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+ונסמן
+$n \ceq \dim_{\mbb{F}}\prs{V}$.
+\emph{המרחב העצמי המוכלל של
+$T$
+עבור ערך עצמי
+$\lambda$}
+הוא
+\[\text{.} V_{\lambda}' \ceq \ker \prs{\prs{T-\lambda \id_V}^{n}}\]
+\emph{הריבוי האלגברי של
+$\lambda$}
+הוא
+\[\text{.} r_{a,T}\prs{\lambda} \ceq \dim V_{\lambda}'\]
+\end{definition}
+
+\begin{definition}[פולינום אופייני]
+יהי
+$V$
+מרחב וקטורי סוף־מימדי.
+\emph{הפולינום האופייני}
+של
+$T \in \endo_{\mbb{F}}\prs{V}$
+שערכיה העצמיים השונים הם
+$\prs{\lambda_i}{i \in [k]}$
+הוא
+\begin{align*}
+\text{.} p_T\prs{x} \ceq \sum_{i \in [k]} \prs{x-\lambda_i}^{r_{a,T}\prs{\lambda_i}}
+\end{align*}
+\end{definition}
+
+\begin{theorem}[קיילי־המילטון]
+לכל
+$T \in \endo_{\mbb{F}}\prs{V}$
+מתקיים
+\[\text{.} p_T\prs{T} = 0\]
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+תהי
+\[\text{.} A = \pmat{1 & 1 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 3}\]
+מצאו את המרחבים העצמיים ואת המרחבים העצמיים המוכללים של
+$A$.
+\end{exercise}
+
+\begin{solution}
+הערכים העצמיים של
+$A$
+הם
+$1$
+מריבוי אלגברי
+$2$
+ו־%
+$3$
+מריבוי אלגברי
+$1$.
+נחשב.
+\begin{align*}
+\ker\prs{A-I} &= \ker\pmat{0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 2}
+\\&= \spn\set{e_1} \\
+\ker\prs{A-I}^2 &= \ker\pmat{0 & 0 & 4 \\ 0 & 0 & 4 \\ 0 & 0 & 4}
+\\&= \spn\set{e_1, e_2} \\
+\ker\prs{A-3I} &= \ker\pmat{-2 & 1 & 0 \\ 0 & -2 & 2 \\ 0 & 0 & 0}
+\\&= \ker\pmat{2 & -1 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0}
+\\&= \ker\pmat{2 & 0 & -1 \\ 0 & 1 & - 1 \\ 0 & 0 & 0}
+\\&= \spn\set{\pmat{1 \\ 2 \\ 2}}
+\end{align*}
+בסך הכל
+\begin{align*}
+V_1 &= \spn\set{e_1} \\
+V_1' &= \spn\set{e_1, e_2} \\
+\text{.} V_3 = V_3' &= \spn\set{\pmat{1\\2\\2}}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+תהי
+$T \in \endo_{\mbb{C}}\prs{V}$
+ויהי
+$\lambda$
+ערך עצמי של
+$T$.
+יהי
+$\prs{v_1, \ldots, v_r}$
+בסיס של
+$V_{\lambda}'$
+כאשר
+$\prs{v_1, \ldots, v_s}$
+בסיס של
+$V_\lambda$.
+הראו כי
+$\hat{V}_\lambda \ceq \spn\set{v_{s+1}, v_{s+2}, \ldots, v_r}$
+אינו
+$T$%
+־שמור.
+\end{exercise}
+
+\begin{solution}
+אם
+$\hat{V}_\lambda$
+מרחב
+$T$%
+־שמור, לההעתקה
+$\rest{T}{\hat{V}_\lambda}$
+יש ערך עצמי
+$\mu$.
+אבל, אז
+$\mu$
+ערך עצמי של
+$T$.
+אם
+$\mu \neq \lambda$
+נקבל
+$V'_\mu \cap V'_\lambda \neq \set{0}$
+בסתירה.
+אחרת, יש ל־%
+$\rest{T}{\hat{V}_\lambda}$
+וקטור עצמי עם ערך עצמי
+$\lambda$,
+כלומר
+$\hat{V}_\lambda \cap V_\lambda \neq \set{0}$
+בסתירה להגדרת
+$\hat{V}_\lambda$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי מעל שדה
+$\mbb{F}$
+כך שמתקיים
+$1_{\mbb{F}} + 1_{\mbb{F}} \neq 0$,
+ויהיו
+$P_1, P_2 \colon V \to V$
+הטלות.
+\begin{enumerate}
+\item הוכיחו כי
+$\id_V + P_1$
+הפיכה ומצאו את
+$\prs{\id_V + P_1}^{-1}$.
+\item נניח כי
+$P_1 + P_2$
+הטלה. הוכיחו כי
+$P_1P_2 = 0$.
+\item מצאו דוגמאות נגדיות לשני הסעיפים במקרה
+$1_{\mbb{F}} + 1_{\mbb{F}} = 0$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+$P_1$
+לכסינה עם ערכים עצמיים
+$0,1$
+בלבד, לכן הערכים העצמיים של
+$I + P_1$
+הם
+$1,2$
+בלבד. בפרט
+$0$
+אינו ערך עצמי ולכן
+$P_1$
+הפיכה.
+יש מטריצה אלכסונית
+$D$
+ובסיס
+$B$
+כך ש־%
+$\brs{T}_B$
+אלכסונית עם איברי אלכסון בקבוצה
+$\set{0,1}$.
+אז
+\[\brs{T + \id_V}_B = \brs{T}_B + \brs{\id_V}_B = D + I\]
+עם איברי אלכסון בקבוצה
+$\set{1,2}$.
+אם זאת מטריצת היחידה,
+$D = 0$
+ואז
+$P = 0$
+ונקבל
+$\prs{\id_V+P}^{-1} = \id_V$.
+אם
+$P = \id_V$
+נקבל
+$\prs{\id_V + P}^{-1} = \frac{1}{2} \id_V$.
+אחרת,
+\[D = \pmat{0 & 0 \\ 0 & 1}\]
+ונקבל
+\[\prs{I - \frac{1}{2} D} \prs{I + D} = I\]
+לכן
+\[\text{.} \prs{\id_V - \frac{1}{2} P}\prs{\id_V + P} = \id_V\]
+
+נציג דרך נוספת.
+מתקיים
+$P^2 = P$
+לכן
+$P^2 - P = 0$.
+אז
+\[\text{.} \prs{P + \id_V - \id_V}^2 - \prs{P + \id_V - \id_V} = 0\]
+נפתח את הביטוי, נכפול ב־%
+$\prs{P + \id_V}^{-1}$
+ונקבל את התוצאה.
+\item מתקיים
+\[P_1 + P_2 = \prs{P_1 + P_2}^2 = P_1^2 + P_1 P_2 + P_2 P_1 + P_2^2 = P_1 + P_1 P_2 + P_2 P_1 + P_2\]
+לכן
+\[\text{.} P_1 P_2 = - P_2 P_1\]
+נניח בשלילה ש־%
+$P_1 P_2 \neq 0$.
+אז יש
+$v \in V$
+כך ש־%
+$u \ceq P_2\prs{v} \notin \ker\prs{P_1}$.
+אז
+\[-P_2P_1\prs{v} = P_1 P_2 \prs{u} = - P_2 P_1\prs{u} = -P_2 P_1 P_2 \prs{v} = P_2^2 P_1\prs{v} = P_2 P_1\prs{v}\]
+לכן
+$P_2 P_1\prs{v} = 0$.
+אז
+\[P_1\prs{u} = P_1 P_2\prs{v} = -P_2 P_1\prs{v} = 0\]
+כלומר
+$u \in \ker\prs{P_1}$,
+בסתירה.
+\item
+ניקח
+$P_1 = P_2 = \id_V$.
+אז
+$P_1 + P_2 = 0$
+הטלה אבל
+$P_1 P_2 = \id_V \neq 0$.
+כמו כן
+$\id_V + P_1 = 2\id_V = 0$
+אינה הפיכה.
+
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+תהי
+$T \in \endo_{\mbb{C}}\prs{V}$
+ויהיו
+$\prs{V_i}_{i \in [m]}$
+תת־מרחבים
+$T$%
+־שמורים של
+$V$.
+לכל
+$i \in [m]$
+יהי
+$p_i \ceq p_{\rest{T}{V_i}}$.
+הוכיחו כי
+\[\text{.} p_T = \prod_{i \in [m]} p_i\]
+\end{exercise}
+
+\begin{solution}
+ראינו בהרצאה כי כל אנדומורפיזם של מרחב וקטורי מרוכב לכסין. לכן יש בסיסים
+$B_1, \ldots, B_m$
+עבור
+$V_1, \ldots, V_m$
+כך ש־%
+$\brs{\rest{T}{V_i}}{B_i}$
+משולשות עליונות.
+יהי
+$B = B_1 * \ldots * B_m$,
+ואז
+$\brs{T}_B$
+משולשת עליונה.
+הריבוי האלגברי של
+$\lambda$
+הוא מספר הפעמים שהוא מופיע על האלכסון, לכן נקבל
+\begin{align*}
+r_{a,T}\prs{\lambda} = \sum_{i \in [m]} r_{a,\rest{T}{V_i}}\prs{\lambda}
+\end{align*}
+ולכן החזקה של
+$x-\lambda$
+ב־%
+$p_T$
+היא מכפלת החזקות ב־%
+$p_i$.
+אלגברית,
+\begin{align*}
+r_{a,T}\prs{\lambda} &= \dim \ker \prs{T - \lambda \id_V}
+\\&= \dim \ker \prs{\bigoplus_{i \in [m]} \rest{T - \lambda \id_V}{V_i}}
+\\&= \dim \bigoplus_{i \in [m]} \ker\prs{\rest{T - \lambda \id_V}{V_i}}
+\\ \text{.} \hphantom{r_{a,T}\prs{\lambda}} &= \sum_{i \in [m]} r_{a,\rest{T}{V_i}}\prs{\lambda}
+\end{align*}
+\end{solution}
+
+\end{document}

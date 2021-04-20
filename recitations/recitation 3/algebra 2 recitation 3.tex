@@ -1,0 +1,712 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 3 \textenglish{---} סכומים ישרים, מרחבים שמורים והטלות
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{תת־מרחבים שמורים}
+
+\subsection{חזרה}
+
+\begin{definition}[תת־מרחב שמור]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+תת־מרחב
+$W \leq V$
+יקרא
+\emph{$T$%
+־שמור}
+אם
+$T\prs{W} \subseteq W$.
+\end{definition}
+
+\begin{definition}[צמצום של העתקה]
+יהיו
+$T \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$W \leq V$
+מרחב
+$T$%
+־שמור.
+נגדיר את
+\emph{הצמצום של
+$T$
+ל־%
+$W$}
+על ידי
+\begin{align*}
+\rest{T}{W} \colon W &\to W \\
+\text{.} \hphantom{lalalala} w &\mapsto T\prs{w}
+\end{align*}
+\end{definition}
+
+\begin{remark}
+הגדרנו בעבר צמצום של העתקה כללית
+$T \colon V_1 \to V_2$.
+בדרך כלל נצמצם העתקות רק לתת־מרחבים שמורים, ואז נתייחס להגדרה הנוכחית.
+במקרים אחרים נבהיר במיוחד את הכוונה.
+\end{remark}
+
+\begin{definition}[שרשור של בסיסים]
+יהיו
+\begin{align*}
+B_1 &= \prs{v_{1,1}, \ldots, v_{1,n_1}} \\
+B_2 &= \prs{v_{2,1}, \ldots, v_{2,n_2}} \\
+\vdots \\
+B_k &= \prs{v_{k,1}, \ldots, v_{k,n_k}}
+\end{align*}
+קבוצות סדורות.
+נגדיר את
+\emph{השרשור שלהן}
+על ידי
+\[\text{.} B_1 * \ldots * B_k = \prs{v_{1,1}, \ldots, v_{1,n_1}, v_{2,1} \ldots, v_{2,n_2}, \ldots, v_{k,1}, \ldots, v_{k, n_k}}\]
+\end{definition}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+יהי
+$\mbb{C}$
+כמרחב וקטורי ממשי ותהי
+\begin{align*}
+T \colon \mbb{C} &\to \mbb{C} \\
+\text{.} \hphantom{lala} z &\mapsto iz
+\end{align*}
+מצאו את התת־מרחבים ה־%
+$T$%
+־שמורים של
+$\mbb{C}$
+והסיקו כי
+$T$
+אינה לכסינה מעל
+$\mbb{R}$.
+\end{exercise}
+
+\begin{solution}
+$\mbb{C}, \set{0}$
+תת־מרחבים
+$T$%
+־שמורים.
+
+נניח כי
+$W \leq \mbb{C}$
+מרחב
+$T$%
+־שמור נוסף. אז
+$\dim_{\mbb{R}}\prs{W} = 1$
+ולכן יש
+$z_0 \in \mbb{C}^* \ceq \set{z \in \mbb{C}}{z \neq 0}$
+עבורו
+$W = \spn\set{z_0}$.
+נקבל
+$Tz_0 \in W$
+לכן
+$Tz_0 = c z_0$
+עבור
+$c \in \mbb{R}$.
+אבל
+$c z_0 = i z_0$
+גורר
+$c = i$
+בסתירה.
+
+תת־מרחבים $T$־שמורים של
+$\mbb{C}$
+מתאימים לוקטורים עצמיים. לכן אין ל־%
+$T$
+וקטורים עצמיים ממשיים, ולכן אינה לכסינה מעל
+$\mbb{R}$.
+\end{solution}
+
+\begin{exercise}
+תהי
+\begin{align*}
+T \colon \mbb{F}^4 \to \mbb{F}^4
+\end{align*}
+עם
+\[\text{.} \brs{T}_E = \pmat{0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0}\]
+מצאו בסיס
+$B$
+של
+$\mbb{F}^n$
+בו אין ב־%
+$\brs{T}_B$
+בלוקים לא טריוויאליים.
+\end{exercise}
+
+\begin{remark}
+כל מטריצה
+$A \in M_n\prs{\mbb{F}}$
+היא אלכסונית בלוקים עם בלוק מגודל
+$n \times n$,
+כך שאין משמעות לשאלה האם מטריצה היא אלכסונית בלוקים. יש טעם לשאול האם יש במטריצה בלוקים שאינם טריוויאליים, או האם היא אלכסונית בלוקים עם גדלים מסוימים של בלוקים.
+\end{remark}
+
+\begin{solution}
+מתקיים
+\begin{align*}
+T e_1 &= e_2 \\
+\text{.} T e_2 &= e_1
+\end{align*}
+יהי
+$B = \prs{e_1, e_4, e_3, e_2}$.
+מתקיים
+\begin{align*}
+\text{.} \brs{T}_B = \pmat{
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
+}
+\end{align*}
+\end{solution}
+
+להעתקה
+$T$
+הנ"ל יש תת־מרחבים שמורים
+$\spn\prs{e_1, e_2}, \spn\prs{e_3, e_4}$,
+אבל מצאנו בסיס
+$B$
+בו
+$\brs{T}_B$
+אינה אלכסונית בלוקים באופן לא טריוויאלי.
+נרצה לתאר באופן כללי את הקשר בין מטריצות אלכסוניות בלוקים לבין תת־מרחבים שמורים.
+
+\begin{exercise}
+תהי
+$T \in \endo_{\mbb{F}}\prs{V_1 \oplus \ldots \oplus V_k}$
+ויהיו
+$B_1, \ldots, B_k$
+בסיסים עבור
+$V_1, \ldots, V_k$
+בהתאמה.
+יהיו
+$n_i \ceq \dim_{\mbb{F}} V_i$
+ויהי
+$B = B_1 * \ldots * B_n$.
+הראו שהתנאים הבאים שקולים.
+\begin{enumerate}
+\item $\brs{T}_B$
+מטריצה
+$\prs{n_1, \ldots, n_k}$%
+־אלכסונית בלוקים.
+
+\item לכל
+$i \in [k]$
+המרחב
+$V_i$
+הוא
+$T$%
+־שמור.
+
+\item יש העתקות
+$T_i \in \endo_{\mbb{F}}\prs{V_i}$
+עבורן
+$T = \bigoplus_{i \in [k]} T_i$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{description}
+\item[1 גורר 2:]
+נניח כי
+$\brs{T}_B$
+מטריצה
+$\prs{n_1, \ldots, n_k}$%
+־אלכסונית בלוקים ויהי
+$v \in V_i$.
+אז
+\begin{align*}
+\text{.} \brs{T v}_B &= \brs{T}_B \brs{v}_B \in \spn\set{\brs{T}_B e_j}{j \in [n_1]} \subseteq \spn\set{e_j}{j \in [n_1]}
+\end{align*}
+מתקיים
+\[\rho_B\prs{V_1} = \mbb{F}^{n_1} \times \set{0} \leq \mbb{F}^n\]
+כי $\rest{\rho_B}{V_1}$ חד־חד ערכית ומשוויון מימדים.
+לכן
+\[Tv = \rho_B^{-1}\prs{\brs{Tv}_B} \in \rho_B^{-1}\prs{\spn\set{e_j}{j \in [n_1]}} = V_1\]
+ולכן
+$V_1$
+מרחב
+$T$%
+־שמור.
+
+\item[2 גורר 3:]
+נניח כי כל
+$V_i$
+הוא
+$T$%
+־שמור ונגדיר
+$T_i = \rest{T}{V_i} \in \endo_{\mbb{F}}\prs{V_i}$.
+מתקיים
+\[\text{.} T\prs{\sum_{i \in [k]} v_i} = \sum_{i \in [k]} T\prs{v_i} = \sum_{i \in [k]} T_i\prs{v_i} = \bigoplus_{i \in [k]} T_i\prs{v}\]
+
+\item[3 גורר 1:]
+עבור
+$v \in V_i$
+מתקיים
+\[T\prs{v} = T_i\prs{v} \in V_i\]
+לכן
+\[\prs{\brs{T\prs{v}}_B}_{\ell} = 0\]
+לכל
+$\ell \notin \brs{n_1 + \ldots + n_{i-1} + 1, n_1 + \ldots + n_i}$.
+\end{description}
+\end{solution}
+
+\begin{remark}
+בהמשך הקורס נמצא פירוק של
+$V$
+לסכום של תת־מרחבים
+$T$%
+־שמורים
+$V_{\lambda}'$
+ונמצא עבורם בסיסים שלפיהם קל למצוא תת־מרחבים
+$T$%
+־שמורים.
+נוכל בעזרת כך לתאר בהמשך דרך לחישוב תת־מרחבים
+$T$%
+־שמורים.
+\end{remark}
+
+\section{הטלות}
+
+\subsection{חזרה}
+
+\begin{definition}[הטלה במקביל לתת־מרחב]
+יהיו
+$V$
+מרחב וקטורי מעל
+$\mbb{F}$
+ו־%
+$U,W \leq V$
+עבורם
+$U \oplus W = V$.
+נגדיר את
+\emph{ההטלה על
+$U$
+במקביל ל־%
+$W$}
+להיות ההעתקה
+\begin{align*}
+P_U \colon V &\to V \\
+\text{.} \hphantom{lala} u+w &\mapsto u
+\end{align*}
+\end{definition}
+
+\begin{remark}
+ההטלה
+$P_U$
+תלויה ב־%
+$W$.
+\end{remark}
+
+\begin{example}
+יהי
+$V = \mbb{R}^2$
+ויהיו
+\begin{align*}
+U &= \spn\prs{e_1} \\
+W_1 &= \spn\prs{e_2} \\
+W_2 &= \spn\prs{e_1 + e_2}
+\end{align*}
+ויהיו
+$P_1, P_2$
+ההטלות על
+$U$
+במקביל ל־%
+$W_1, W_2$
+בהתאמה.
+
+מתקיים
+\[P_1 \prs{e_1 + e_2} = e_1\]
+אבל
+\[\text{.} P_2 \prs{e_1 + e_2} = e_1 + e_2\]
+\end{example}
+
+\begin{definition}[הטלה]
+העתקה
+$P \in \endo_{\mbb{F}}\prs{V}$
+נקראת הטלה אם קיימים
+$U,W \leq V$
+עבורם
+$P = P_U$.
+\end{definition}
+
+\begin{fact}
+העתקה
+$P \in \endo_{\mbb{F}}\prs{V}$
+היא הטלה אם ורק אם
+$P^2 = P$.
+\end{fact}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה.
+הראו כי
+$\im\prs{P}$
+תת־מרחב
+$P$%
+־שמור וכי
+$\rest{P}{\im P} = \id_{\im P}$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$v \in \im P$.
+קיים
+$u \in V$
+עבורו
+$v = Pu$.
+אז
+\[\text{.} Pv = P\prs{P u} = P^2 u = Pu = v \in \im P\]
+\end{solution}
+
+\begin{exercise}
+יהי
+$n \in \mbb{N}$.
+מצאו משלים ישר
+$W$
+של
+$\mbb{F}_n\brs{x} \leq \mbb{F}\brs{x}$
+ומצאו את ההטלה על
+$\mbb{F}_n\brs{x}$
+במקביל ל־%
+$W$.
+\end{exercise}
+
+\begin{solution}
+ניקח
+\[\text{.} W = \spn\set{x^m}{m > n}\]
+אז ההטלה לוקחת פולינום
+$p = \sum_{i \in [m]} a_i x^i$
+לפולינום
+$\sum_{i \in [n]} a_i x^i$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$S \leq M_n\prs{\mbb{F}}$
+התת־מרחב של המטריצות הסימטריות.
+מצאו הטלה
+\[\text{.} P \colon M_n\prs{\mbb{F}} \to S\]
+\end{exercise}
+
+\begin{solution}
+יהי
+$A \leq M_n\prs{\mbb{F}}$
+תת־המרחב של המטריצות האנטי־סימטריות.
+מטריצה סימטרית ואנטי סימטרית
+$X$
+מקיימת
+\[-X = X^t = X\]
+לכן
+$X = 0$.
+מתקיים
+$M_n\prs{\mbb{F}} = S + A$
+כי אפשר לכתוב
+\[\text{.} X = \frac{1}{2} \prs{X + X^t} + \frac{1}{2} \prs{X - X^t}\]
+אז ההטלה על
+$S$
+במקביל ל־%
+$A$
+היא
+\[\text{.} X \mapsto \frac{1}{2} \prs{X + X^t}\]
+\end{solution}
+
+\begin{exercise}
+יהי
+\[\text{.} U = \spn\set{\pmat{1 \\ 2 \\ 0}, \pmat{1 \\ 0 \\ 1}} \leq \mbb{R}^3\]
+מצאו משלים ישר
+$W$
+של
+$U$,
+את ההטלה
+$P_U$
+במקביל ל־%
+$W$
+ומטריצה מייצגת של
+$P$.
+\end{exercise}
+
+\begin{solution}
+נשלים את
+$B \ceq \prs{{\pmat{1 \\ 2 \\ 0}, \pmat{1 \\ 0 \\ 1}}}$
+לבסיס
+$C = \prs{\pmat{1 \\ 2 \\ 0}, \pmat{1 \\ 0 \\ 1}, \pmat{1 \\ 0 \\ 0}}$
+של
+$\mbb{R}^3$
+ואז
+$W \ceq \spn\prs{\pmat{1 \\ 0 \\ 0}}$
+משלים ישר של
+$U$
+כי
+$C = B * \prs{\pmat{1\\0\\0}}$
+ומתרגיל מהתרגול הקודם.
+
+אז
+\begin{align*}
+P\pmat{x\\y\\z} &= P\prs{\prs{x-\frac{y}{2}-z}\pmat{1 \\ 0 \\ 0} + \frac{y}{2} \pmat{1 \\ 2 \\ 0} + z \pmat{1 \\ 0 \\ 1}}
+\\&=
+\prs{x-\frac{y}{2} - z} P\pmat{1\\0\\0} + \frac{y}{2} P\pmat{1\\2\\0} + z P\pmat{1\\0\\1}
+\\ \text{.} \hphantom{P\pmat{x\\y\\z}} &= \frac{y}{2} \pmat{1 \\ 2 \\ 0} + z \pmat{1 \\ 0 \\ 1}
+\end{align*}
+
+בבסיס
+$C$
+נקבל
+\[\text{.} \brs{P}_C = \pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0}\]
+\end{solution}
+
+\begin{exercise}
+מצאו את כל הערכים העצמיים האפשריים של הטלה.
+\end{exercise}
+
+\begin{solution}
+יהי
+$\lambda$
+ערך עצמי של הטלה
+$P$
+עם וקטור עצמי
+$v$.
+אז
+\[\lambda^2 v = P^2 v = P v = \lambda v\]
+לכן
+$\lambda \in \set{0,1}$.
+
+אפשר לקחת
+$P = \id_V$
+או
+$P = 0_V$
+ולקבל את שתי האופציות האלו.
+\end{solution}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה.
+הראו כי
+$P$
+הטלה על
+$U \leq V$
+במקביל ל־%
+$W \leq V$
+אם ורק אם
+$U = \im P$
+וגם
+$W = \ker P$.
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item נניח כי
+$P$
+הטלה על
+$U$
+במקביל ל־%
+$W$.
+לכל
+$u \in U$
+מתקיים
+\[P\prs{u} = P\prs{u+0} = u\]
+לכן
+$U \subseteq \im P$.
+להיפך, אם
+$v \in \im P$
+יש
+$u \in U, w \in W$
+עבורם
+$v = P\prs{u+w} = u \in U$
+לכן
+$\im P = U$.
+
+יהי
+$w \in W$.
+מתקיים
+\[P\prs{w} = P\prs{0+w} = 0\]
+לכן
+$W \subseteq \ker\prs{P}$.
+להיפך, נניח כי
+$v \in \ker P$
+ונכתוב
+$v = u + w$.
+אז
+\[0 = Pv = u\]
+לכן
+$v = w \in W$,
+לכן
+$\ker P = \im P$.
+
+\item נניח כי
+$\ker P = W$
+וכי
+$\im P = U$.
+נניח כי
+$v \in U \cap W$.
+ראינו כי
+$\rest{P}{\im P} = \id_{\im P}$
+לכן
+$Pv = v$.
+אבל גם
+$Pv = 0$,
+לכן
+$v = 0$
+ולכן
+$U,W$
+זרים.
+ממשפטי המימדים מתקיים
+\begin{align*}
+\dim \prs{\im P + \ker P} &=
+\dim\prs{\im P} + \dim\prs{\ker P} - \dim\prs{\im P \cap \ker P}
+\\&=
+\dim\prs{\im P} + \dim\prs{\ker P}
+\\ \text{.} \hphantom{\dim \prs{\im P + \ker P}} &= V
+\end{align*}
+לכן
+$V = U \oplus W$.
+עבור
+$u \in U, w \in W$
+נכתוב
+$u = P\prs{u'}$.
+אז
+\begin{align*}
+P\prs{u + w} &= P\prs{u} + P\prs{w}
+\\&= P\prs{u}
+\\&= u
+\end{align*}
+כאשר השוויון האחרון נכון כי
+$\rest{P}{\im P} = \id_{\im P}$.
+לכן
+$P$
+ההטלה על
+$\im P$
+בניצב ל־%
+$\ker P$.
+\end{itemize}
+\end{solution}
+
+\begin{remark}
+בכיוון השני בפתרון הראינו שעבור הטלה
+$P$
+מתקיים
+$V = \im P \oplus \ker P$.
+\end{remark}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה.
+הראו כי
+$P$
+לכסינה.
+\end{exercise}
+
+\begin{solution}
+יהי
+$B$
+בסיס עבור
+$\im P$
+ויהי
+$C$
+בסיס עבור
+$\ker P$.
+ראינו כי
+$\rest{P}{\im P} = \id$
+וכי
+$\rest{P}{\ker P} = 0$
+לכן המטריצה המייצגת של
+$P$
+בבסיס
+$B * C$
+היא
+\begin{align*}
+\text{.} \pmat{1 & 0 & & \cdots & & 0 \\ 0 & \ddots & 0 & \cdots & & 0 \\ & & 1 & 0 & \cdots & 0 \\ \vdots & & & 0 & & \vdots \\ & & & & \ddots & \\ 0 & & \cdots & & & 0}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+תהי
+$P \in \endo_{\mbb{F}}\prs{V}$
+הטלה ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+כלשהי.
+הראו כי
+$\ker P$
+הוא
+$T$%
+־שמור אם ורק אם יש
+$\hat{T} \colon \ker P \to \ker P$
+לינארית המקיימת
+\[\text{.} \hat{T} \circ P = P \circ T\]
+כלומר, כך שהדיאגרמה
+\[\begin{tikzcd}
+V \arrow[r, "T"] \arrow[d, swap, "P"] & V \arrow[d, "P"] \\
+\im P \arrow[r, swap, "\hat{T}"] & \im P
+\end{tikzcd}
+\]
+מתחלפת.
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item נניח כי
+$W$
+הוא
+$T$%
+־שמור ויהי
+$u \in \im P$.
+יש
+$v \in V$
+עבורו
+$P\prs{v} = u$,
+ואז
+$P\prs{u} = P^2\prs{u} = P\prs{v} = u$.
+נגדיר
+\[\text{.} \hat{T}\prs{u} = P \circ T\prs{u}\]
+
+יהי
+$v \in V$,
+צריך להראות שמתקיים
+\[\text{.} P \circ T \prs{v} = \hat{T} \circ P\prs{v}\]
+נכתוב
+$v = u+w$
+כאשר
+$u \in \im P, w \in \ker P$.
+אז
+\[\hat{T} \circ P \prs{v} = \hat{T} \prs{u} = P \circ T \prs{u}\]
+וגם
+\[T\prs{w} \in \ker P\]
+לכן
+\[\text{.} P \circ T \prs{u} = P \circ T \prs{u} + P \circ T \prs{w} = P \circ T \prs{u+w} = P \circ T\prs{v}\]
+בסך הכל
+\[\text{,} \hat{T} \circ P \prs{v} = P \circ T \prs{u} = P \circ T \prs{v}\]
+כנדרש.
+
+\item נניח כי יש העתקה
+$\hat{T}$
+כמתואר ויהי
+$w \in \ker P$.
+אז
+\[PT\prs{w} = \hat{T}P\prs{w} = \hat{T}\prs{0} = 0\]
+ולכן
+$T\prs{w} \in \ker P$.
+נקבל
+$T\prs{\ker P} \subseteq \ker P$.
+\end{itemize}
+\end{solution}
+
+\end{document}

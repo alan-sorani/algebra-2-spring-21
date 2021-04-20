@@ -1,0 +1,605 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+עוד תרגילים
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{1}
+
+\section{מרחבי העתקות}
+
+\begin{exercise}
+תהי
+$S \ceq \set{4}$
+ויהי
+$V = \mbb{R}^S$
+מרחב הפונקציות מ־%
+$S$
+ל־%
+$\mbb{R}$.
+תהי
+\begin{align*}
+f \colon S &\to \mbb{R} \\
+n &\mapsto n^2 - 1
+\end{align*}
+ותהי
+\begin{align*}
+m_f \colon \mbb{R}^S &\to \mbb{R}^S \\
+\text{.} \hphantom{lalalal} g &\mapsto fg
+\end{align*}
+מצאו בסיס של
+$\mbb{R}^S$
+ומטריצה מייצגת של $m_f$ לפי אותו בסיס.
+\end{exercise}
+
+\begin{solution}
+נשים לב כי
+$B \ceq \prs{\delta_1, \delta_2, \delta_3, \delta_4}$
+בסיס עבור
+$\mbb{R}^S$,
+כי זאת קבוצה בלתי־תלויה לינארית וכי עבור כל
+$g \in \mbb{R}^S$
+ו־%
+$n \in [4]$
+מתקיים
+\[\text{.} g\prs{n} = \sum_{i \in [4]} g\prs{i} \delta_i\prs{n}\]
+
+מתקיים
+\begin{align*}
+m_f\prs{\delta_1} = f\delta_1 = f\prs{1} \delta_1
+\end{align*}
+ובאותו אופן
+$m_f\prs{\delta_i} = f\prs{i} \delta_i$
+לכל
+$i \in [4]$.
+לכן
+\begin{align*}
+\brs{m_f}_B &= \pmat{f\prs{1} & & & \\ & f\prs{2} & & \\ & & f\prs{3} & \\ & & & f\prs{4}}
+\\ \text{.} \hphantom{\brs{m_f}_B} &= \pmat{0 & & & \\ & 3 & & \\ & & 8 & \\ & & & 15}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+הראו כי
+\[\text{.} \dim \hom_{\mbb{F}}\prs{V,W} = \dim_{\mbb{F}}\prs{V} \cdot \dim_{\mbb{F}}\prs{W}\]
+\end{exercise}
+
+\begin{solution}
+יהי
+$B = \prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+ויהי
+$C = \prs{w_1, \ldots, w_m}$
+בסיס של
+$w$.
+עבור
+$i \in [n], j \in [m]$
+תהי
+\begin{align*}
+\rho_{i,j} \colon V &\to W \\
+\text{.} \sum_{k \in [n]} \alpha_k v_k &\to \alpha_i w_j
+\end{align*}
+נראה כי
+\[B = \prs{\rho_{1,1}, \ldots, \rho_{1,2}, \ldots, \rho_{1,n}, \rho_{2,1}, \ldots, \rho_{2,n}, \ldots, \rho_{n,1}, \ldots, \rho_{n,n}}\]
+בסיס של
+$\hom_{\mbb{F}}\prs{V,W}$.
+מספיק להראות שזאת קבוצה בלתי־תלויה לינארית, ואכן אם
+\[\rho_{i,j} = \sum_{\prs{k,\ell} \neq \prs{i,j}} \alpha_{k,\ell} \rho_{k,\ell}\]
+נקבל
+\[\rho_{i,j}\prs{v_i} = w_j\]
+אבל
+\[\sum_{\prs{k,\ell} \neq \prs{i,j}} \alpha_{k,\ell} \rho_{k,\ell} \prs{v_i} = \sum_{\ell \neq j} \alpha_{i,\ell} w_\ell\]
+וזה שונה מ־%
+$w_j$
+כי
+$\prs{w_1, \ldots, w_m}$
+בלתי־תלויה.
+\end{solution}
+
+\begin{exercise}
+תהי
+\begin{align*}
+S \colon \mbb{R}^2 &\to \mbb{R}^2 \\
+\text{.} \hphantom{la} \prs{x,y} &\mapsto \prs{-2y, x}
+\end{align*}
+נגדיר
+\begin{align*}
+T \colon \endo_{\mbb{R}}\prs{\mbb{R}^2} &\to \endo_{\mbb{R}}\prs{\mbb{R}^2} \\
+\text{.} \hphantom{lalalalalallaa} U &\mapsto SU
+\end{align*}
+יהי
+\[B = \prs{\rho_{i,j}}{i,j \in [2]}\]
+כאשר
+$\rho_{i,j}$
+מוגדרות כמו בסעיף הקודם לפי הבסיסים הסטנדרטיים על
+$\mbb{R}^2$.
+\begin{enumerate}
+\item מצאו את
+$\brs{S}_E$.
+\item מצאו את
+$\brs{T}_B$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item 
+$S e_1 = e_2$
+וגם
+$S e_2 = -2 e_1$
+לכן
+\[\text{.} \brs{S}_E = \pmat{0 & -2 \\ 1 & 0}\]
+
+\item מתקיים
+\begin{align*}
+T \rho_{1,1} e_1 &= S \rho_{1,1} e_1 = S e_1 = e_2 \\
+T \rho_{1,1} e_2 &= S \rho_{1,1} e_2 = S 0 = 0 \\
+T \rho_{1,2} e_1 &= S \rho_{1,2} e_1 = S e_2 = -2 e_1 \\
+T \rho_{1,2} e_2 &= S \rho_{1,2} e_2 = S 0 = 0 \\
+T \rho_{2,1} e_1 &= S \rho_{2,1} e_1 = S 0 = 0 \\
+T \rho_{2,1} e_2 &= S \rho_{2,1} e_2 = S e_1 = e_2 \\
+T \rho_{2,2} e_1 &= S \rho_{2,2} e_1 = S 0 = 0 \\
+T \rho_{2,2} e_2 &= S \rho_{2,2} e_2 = S e_2 = -2 e_1
+\end{align*}
+לכן
+\begin{align*}
+T \rho_{1,1} &= \rho_{1,2} \\
+T \rho_{1,2} &= -2\rho_{1,1} \\
+T \rho_{2,1} &= \rho_{2,2} \\
+T \rho_{2,2} &= -2 \rho_{2,1}
+\end{align*}
+ולכן
+\begin{align*}
+\text{.} \brs{T}_B &=
+\pmat{
+0 & -2 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & -2 \\
+0 & 0 & 1 & 0
+} = \pmat{S & 0 \\ 0 & S}
+\end{align*}
+\end{enumerate}
+\end{solution}
+
+\section*{סכומים ישרים}
+
+\begin{definition}[מכפלה של מרחבים וקטוריים]
+יהי
+$\mcal{S}$
+אוסף סדור (לאו דווקא סופי או בן־מנייה) של מרחבים וקטוריים מעל שדה
+$\mbb{F}$ (עם חזרות).
+נגדיר את המכפלה
+\[\prod_{V \in \mcal{S}} V\]
+להיות המכפלה התורת־קבוצתית עם חיבור וכפל בסקלר רכיב רכיב.
+
+אם
+$\mcal{S} = \prs{V_1, \ldots, V_n}$
+סופי, נכתוב לפעמים
+\[\text{.} V_1 \times \ldots \times V_n \ceq \prod_{V \in \mcal{S}} V\]
+
+אם כל איברי
+$\mcal{S}$
+שווים לאותו מרחב
+$V$
+נכתוב לפעמים
+\[\text{.} V^{\abs{\mcal{S}}} \ceq \prod_{V \in \mcal{S}} V\]
+\end{definition}
+
+\begin{exercise}
+תהי
+$S \ceq \set{4}$
+ויהי
+$V = \mbb{R}^S$
+מרחב הפונקציות מ־%
+$S$
+ל־%
+$\mbb{R}$.
+תהי
+\begin{align*}
+f \colon S &\to \mbb{R} \\
+n &\mapsto n^2 - 1
+\end{align*}
+ותהי
+\begin{align*}
+m_f \colon \mbb{R}^S &\to \mbb{R}^S \\
+\text{.} \hphantom{lalalal} g &\mapsto fg
+\end{align*}
+מצאו בסיס של
+$\mbb{R}^S$
+ומטריצה מייצגת של $m_f$ לפי אותו בסיס.
+\end{exercise}
+
+\begin{solution}
+נשים לב כי
+$B \ceq \prs{\delta_1, \delta_2, \delta_3, \delta_4}$
+בסיס עבור
+$\mbb{R}^S$,
+כי זאת קבוצה בלתי־תלויה לינארית וכי עבור כל
+$g \in \mbb{R}^S$
+ו־%
+$n \in [4]$
+מתקיים
+\[\text{.} g\prs{n} = \sum_{i \in [4]} g\prs{i} \delta_i\prs{n}\]
+
+מתקיים
+\begin{align*}
+m_f\prs{\delta_1} = f\delta_1 = f\prs{1} \delta_1
+\end{align*}
+ובאותו אופן
+$m_f\prs{\delta_i} = f\prs{i} \delta_i$
+לכל
+$i \in [4]$.
+לכן
+\begin{align*}
+\brs{m_f}_B &= \pmat{f\prs{1} & & & \\ & f\prs{2} & & \\ & & f\prs{3} & \\ & & & f\prs{4}}
+\\ \text{.} \hphantom{\brs{m_f}_B} &= \pmat{0 & & & \\ & 3 & & \\ & & 8 & \\ & & & 15}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+\begin{enumerate}
+\item הראו שמתקיים
+\[\text{.} \dim_{\mbb{F}} \prs{V \times W} = \dim_{\mbb{F}} V + \dim_{\mbb{F}} W\]
+\item הראו שמתקיים
+\[\text{.} \dim_{\mbb{F}} \hom_{\mbb{F}}\prs{V,W} = \prs{\dim_{\mbb{F}} V}\prs{\dim_{\mbb{F}} W}\]
+\item הסיקו שמתקיים
+\[\hom_{\mbb{F}}\prs{V, W_1 \times \ldots \times W_n} \cong \hom_{\mbb{F}}\prs{V, W_1} \times \ldots \times \hom_{\mbb{F}}\prs{V, W_n}\]
+וגם
+\[\text{.} \hom_{\mbb{F}}\prs{V_1 \times \ldots \times V_n, W} \cong \hom_{\mbb{F}}\prs{V_1, W} \times \ldots \times \hom_{\mbb{F}}\prs{V_n, W}\]
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+%TODO fill in
+\end{solution}
+
+\begin{definition}[מכפלה של העתקות]
+תהי
+$\mcal{I}$
+קבוצה סדורה עם חזרות, יהיו
+$\prs{V_i}_{i \in \mcal{I}}, \prs{W_i}_{i \in \mcal{I}}$
+מרחבים וקטוריים ויהיו
+$\prs{T_i}_{i \in \mcal{I}}$
+העתקות לינאריות כך ש־%
+\[\text{.} T_i \colon V_i \to W_i\]
+נגדיר את המכפלה
+\begin{align*}
+\prod_{i \in \mcal{I}} T_i \colon \prod_{i \in \mcal{I}} V_i &\to \prod_{i \in \mcal{I}} W_i \\
+\text{.} \prs{v_i}_{i \in \mcal{I}} &\mapsto \prs{T_i v_i}_{i \in \mcal{I}}
+\end{align*}
+אם
+$\mcal{I}$
+סופית, ניקח בדרך כלל
+$\mcal{I} = \brs{n}$
+ואז נכתוב לפעמים
+\[\text{.} T_1 \times T_2 \times \ldots \times T_n \ceq \prod_{i \in [n]} T_i\]
+\end{definition}
+
+\begin{exercise}
+\begin{enumerate}
+\item יהיו
+$V_1 \ceq \mbb{R}^3$
+עם הבסיס הסטנדרטי
+$B_1 = \prs{e_1, e_2, e_3}$
+ו־%
+$V_2 \ceq \mbb{R}^2$
+עם הבסיס הסטנדרטי
+$B_2 = \prs{f_1, f_2}$.
+
+יהי
+$B = \prs{e_1, e_2, e_3, f_1, f_2}$
+בסיס של
+$V_1 \times V_2$,
+ותהיינה
+\begin{align*}
+T_1 \colon \mbb{R}^3 &\to \mbb{R}^3 \\
+\pmat{a \\ b \\ c} &\mapsto \pmat{b \\ c \\ a}
+\end{align*}
+ו־%
+\begin{align*}
+T_2 \colon \mbb{R}^2 &\to \mbb{R}^2 \\
+\text{.} \pmat{x \\ y} &\mapsto \pmat{y \\ -x}
+\end{align*}
+חשבו את
+$\prs{T_1 \times T_2}_B$.
+
+\item יהיו
+$\prs{V_i}_{i \in \brs{n}}$
+מרחבים וקטוריים עם בסיסים
+\[B_i \ceq \prs{v^{\prs{i}}_1, \ldots, v^{\prs{i}}_{k_i}}\]
+בהתאמה.
+לכל
+$i \in [n]$
+תהי
+$T_i \in \hom_{\mbb{F}}\prs{V_i, V_i}$.
+יהי
+\[\text{.} B = \prs{v^{\prs{1}}_1, \ldots, v^{\prs{1}}_{k_1}, \ldots, v^{\prs{n}}_1, \ldots, v^{\prs{n}}_{k_n}}\]
+הראו כי
+\[\brs{T_1 \times \ldots \times T_n}_B\]
+מטריצה
+$\prs{k_1, \ldots, k_n}$%
+אלכסונית בלוקים.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+ויהיו
+$\lambda_1, \ldots, \lambda_k \in \mbb{F}$
+הערכים העצמיים השונים של
+$T$.
+
+נראה בתרגיל זה כי
+$T$
+לכסינה אם ורק אם
+\[\text{.} V = \bigoplus_{i \in [k]} V_\lambda\]
+
+\begin{enumerate}
+\item נניח כי
+\[\text{.} V = \bigoplus_{i \in [k]} V_\lambda\]
+הראו כי יש בסיס של
+$V$
+שמורכב מוקטורים עצמיים של
+$T$
+והסיקו כי
+$T$
+לכסינה.
+
+\item נניח כי
+$T$
+לכסינה. הראו שניתן לכתוב
+\begin{align*}
+V = \bigoplus_{i \in [k]} V_{\lambda_i}'
+\end{align*}
+עבור
+$V_{\lambda_i}' \subseteq V_{\lambda_i}$
+לכל
+$i \in [k]$.
+
+\item הראו תחת הנחות הסעיף הקודם שמתקיים
+$V_{\lambda_i}' = V_{\lambda_i}$
+והסיקו כי במקרה זה
+\[\text{.} V = \bigoplus_{i \in [k]} V_\lambda\]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+יהיו
+$V,W$
+מרחבים וקטוריים
+$n$%
+־מימדיים מעל
+$\mbb{F}$.
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+ויהי
+$\lambda \in \mbb{F}$
+עם מרחב עצמי
+$V_\lambda$.
+נקרא ל־%
+$\dim_{\mbb{F}} V_\lambda$
+\emph{הריבוי הגיאומטרי של
+$\lambda$
+כערך עצמי של
+$T$}.
+\begin{enumerate}
+\item 
+תהי
+$S \in \endo_{\mbb{F}}\prs{W}$.
+ויהי
+$P \in \hom_{\mbb{F}}\prs{V,W}$
+איזומורפיזם עבורו
+$T = P^{-1} S P$.
+הראו של־%
+$T,S$
+אותם ערכים עצמיים מאותם ריבויים גיאומטריים.
+
+\item הסיקו ש־%
+$S$
+לכסינה אם ורק אם
+$T$
+לכסינה.
+
+\item 
+נניח כי
+$T$
+לכסינה
+ותהי
+$S' \in \endo_{\mbb{F}}\prs{W}$
+עם אותם ערכים עצמיים וריבויים גיאומטריים כמו של
+$T$.
+הראו כי
+$T \sim S'$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[נילפוטנטיות]
+העתקה לינארית
+$T \colon V \to V$
+נקראת
+\emph{נילפוטנטית}
+אם קיים
+$n \in \mbb{N}_+$
+עבורו
+$T^n = 0$.
+$n$
+המינימלי המקיים זאת נקרא
+\emph{האינדקס של $T$}.
+
+\begin{enumerate}
+\item הראו שצירוף לינארי של העתקות נילפוטנטיות הוא נילפוטנטי.
+\item הראו שעבור
+$T \colon V \to V$
+נילפוטנטית מתקיים
+$\det\prs{T} = \tr\prs{T} = 0$.
+\item 
+הראו שעבור
+$T \colon V \to V$
+נילפוטנטית הערך העצמי היחיד הוא
+$0$.
+הסיקו שעבור
+$T$
+נילפוטנטית ולכסינה מתקיים
+$T = 0$.
+\item תהי
+$T$
+נילפוטנטית. הראו שההעתקות
+$\id_V \pm T$
+הפיכות.
+
+\textbf{רמז:}
+נסו לחשוב על ההופכי של $1 \pm x$ כאשר
+$x$
+מספר.
+
+\item 
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+$T$
+נילפוטנטית מאינדקס
+$k$.
+לכל
+$i \in [k]$
+נסמן
+$n_i \ceq \dim \ker T^i$.
+הראו שמתקיים
+\[\text{.} 0 < n_1 < n_2 < \ldots < n_{k-1} < n_k = n\]
+
+\item יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+$T \colon V \to V$.
+יהי
+$B = \prs{v_1, \ldots, v_n}$
+בסיס של
+$V$
+ותהי
+\begin{align*}
+T \colon V &\to V \\
+v_1 &\mapsto 0 \\
+\text{.} \forall i > 1 \colon v_i &\mapsto v_{i-1}
+\end{align*}
+הראו כי
+$T$
+נילפוטנטית מאינדקס
+$n$
+וכיתבו את
+$\brs{T}_B$.
+
+\item 
+נאמר כי
+$A\in M_n\prs{\mbb{F}}$
+נילפוטנטית אם
+$L_A$
+נילפוטנטית.
+
+תהי
+$A \in M_n\prs{\mbb{F}}$
+אלכסונית בלוקים $\prs{m_1, \ldots, m_k}$
+כאשר כל בלוק
+$A_i$
+נילפוטנטי מאינדקס
+$n_i$.
+הראו ש־%
+$A$
+נילפוטנטית מאינדקס
+$\max_{i \in [k]} \prs{n_i}$.
+\item יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+\[0 < n_1 < n_2 < \ldots < n_{k-1} < n_k = n\]
+סדרת מספרים.
+
+הראו שיש העתקה
+$T \colon V \to V$
+כך שמתקיים
+$n_i = \dim \ker T^i$
+לכל
+$i \in [k]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%5
+פולינום
+$p \in \mbb{F}\brs{x}$
+נקרא
+\emph{מתוקן}
+אם המקדם המוביל שלו שווה
+$1$.
+עבור פולינום כזה ממעלה
+$n \in \mbb{N}$
+נכתוב
+\[p\prs{x} = \sum_{i = 0}^n c_i x^i\]
+כאשר
+$c_n = 1$,
+ונגדיר את
+\emph{המטריצה המלווה של
+$p$}
+על ידי
+\[\text{.} C\prs{p} \ceq \pmat{0 & 0 & \cdots & 0 & -c_0 \\ 1 & 0 & \cdots & 0 & -c_1 \\ 0 & 1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \dots & 1 & -c_{n-1}} \in M_n\prs{\mbb{F}}\]
+
+\begin{enumerate}
+\item יהי
+$p \in \mbb{F}\brs{x}$
+ממעלה
+$n \in \mbb{N}$.
+מצאו את הפולינום המינימלי של
+$C\prs{p}$.
+\\
+\emph{רמז:}
+השתמשו בעובדה שהפולינום המינימלי של מטריצה
+$A$
+שווה ל־%
+$\det\prs{xI - A}$
+וחשבו את הדטרמיננטה לפי השורה הראשונה.
+
+\item
+הראו שהתנאים הבאים שקולים
+עבור
+$A \in M_n\prs{\mbb{F}}$.
+\begin{enumerate}[label = (\roman*)]
+\item
+$A$
+דומה ל־%
+$C\prs{p_A}$.
+\item
+לכל פולינום
+$p \in \mbb{F}_{n-1}\brs{x}$
+מתקיים
+$p\prs{A} \neq 0$.
+\item
+יש וקטור
+$v \in \mbb{F}^n$
+\emph{ציקלי עבור
+$A$}
+במובן שהקבוצה
+$\set{v, Av, \ldots, A^{n-1}v}$
+היא בסיס של
+$V$.
+\end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\end{document}
