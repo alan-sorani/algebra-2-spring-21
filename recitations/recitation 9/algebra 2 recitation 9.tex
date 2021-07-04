@@ -1,0 +1,790 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+\usepackage{ytableau}
+
+\usepackage{graphicx, txfonts}
+
+\newcommand{\heart}{\ensuremath\varheartsuit}
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 9 \textenglish{---} משפט ריס, העתקות אורתוגונליות, צמודות לעצמן ונורמליות, ומשפט הפירוק הספקטרלי
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{משפט ריס}
+
+\subsection{חזרה}
+
+\begin{theorem}[ריס]
+לכל
+$f \in V^*$
+קיים
+$v \in V$
+עבורו
+$f\prs{u} = \trs{u,v}$
+לכל
+$u \in V$.
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+\begin{enumerate}
+\item הוכיחו כי לכל
+$n \in \mbb{N}$
+קיים
+$C > 0$
+כך שלכל
+$p \in \mbb{R}_n\brs{x}$
+מתקיים
+\[\text{.} \abs{p\prs{0}} \leq C \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}}\]
+
+\item חשבו את
+$C$
+המינימלי עבור
+$n=2$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item נשים לב כי
+\[\trs{f,g} = \int_{-1}^1 f\prs{x} g\prs{x} \diff x\]
+מכפלה פנימית.
+אז
+\begin{align*}
+\text{.} \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}} = \pmat{\trs{p,p}}^{\frac{1}{2}} = \norm{p}
+\end{align*}
+כלומר, עלינו להוכיח
+\[\text{.} \abs{p\prs{0}} \leq C\norm{p}\]
+
+ההצבה
+\begin{align*}
+\ev_0 \colon \mbb{R}_n\brs{x} &\to \mbb{R} \\
+f &\mapsto f\prs{0}
+\end{align*}
+היא פונקציונל לינארי, ולכן ממשפט ריס יש
+$g \in \mbb{R}_n\brs{x}$
+עבורו
+\[\text{.} p\prs{0} = \ev_0\prs{p} = \trs{p,g}\]
+עכשיו, מקושי־שוורץ
+\[\text{.} \abs{p\prs{0}} = \abs{\trs{p,g}} \leq \norm{p} \norm{g}\]
+לכן ניקח
+$C = \norm{g}$.
+
+\item
+נסמן
+$g\prs{x} = ax^2 + bx + c$.
+נשים לב כי
+כאשר
+$p = g$
+יש שוויון בקושי־שוורץ ואז
+\[\text{.} \abs{p\prs{0}} = \norm{p}\norm{g} \leq C\norm{p}\]
+גורר
+$C \geq \norm{g}$.
+ראינו כי
+$C = \norm{g}$
+מקיים את הנדרש, ולכן נותר למצוא את
+$\norm{g}$.
+כעת
+\begin{align*}
+1 &= 1\prs{0} = \trs{g\prs{x},1} = \int_{-1}^1 g\prs{x} \diff x = \left. \frac{ax^3}{3} + \frac{bx^2}{2} + cx \right|_{x=-1}^1 = \frac{2a}{3} + 2c \\
+0 &= x\prs{0} = \trs{g\prs{x}, x} = \int_{-1}^1 g\prs{x} x \diff x = \left. \frac{ax^4}{4} + \frac{bx^3}{3} + \frac{cx^2}{2} \right|_{x=-1}^1 = \frac{2b}{3} \\
+\text{.} 0 &= x^2\prs{0} = \trs{g\prs{x}, x^2} = \int_{-1}^1 g\prs{x} x^2 \diff x = \left. \frac{ax^5}{5} + \frac{bx^4}{4} + \frac{cx^3}{3} \right|_{x=-1}^1 = \frac{2a}{5} + \frac{2c}{3}
+\end{align*}
+מהמשוואה השנייה נקבל
+$b = 0$.
+מהמשוואה הראשונה פחות
+$3$
+פעמים השנייה נקבל
+\[1 = \frac{2a}{3} - 3 \cdot \frac{2a}{5} + 0 = \frac{10a - 18a}{15}\]
+ולכן
+$a = -\frac{15}{8}$.
+אז מהמשוואה השלישית נקבל
+\[c = -\frac{3a}{5} = -\frac{9}{8}\]
+ולכן
+\[\text{.} g\prs{x} = -\frac{15}{8} x^2 - \frac{9}{8}\]
+
+אז
+\[\text{.} C = \norm{g} = \int_{-1}^1 -\frac{15}{8} x^2 - \frac{9}{8} \diff x = -\frac{7}{2}\]
+\end{enumerate}
+\end{solution}
+
+\section{העתקות אורתוגונליות, צמודות לעצמן ונורמליות}
+
+\subsection{חזרה}
+
+\begin{definition}
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{R}$
+($\mbb{C}$)
+ותהי
+$T \in \endo_{\mbb{R}}\prs{V}$.
+נאמר כי
+$T$
+\begin{description}
+\item[אורתוגונלית (יוניטרית)]
+אם
+$\trs{Tu, Tv} = \trs{u,v}$
+לכל
+$v \in V$.
+\item[צמודה לעצמן (הרמיטית)]
+אם
+$T^* = T$.
+\item[נורמלית:]
+אם
+$T^* T = T T^*$.
+\end{description}
+\end{definition}
+
+\begin{remark}
+העתקה
+$T \in \endo_{\mbb{F}}\prs{V,V}$
+היא
+אורתוגונלית (יוניטרית) אם ורק אם
+$T^* = T^{-1}$.
+\end{remark}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפה פנימית ויהיו
+$T,S \in \endo_{\mbb{F}}\prs{V}$.
+הראו כי
+$\prs{T \circ S}^* = S^* \circ T^*$
+והסיקו שהרכבת איזומטריות היא איזומטריה.
+\end{exercise}
+
+\begin{solution}
+ראשית, אם
+$B$
+בסיס אורתונורמלי ל־%
+$V$
+מתקיים
+\begin{align*}
+\brs{\prs{T \circ S}^*}_B &= \overline{\brs{T \circ S}_B^t}
+\\&= \overline{\brs{S}_B^t \brs{T}_B^t}
+\\&= \overline{\brs{S}_B^t} \overline{\brs{T}_B^t}
+\\&= \brs{S^*}_B \brs{T^*}_B
+\\&= \brs{S^* \circ T^*}_B
+\end{align*}
+לכן
+$\prs{T \circ S}^* = S^* \circ T^*$.
+
+כעת, אם
+$S,T$
+איזומטריות נקבל
+\[\text{.} \prs{T \circ S}^{-1} = \prs{T \circ S}^{-1} = S^{-1} \circ T^{-1} = S^* \circ T^*  = \prs{T \circ S}^*\]
+\end{solution}
+
+\begin{exercise}
+תהי
+\begin{align*}
+R \colon \mbb{R}^2 \to \mbb{R}^2 \\
+\pmat{x \\ y} &\mapsto \pmat{x\\-y}
+\end{align*}
+שיקוף דרך ציר ה־%
+$x$.
+עבור
+$\theta \in \mbb{R}$
+נסמן
+\[A_\theta = \pmat{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta} \]
+וגם
+$\rho_\theta = L_{A_\theta}$.
+
+הראו כי כל איזומטריה של
+$\mbb{R}^2$
+היא מהצורה
+$\rho_\theta$
+או
+$\rho_\theta R$
+עבור
+$\theta \in \mbb{R}$.
+\end{exercise}
+
+\begin{solution}
+$T$
+אורתוגונלית ולכן מעבירה בסיס אורתונורמלי לבסיס אורתונורמלי.
+לכן
+$v = T\prs{e_1}$
+מנורמה 1.
+לכן
+$v_1^2 + v_2^2 = 1$.
+בפרט
+$v_1 \in \brs{-1,1}$
+ולכן יש
+$\theta \in \mbb{R}$
+עבורה
+$v_1 = \cos \theta$.
+נקבל
+\[v_2^2 = 1 - \prs{\cos\theta}^2 = \prs{\sin \theta}^2\]
+לכן
+$v_2 \in \set{\pm \sin{\theta}}$.
+אם
+$v_2 = \sin \theta$
+סיימנו.
+אחרת
+ניתן לכתוב
+\begin{align*}
+v_1 &= \cos\prs{-\theta} \\
+v_2 &= \sin\prs{-\theta}
+\end{align*}
+ואז הזווית המתאימה היא
+$-\theta$.
+
+כעת
+$\rho_{-\theta} \circ T \prs{e_1} = e_1$.
+ראינו בהרצאה שסיבוב הוא איזומטריה (העמודות של
+$A_\theta$
+הן בסיס אורתונורמלי) ולכן
+$\rho_{-\theta} \circ T$
+היא איזומטריה כהרכבת איזומטריות.
+לכן היא מעבירה בסיס אורתונורמלי ולבסיס אורתונורמלי.
+אבל אם
+$\prs{e_1, u}$
+אורתונורמלי אז
+$u = \pm e_2$.
+אם
+$u = e_2$
+נקבל כי
+$\rho_{-\theta} \circ T = \id_V$
+ואז
+$T = \rho_{\theta}$.
+אחרת,
+$\rho_{-\theta} \circ T = R$
+ואז
+$T = \rho_{\theta} \circ R$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{C}$
+ותהי
+$T \in \endo_{\mbb{C}}\prs{V}$
+נורמלית.
+\begin{enumerate}
+\item הוכיחו כי
+$\ker\prs{T} = \ker\prs{T T^*}$.
+\item הוכיחו כי
+$\ker\prs{T} = \ker\prs{T^n}$
+לכל
+$n \in \mbb{N}_+$.
+\item תהי
+$S = T + T^*$.
+הוכיחו כי כל מרחב עצמי של
+$S$
+הוא
+$T$%
+־שמור.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item יהי
+$v \in \ker \prs{T}$.
+אז
+$T T^* v = T^* T v = T^* 0 = 0$
+ולכן
+$\ker\prs{T} \subseteq \ker\prs{T T^*}$.
+
+יהי
+$v \in \ker\prs{TT^*}$.
+אז
+$TT^* v = 0$.
+אז
+\begin{align*}
+\trs{Tv, Tv} &= \trs{v, T^* T v}
+\\&= \trs{v, T T^* v}
+\\&= \trs{v,0}
+\\&= 0
+\end{align*}
+ולכן
+$Tv = 0$,
+כלומר
+$v \in \ker\prs{T}$.
+\item
+$T$
+נורמלית, לכן יש לה בסיס מלכסן
+$B$
+בו
+$\brs{T}_B$
+אלכסונית.
+אז
+$\brs{T^n}_B = \brs{T}_B^n$
+אלכסונית ויש להן
+$0$
+על האלכסון באותם מקומות. לכן
+\[\text{.} \ker \prs{T} = V_0^{\prs{T}} = V_0^{\prs{T^n}} = \ker\prs{T^n}\]
+
+\item
+מתקיים
+\begin{align*}
+ST &= \prs{T + T^*} T
+\\&= T^2 + T^* T
+\\&= T^2 + TT^*
+\\&= T\prs{T + T^*}
+\\&= TS
+\end{align*}
+לכן
+$T,S$
+מתחלפות וכפי שראינו אז כל מרחב עצמי של
+$S$
+הוא
+$T$%
+־שמור.
+\end{enumerate}
+\end{solution}
+
+\section{משפט הפירוק הספקטרלי}
+
+\subsection{חזרה}
+
+\begin{theorem}[הפירוק הספקטרלי]
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{R}$ ($\mbb{C}$).
+$T \in \endo_{\mbb{F}}$
+נורמלית (צמודה לעצמה) אם ורק אם קיים בסיס אורתונורמלי
+$B$
+של
+$V$
+עבורו
+$\brs{T}_B$
+אלכסונית.
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+תהי
+\[\text{.} A = \pmat{3 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 1 & 2} \in M_3\prs{\mbb{R}}\]
+מצאו מטריצה אורתוגונלית
+$O \in M_3\prs{\mbb{R}}$
+עבורה
+$O^{-1} A O$
+מטריצה אלכסונית.
+\end{exercise}
+
+\begin{solution}
+ראשית נמצא ערכים עצמיים. מתקיים
+\begin{align*}
+\det\pmat{2 & 1 \\ 1 & 2} &= 3 \\
+\text{.} \tr\pmat{2 & 1 \\ 1 & 2} &= 4 
+\end{align*}
+לכן אם
+$\lambda_1, \lambda_2$
+הערכים העצמיים נקבל
+$\lambda_1 \lambda_2 = 3$
+וגם
+$\lambda_1 + \lambda_2 = 4$,
+לכן הערכים העצמיים של
+$A$
+הם
+$3$
+מריבוי אלגברי
+$2$
+ו־%
+$1$
+מריבוי אלגברי
+$1$.
+
+המרחב העצמי של
+$3$
+הוא
+$\spn\prs{e_1, e_2 + e_3}$.
+נחפש את המרחב העצמי של
+$1$.
+נדרג
+\begin{align*}
+A - I &= \pmat{2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1}
+\\&\to \pmat{1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 0}
+\end{align*}
+ואז המרחב העצמי הוא
+$\spn\prs{e_2 - e_3}$.
+
+כדי לקבל בסיס אורתונורמלי נוכל לבצע את תהליך גרם־שמידט על בסיס של כל מרחב עצמי בנפרד, או על הבסיס כולו. אם אנו יודעים שהמטריצה נורמלית, המרחבים העצמיים השונים שלה ניצבים, ולכן שתי הדרכים שקולות. באופן כללי, יש להראות שקיבלנו בסיס מלכסן, או אורתונורמלי, תלוי בשיטה שבחרנו.
+
+נבצע את תהליך גרם־שמידט על
+$\prs{e_1, e_2+e_3}$.
+נקבל בסיס
+$\prs{e_1, \frac{e_2 + e_3}{\sqrt{2}}}$.
+על
+$\prs{e_2 - e_3}$
+נקבל בסיס
+$\prs{\frac{e_2 - e_3}{\sqrt{2}}}$.
+נרצה להראות כי
+\[B = \pmat{\frac{e_2 - e_3}{\sqrt{2}}, e_1, \frac{e_2 + e_3}{\sqrt{2}}}\]
+בסיס מלכסן של
+$A$.
+
+אכן, כל הוקטורים ב־%
+$B$
+הם וקטורים עצמיים של
+$A$.
+לכן אם ניקח
+$O \ceq \brs{\id_{\mbb{C}^3}}^B_E$
+נקבל כי
+$O^{-1} A O$
+מטריצה אלכסונית, וכי
+$O$
+אורתוגונלית, שכן עמודותיה הן בסיס אורתונורמלי.
+\end{solution}
+
+\begin{exercise}
+בתרגיל זה נראה שכל העתקה היא צירוף לינארי של
+$4$
+העתקות יוניטריות.
+
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{C}$
+ותהי
+$T \in \endo_{\mbb{C}}\prs{V}$.
+\begin{enumerate}
+\item נניח כי
+$T$
+הרמיטית ועם ערכים עצמיים אי־שליליים.
+הראו כי יש
+$S \in \endo_{\mbb{C}}\prs{V}$
+הרמיטית עם ערכים עצמיים אי־שליליים עבורה
+$S^2 = T$.
+נסמנה
+$\sqrt{T}$.
+
+\item
+נניח כי
+$T$
+הרמיטית. הראו כי הערכים העצמיים של
+$T$
+ממשיים.
+
+\item נסמן ב־%
+$\sigma\prs{T}$
+את אוסף הערכים העצמיים של
+$T$
+ונסמן
+\[\text{.} c \prs{T} \ceq \max\set{\abs{\lambda}}{\lambda \in \sigma\prs{T}}\]
+תהי
+\[\text{.} \tilde{T} \ceq \frac{T}{c\prs{T}}\]
+הראו כי
+$\id_V - \tilde{T}$
+הרמיטית עם ערכים עצמיים אי־שליליים.
+
+\item הראו כי
+$T$
+צירוף לינארי של שתי העתקות הרמיטיות.
+
+\item 
+נניח ש־%
+$T$
+הרמיטית.
+הראו ש־%
+$T$
+צירוף לינארי של שתי העתקות יוניטריות.
+
+\item
+הסיקו כי
+$T$
+צירוף לינארי של ארבע העתקות יוניטריות.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item $T$
+הרמיטית, לכן נורמלית ולכן לפי משפט הפירוק הספקטרלי קיים בסיס אורתונורמלי
+$B = \prs{v_1, \ldots, v_n}$
+עבורו
+$\brs{T}_B$
+אלכסונית עם ערכים עצמיים
+$\lambda_1, \ldots, \lambda_n \geq 0$
+על האלכסון.
+נגדיר
+\begin{align*}
+S \colon V &\to V \\
+v_i &\mapsto \sqrt{\lambda_i} v_i
+\end{align*}
+ואז
+\begin{align*}
+\text{.} S\prs{v_i} = \lambda_i v_i
+\end{align*}
+נקבל
+$\brs{S}_B = \brs{T}_B$
+ולכן
+$S = T$.
+$S$
+הרמיטית כי
+$\overline{\brs{S}_B}^t = \brs{S}_B$
+וכי
+$B$
+בסיס אורתונורמלי.
+
+\item 
+כמו מקודם, קיים בסיס אורתונורמלי
+$B = \prs{v_1, \ldots, v_n}$
+של
+$V$
+לפיו
+$T$
+לכסינה.
+אבל,
+$\brs{T}_B = \overline{\brs{T}_B}^t$
+ולכן לכל
+$i \in [n]$
+מתקיים
+$\lambda_i = \overline{\lambda_i}$,
+ואז
+$\lambda_i$
+ממשי.
+
+\item
+יהי
+$B$
+בסיס אורתונורמלי עבורו
+$\brs{T}_B$
+אלכסונית. אז
+\[\brs{\tilde{T}}_B = \frac{1}{c\prs{T}} \brs{T}_B\]
+ונקבל כי הערכים העצמיים של
+$\tilde{T}$
+בקטע
+$\brs{0,1}$.
+אז גם
+$\brs{\id_V - \tilde{T}^2}_B$
+אלכסונית עם ערכים עצמיים בקטע
+$\brs{0,1}$.
+כיוון ש־%
+$B$
+אורתונורמלי, נקבל כי
+$\id_V - \tilde{T}^2$
+הרמיטית.
+
+\item נכתוב
+\[\text{.} T = \frac{T+T^*}{2} + \frac{T-T^*}{2}\]
+מתקיים
+\begin{align*}
+\prs{\frac{T + T^*}{2}}^* &= \frac{T^* + T^{**}}{2} = \frac{T+T^*}{2} \\
+\prs{\frac{T - T^*}{2}}^* &= \frac{T^* - T^{**}}{2} = \frac{T^* - T}{2}
+\end{align*}
+אבל
+\[\prs{\frac{T-T^*}{2i}}^* = i \prs{\frac{T-T^*}{2}}^* = -i {\frac{T-T^*}{2}} = \frac{T - T^*}{2i}\]
+ולכן
+\begin{align*}
+T &= \frac{T+T^*}{2} + i \prs{\frac{T-T^*}{2i}}
+\end{align*}
+צירוף לינארי של שתי העתקות הרמיטיות.
+
+\item 
+מספיק להראות כי
+$\tilde{T}$
+צירוף של שתי העתקות יוניטריות, לכן נניח
+$c\prs{T} = 1$.
+נרצה
+$f\prs{T}, g\prs{T}$
+יוניטריות עבורן
+\[\text{.} T = \frac{f\prs{T} + g\prs{T}}{2}\]
+כמו מקודם, נכתוב
+$f\prs{T} = A + iB$
+עבור
+$A,B$
+הרמיטיות.
+אם ניקח
+$g\prs{T} = A - iB$
+נקבל
+\[\text{.} T = \frac{A + iB + A - iB}{2} = A\]
+אז
+$f\prs{T} = T + iB$.
+$T$
+הרמיטית ולכן נורמלית ומתחלפת עם
+$T^*$.
+לכן היא מתחלפת עם
+$B$.
+מיוניטריות נקבל
+\begin{align*}
+\id_V &= f\prs{T} f\prs{T}^*
+\\&= \prs{T + iB} \prs{T - iB}
+\\&= T^2 + B^2
+\end{align*}
+ואז
+\[\text{.} B^2 = \id_V - T^2\]
+כיוון שראינו ש־%
+$\id_V - T^2$
+הרמיטית עם ערכים עצמיים אי־שליליים ולכן קיים לה שורש.
+ניקח
+$B = \sqrt{\id_V - T^2}$.
+אז אכן מתקיים
+$\id_V = T^2 + B^2 = f\prs{T} f\prs{T}^*$
+ולכן
+$f\prs{T}$
+יוניטרית.
+נשים לב כי
+$g\prs{T} = f\prs{T}^*$
+ולכן גם
+$g\prs{T}$
+יוניטרית.
+\item ראינו כי 
+$T = \alpha H_1 + \beta H_2$
+צירוף של שתי העתקות הרמיטיות וכי
+$H_1, H_2$
+כל אחת צירוף של שתי העתקות יוניטריות, לכן
+\[T = \alpha \prs{a U_1 + b U_2} + \beta \prs{c U_3 + d U_4}\]
+צירוף לינארי של ארבע העתקות יוניטריות.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית מרוכב סוף־מימדי ותהיינה
+$T, T_1, T_2 \in \endo_{\mbb{C}}\prs{V}$.
+\begin{enumerate}
+\item הוכיחו כי
+$T$
+נורמלית אם ורק אם יש פולינום
+$p \in \mbb{C}\brs{x}$
+עבורו
+$T^* = p\prs{T}$.
+השתמשו בעובדה הבאה.
+
+\begin{theorem}[אינטרפולציית לגרנג']
+תהיינה
+\[\text{.} x_1, \ldots, x_k, y_1, \ldots, y_k \in \mbb{C}\]
+קיים פולינום
+$p \in \mbb{C}\brs{x}$
+ממעלה
+$k+1$
+עבורו
+$p\prs{x_i} = y_i$
+לכל
+$i \in \brs{k}$.
+
+\item הוכיחו כי
+$T_1 T_2 = T_2 T_1$
+אם ורק אם
+$T_1^* T_2 = T_2 T_1^*$.
+
+\item הוכיחו כי אם
+$T_1, T_2$
+נורמליות ומתחלפות, גם
+$T_1 T_2, T_1 + T_2$
+נורמליות.
+\end{theorem}
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item אם יש
+$p \in \mbb{C}\brs{x}$
+עבורו
+$T^* = p\prs{T}$,
+אז
+$T$
+נורמלית כי העתקה מתחלפת עם כל פולינום בה.
+
+בכיוון השני, נניח כי
+$T$
+נורמלית וניקח בסיס
+$B$
+עבורו
+$\brs{T}_B$
+אלכסונית. אז
+\[\text{.} \brs{T}_B^* = \brs{T}_B^* \ceq \overline{\brs{T}_B}^t\]
+לכן גם
+$\brs{T^*}_B$
+אלכסונית, ונכתוב
+\begin{align*}
+\brs{T}_B &= \mrm{diag}\prs{\lambda_1, \ldots, \lambda_n} \\
+\text{.} \brs{T^*}_B &= \mrm{diag}\prs{\bar{\lambda}_1, \ldots, \bar{\lambda}_n}
+\end{align*}
+יהי
+$p \in \mbb{C}\brs{x}$
+עבורו
+$p\prs{\lambda_i} = \bar{\lambda}_i$
+לכל
+$i \in [n]$,
+שקיים מאינטרפולציית לגרנג'.
+אז
+\begin{align*}
+\brs{T^*}_B = p\prs{\brs{T}_B} = \brs{p\prs{T}}_B
+\end{align*}
+ולכן
+$T^* = p\prs{T}$,
+כנדרש.
+
+\item
+נניח כי
+$T_1 T_2 = T_2 T_1$
+ונראה כי
+$T_1^* T_2 = T_2 T_1^*$.
+הכיוון השני ינבע על ידי שימוש באותה תכונה עבור
+$T_1^*$
+במקום
+$T_1$.
+
+$T_1$
+נורמלית, לכן
+$T_1^* = p\prs{T_1}$
+עבור פולינום
+$p \in \mbb{C}\brs{x}$.
+העתקה שמתחלפת עם
+$T$
+מתחלפת עם כל פולינום ב־%
+$T$,
+לכן נקבל כי
+$T_1^*, T_2$
+מתחלפות.
+
+\item 
+נניח כי
+$T_1, T_2$
+נורמליות ומתחלפות. אז
+\begin{align*}
+\prs{T_1 T_2} \prs{T_1 T_2}^* &= T_1 T_2 T_2^* T_1^*
+\\&=
+T_1 T_2^* T_2 T_1^*
+\\&=
+T_2^* T_1 T_1^* T_2
+\\&=
+T_2^* T_1^* T_1 T_2
+\\&=
+\prs{T_1 T_2}^* \prs{T_1 T_2}
+\end{align*}
+ולכן
+$T_1 T_2$
+נורמלית.
+כמו כן,
+\begin{align*}
+\prs{T_1 + T_2}\prs{T_1 + T_2}^*
+&=
+T_1 T_1^* + T_1 T_2^* + T_2 T_1^* + T_2 T_2^*
+\\&= T_1^* T_1 + T_2^* T_1 + T_1^* T_2 + T_2^* T_2
+\\&=
+\prs{T_1 + T_2}^*\prs{T_1 + T_2}
+\end{align*}
+ולכן גם
+$T_1 + T_2$
+נורמלית.
+\end{enumerate}
+\end{solution}
+
+\end{document}

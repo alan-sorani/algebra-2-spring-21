@@ -1,0 +1,623 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+\usepackage{ytableau}
+
+\usepackage{graphicx, txfonts}
+
+\newcommand{\heart}{\ensuremath\varheartsuit}
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 8 \textenglish{---} מכפלות פנימיות, ניצבות ותהליך גרם־שמידט
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{מכפלות פנימיות}
+
+\subsection{חזרה}
+
+נרצה הרבה פעמים לדון במושג של זווית בין וקטורים. לשם כך לא מספיקה ההגדרה של מרחב וקטורי, וצריך להסתכל על מבנה נוסף של מכפלה פנימית על מרחב וקטורי.
+
+\begin{definition}[מכפלה פנימית]
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{F} \in \set{\mbb{R}, \mbb{C}}$.
+\emph{מכפלה פנימית על
+$V$}
+היא העתקה
+\begin{align*}
+\trs{\cdot,\cdot} \colon V \times V &\to \mbb{F}
+\end{align*}
+המקיימת את התכונות הבאות.
+\begin{description}
+\item[לינאריות ברכיב הראשון:]
+לכל
+$u,v,w \in V$
+ולכל
+$\alpha \in \mbb{F}$
+מתקיים
+\begin{align*}
+\text{.} \trs{\alpha u + v, w} &= \alpha\trs{u,w} + \trs{v,w}
+\end{align*}
+\item[הרמיטיות:]
+לכל
+$u,v \in V$
+מתקיים
+\[\text{.} \trs{u,v} = \overline{\trs{v,u}}\]
+\item[מוגדרות חיובית:]
+לכל
+$v \in V \setminus \set{0}$
+מתקיים
+\[\text{.} \trs{v,v} > 0\]
+\end{description}
+\end{definition}
+
+נרצה פעמים לדון במושג של אורך של וקטורים במרחב וקטורי. לשם כך צריך מבנה נוסף על המרחב הוקטורי, בשם נורמה.
+
+נניח בדיון על מכפלות פנימיות כי אנו עובדים מעל
+$\mbb{F} \in \set{\mbb{R}, \mbb{C}}$.
+
+\subsection{תרגילים}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית.
+\begin{enumerate}
+\item הוכיחו כי אם
+$\trs{v,w} = 0$
+לכל
+$w \in V$
+אז
+$v = 0$.
+\item הוכיחו כי אם
+$\trs{v,w} = \trs{u,w}$
+לכל
+$w \in V$
+אז
+$v=u$.
+\item הוכיחו כי אם
+$T,S \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$\trs{Tu,v} = \trs{Su,v}$
+לכל
+$u,v \in V$
+אז
+$T = S$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item ניקח
+$w = v$
+ונקבל
+\[\text{.} \trs{v,v} = 0\]
+ולכן
+$v = 0$.
+\item נעביר אגף ונקבל
+\[\trs{v-u, w} = 0\]
+לכל
+$w \in V$.
+אז מהסעיף הקודם
+$v-u = 0$
+ולכן
+$v = u$.
+\item נעביר אגף ונקבל
+\[\text{.} \trs{\prs{T-S}\prs{u},v} = 0\]
+לכל
+$u,v \in V$.
+אז עבור כל
+$u \in V$
+מתקיים
+$\prs{T-S}\prs{u} = 0$,
+ולכן
+$T\prs{u} = S\prs{u}$.
+\end{enumerate}
+\end{solution}
+
+\section{ניצבות}
+
+\subsection{חזרה}
+
+\begin{definition}[וקטורים ניצבים]
+יהי
+$V$
+מרחב מכפלה פנימית ויהיו
+$u,v \in V$.
+נגיד ש־%
+\emph{$u,v$
+ניצבים}
+ונכתוב
+$u \perp v$
+אם
+$\trs{u,v} = 0$.
+\end{definition}
+
+\begin{definition}[מרחב ניצב]
+יהי
+$V$
+מרחב מכפלה פנימית ותהי
+$S \subseteq V$
+תת־קבוצה.
+נגדיר את
+\emph{המרחב הניצב ל־%
+$S$}
+על ידי
+\[\text{.} S^\perp \ceq \set{v \in V}{\forall u \in S \colon v \perp u}\]
+\end{definition}
+
+\begin{remark}
+$S^\perp$
+תמיד מרחב וקטורי. אם
+$v,w \in u$
+ו־%
+$\alpha \in \mbb{F}$,
+גם
+$\alpha v + w \perp u$
+כי
+\[\text{.} \trs{\alpha v + w, u} = \alpha \trs{v,u} + \trs{w,u} = 0\]
+\end{remark}
+
+\begin{proposition}
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$.
+אז
+\[\text{.} \dim\prs{V} = \dim\prs{W} + \dim \prs{W^\perp}\]
+\end{proposition}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+מצאו את
+$W^\perp$
+עבור
+\[\text{.} W \ceq \spn\prs{e_1 + e_2} \leq \mbb{R}^2\]
+\end{exercise}
+
+\begin{solution}
+מתקיים
+$v \in W^\perp$
+אם ורק אם
+$v \perp e_1 + e_2$
+אם ורק אם
+$v_1 + v_2 = 0$
+אם ורק אם
+$v_1 = - v_2$.
+לכן
+\[\text{.} W^\perp = \spn\prs{e_1 - e_2}\]
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$.
+הראו כי
+$\prs{W^\perp}^\perp = W$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$w \in W$
+ויהי
+$v \in W^\perp$.
+מהגדרת
+$W^\perp$
+מתקיים
+$\trs{w,v} = 0$.
+לכן
+$w \in \prs{W^\perp}^\perp$
+ולכן
+$W \subseteq \prs{W^\perp}^\perp$.
+
+מתקיים
+\begin{align*}
+\dim\prs{\prs{W^\perp}^\perp} &= \dim\prs{V} - \dim\prs{W^\perp} = \dim\prs{W}
+\end{align*}
+ולכן בעצם יש שוויון.
+\end{solution}
+
+\begin{exercise}
+\begin{enumerate}
+\item הראו שאם
+$S \subseteq T$
+תת־קבוצות במרחב מכפלה פנימית אז
+\[\text{.} T^\perp \subseteq S^\perp\]
+\item הסיקו כי
+\[\text{.} \prs{S^\perp}^\perp = \spn\prs{S}\]
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item יהי
+$v \in T^\perp$.
+אז
+$v \perp u$
+לכל
+$u \in T$.
+בפרט
+$v \perp u$
+לכל
+$u \in S$,
+ולכן
+$v \in S^\perp$.
+
+\item
+מתקיים
+$S \subseteq \spn\prs{S}$
+ולכן
+\begin{align*}
+\spn\prs{S}^\perp \subseteq S^\perp
+\end{align*}
+וגם
+\begin{align*}
+\text{.} \prs{S^\perp}^\perp \subseteq \prs{\spn\prs{S}^\perp}^perp
+\end{align*}
+אבל,
+$\spn\prs{S}$
+מרחב וקטורי ולכן
+\[\text{.} \prs{\spn\prs{S}^\perp}^perp = \spn\prs{S}\]
+ונקבל כי
+\[\text{.} \prs{S^\perp}^\perp \subseteq \spn\prs{S}\]
+כעת,
+$S \subseteq \prs{S^\perp}^\perp$
+כמו בתרגיל הקודם, ולכן
+$\prs{S^\perp}^\perp$
+מרחב וקטורי שמכיל את
+$S$
+ומוכל ב־%
+$\spn\prs{S}$.
+ממינימליות
+$\spn\prs{S}$
+נקבל כי
+\[\text{,} \prs{S^\perp}^\perp = \spn\prs{S}\]
+כנדרש.
+\end{enumerate}
+\end{solution}
+
+\section{הטלות אורתוגונליות ותהליך גרם־שמידט}
+
+\subsection{חזרה}
+
+\begin{definition}[בסיס אורתוגונלי]
+יהי
+$V$
+מרחב מכפלה פנימית.
+\emph{בסיס אורתוגונלי של
+$V$}
+הוא בסיס
+$\prs{v_1, \ldots, v_n}$
+עבורו
+\[\trs{v_i, v_j} = 0\]
+לכל
+$i,j \in [n]$
+שונים.
+
+אם גם
+$\norm{v_i} = 1$
+לכל
+$i \in [n]$,
+או באופן שקול אם
+$\trs{v_i, v_j} = \delta_{i,j}$,
+נאמר שזה
+\emph{בסיס אורתונורמלי}.
+\end{definition}
+
+\begin{definition}[הטלה אורתוגונלית]
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$W \leq V$
+עם בסיס אורתונורמלי
+$\prs{w_1, \ldots, w_m}$.
+\emph{ההטלה האורתוגונלית על
+$W$}
+היא
+\begin{align*}
+P_W \colon V &\to V \\
+\text{.} \hphantom{lalala} v &\mapsto \sum_{i \in [m]} \trs{v, w} w
+\end{align*}
+\end{definition}
+
+\begin{theorem}[תהליך גרם־שמידט]
+יהי
+$V$
+מרחב מכפלה פנימית ויהי
+$\prs{v_1, \ldots, v_n}$
+בסיס של
+$V$.
+קיים בסיס
+$\prs{w_1, \ldots, w_n}$
+אורתונורמלי
+של
+$V$
+עבורו
+$\spn\prs{w_1, \ldots, w_i} = \spn\prs{v_1, \ldots, v_i}$
+לכל
+$i \in [n]$.
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+יהי
+\[\text{.} W = \spn\set{\pmat{3\\4\\2}} \leq \mbb{R}^3\]
+
+\begin{enumerate}
+\item מצאו את 
+$\brs{P_W}_E$.
+\item מצאו את
+$W^\perp$.
+\item תהי
+$p = \pmat{5\\5\\5}$.
+מצאו את המרחק של
+$p$
+מ־%
+$W$
+ונקודה
+$q \in W$
+עבורה
+$\norm{p-q}$
+שווה למרחק זה.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item כדי לחשב את
+$P_W$
+נחפש בסיס אורתונורמלי עבור
+$W$.
+ננרמל את
+$\pmat{3\\4\\0}$
+ונקבל
+$w = \frac{1}{5} \pmat{3\\4\\0}$
+עבורו
+$\prs{w}$
+בסיס אורתונורמלי של
+$W$.
+אז
+\[\text{.} P_W\prs{v} = \trs{v,w} w\]
+נקבל כי
+\begin{align*}
+P_W\prs{e_1} &= \frac{1}{25} \trs{e_1, \pmat{3\\4\\0}} \pmat{3\\4\\0} = \frac{3}{25} \pmat{3\\4\\0} \\
+P_W\prs{e_2} &= \frac{1}{25} \trs{e_2, \pmat{3\\4\\0}} \pmat{3\\4\\0} = \frac{4}{25} \pmat{3\\4\\0} \\
+P_W\prs{e_3} &= \frac{1}{25} \trs{e_3, \pmat{3\\4\\0}} \pmat{3\\4\\0} = 0
+\end{align*}
+ולכן
+\begin{align*}
+\text{.} \brs{P_W}_E &= \frac{1}{25} \pmat{9 & 12 & 0 \\ 12 & 16 & 0 \\ 0 & 0 & 0}
+\end{align*}
+
+\item כדי למצוא את
+$W^\perp$
+נשלים את
+$\pmat{3\\4\\0}$
+לבסיס של
+$\mbb{R}^3$
+ונבצע את תהליך גרם־שמידט כדי לקבל בסיס אורתונורמלי.
+יהי
+$B = \prs{\pmat{3\\4\\0}, e_2, e_3}$
+בסיס ל־%
+$\mbb{R}^3$.
+ננרמל את הוקטור הראשון ונקבל
+$w_1 \ceq w$.
+נגדיר
+\begin{align*}
+\hat{w}_2 &\ceq e_2 - \trs{e_2, w_1} w_1
+\\&= e_2 - \frac{1}{25} \trs{e_2, \pmat{3\\4\\0}} \pmat{3\\4\\0}
+\\&= e_2 - \frac{4}{25} \pmat{3\\4\\0}
+\\&= \pmat{\frac{12}{25} \\ \frac{9}{25} \\ 0}
+\end{align*}
+ואז
+\[\norm{\hat{w}_2} = \frac{1}{25} \sqrt{12^2 + 9^2} = \frac{15}{25} = \frac{3}{5}\]
+ונקבל
+\[\text{.} w_2 = \frac{\hat{w}_2}{\norm{\hat{w}_2}} = \frac{5}{3} \cdot \frac{1}{25} \pmat{12\\9\\0} = \frac{1}{15} \pmat{12\\9\\0}\]
+\end{enumerate}
+נגדיר
+\begin{align*}
+\hat{w}_3 &\ceq e_3 - \cancelto{0}{\trs{e_3, w_2}} w_2 - \cancelto{0}{\trs{e_3, w_1}}w_1
+\\&=
+e_3
+\end{align*}
+וגם
+\[ \text{.} w_3 = \frac{\hat{w}_3}{\norm{\hat{w}_3}} = \frac{e_3}{1} = e_3\]
+אז
+\[\text{.} W^\perp = \spn\prs{w_2, w_3} = \spn\prs{\hat{w}_2, \hat{w}_3} = \spn\prs{\frac{1}{15}\pmat{12\\9\\0}, e_3}\]
+\item
+נמצא קודם נקודה
+$q \in W$
+כמתואר.
+ידוע כי נקודה זאת היא
+$P_W\prs{p}$.
+מתקיים
+\[\text{.} P_W\prs{p} = \frac{1}{25} \pmat{9 & 6 & 0 \\ 6 & 4 & 0 \\ 0 & 0 & 0} \pmat{5\\5\\5} = \frac{1}{25} \pmat{75 \\ 50 \\ 0} = \pmat{3\\2\\0}\]
+
+אז המרחק הוא
+\begin{align*}
+\norm{\pmat{5\\5\\5} - \pmat{3\\2\\0}} &= \sqrt{\prs{5-3}^2 + \prs{5-2}^2 + 5^2}
+\\&= \sqrt{4 + 9 + 25}
+\\ \text{.} \hphantom{\norm{\pmat{5\\5\\5} - \pmat{3\\2\\0}}} &= \sqrt{38}
+\end{align*}
+\end{solution}
+
+\section{האופרטור הצמוד ומשפט ריס}
+
+\subsection{חזרה}
+
+\begin{definition}[האופרטור הצמוד]
+יהי
+$V$
+מרחב מכפלה פנימית ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+\emph{האופרטור הצמוד של
+$T$}
+שנסמנו
+$T^*$
+הוא האופרטור היחיד
+$T^* \in \endo_{\mbb{F}}\prs{V}$
+עבורו
+\[\trs{Tu,v} = \trs{u,T^*v}\]
+לכל
+$u,v \in V$.
+\end{definition}
+
+\begin{theorem}[ריס]
+לכל
+$f \in V^*$
+קיים
+$v \in V$
+עבורו
+$f\prs{u} = \trs{u,v}$
+לכל
+$u \in V$.
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+יהי
+$V = M_2\prs{\mbb{R}}$.
+עם המכפלה הפנימית
+\[\text{.} \trs{A,B} = \tr\prs{B^t A}\]
+נגדיר
+\begin{align*}
+\text{.} T\prs{\pmat{a & b \\ c & c}} = \pmat{3d & 2c \\ -b & 4a}
+\end{align*}
+חשבו את
+$T^*$
+בשתי דרכים שונות.
+\end{exercise}
+
+\begin{solution}
+\begin{description}
+\item[דרך 1:]
+נמצא את התנאים על מקדמי
+$T^*$
+בעזרת המכפלה הפנימית.
+מתקיים
+\begin{align*}
+\trs{T\pmat{a & b \\ c & d}, \pmat{e & f \\ g & h}} &= \trs{\pmat{3d & 2c \\ -b & 4a}, \pmat{e & f \\ g & h}}
+\\&= 3de + 2cf - bg + 4ah
+\\&= \trs{\pmat{a & b \\ c & d}, \pmat{4h & -g \\ 2f & 3e}}
+\end{align*}
+ולכן
+\[\text{.} T^*\pmat{e & f \\ g & h} = \pmat{4h & -g \\ 2f & 3e}\]
+\item[דרך 2:]
+נשים לב כי
+\[E = \prs{\pmat{1 & 0 \\ 0 & 0}, \pmat{0 & 1 \\ 0 & 0}, \pmat{0 & 0 \\ 1 & 0}, \pmat{0 & 0 \\ 0 & 1}}\]
+בסיס אורתונורמלי ל־%
+$M_2\prs{\mbb{R}}$.
+נחשב:
+\[\brs{T}_E = \pmat{0 & 0 & 0 & 3 \\ 0 & 0 & 2 & 0 \\ 0 & -1 & 0 & 0 \\ 4 & 0 & 0 & 0}\]
+כיוון ש־%
+$E$
+אורתונורמלי, מתקיים
+\[\brs{T^*}_E = \brs{T}_E^* \ceq \overline{\brs{T}_E}^t\]
+ולכן
+\begin{align*}
+\text{.} \brs{T^*}_E = \brs{T}_E^* = \pmat{0 & 0 & 0 & 4 \\ 0 & 0 & -1 & 0 \\ 0 & 2 & 0 & 0 \\ 3 & 0 & 0 & 0}
+\end{align*}
+לכן
+\[\text{.} T^*\pmat{e & f \\ g & h} = \pmat{4h & -g \\ 2f & 3e}\]
+\end{description}
+\end{solution}
+
+\begin{exercise}
+\begin{enumerate}
+\item הוכיחו כי לכל
+$n \in \mbb{N}$
+קיים
+$C > 0$
+כך שלכל
+$p \in \mbb{R}_n\brs{x}$
+מתקיים
+\[\text{.} \abs{p\prs{0}} \leq C \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}}\]
+
+\item חשבו את
+$C$
+המינימלי עבור
+$n=2$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item נשים לב כי
+\[\trs{f,g} = \int_{-1}^1 f\prs{x} g\prs{x} \diff x\]
+מכפלה פנימית.
+אז
+\begin{align*}
+\text{.} \prs{\int_{-1}^1 p\prs{x}^2 \diff x}^{\frac{1}{2}} = \pmat{\trs{p,p}}^{\frac{1}{2}} = \norm{p}
+\end{align*}
+כלומר, עלינו להוכיח
+\[\text{.} \abs{p\prs{0}} \leq C\norm{p}\]
+
+ההצבה
+\begin{align*}
+\ev_0 \colon \mbb{R}_n\brs{x} &\to \mbb{R} \\
+f &\mapsto f\prs{0}
+\end{align*}
+היא פונקציונל לינארי, ולכן ממשפט ריס יש
+$g \in \mbb{R}_n\brs{x}$
+עבורו
+\[\text{.} p\prs{0} = \ev_0\prs{p} = \trs{p,g}\]
+עכשיו, מקושי־שוורץ
+\[\text{.} \abs{p\prs{0}} = \abs{\trs{p,g}} \leq \norm{p} \norm{g}\]
+לכן ניקח
+$C = \norm{g}$.
+
+\item
+נסמן
+$g\prs{x} = ax^2 + bx + c$.
+נשים לב כי
+כאשר
+$p = g$
+יש שוויון בקושי־שוורץ ואז
+\[\text{.} \abs{p\prs{0}} = \norm{p}\norm{g} \leq C\norm{p}\]
+גורר
+$C \geq \norm{g}$.
+ראינו כי
+$C = \norm{g}$
+מקיים את הנדרש, ולכן נותר למצוא את
+$\norm{g}$.
+כעת
+\begin{align*}
+1 &= 1\prs{0} = \trs{g\prs{x},1} = \int_{-1}^1 g\prs{x} \diff x = \left. \frac{ax^3}{3} + \frac{bx^2}{2} + cx \right|_{x=-1}^1 = \frac{2a}{3} + 2c \\
+0 &= x\prs{0} = \trs{g\prs{x}, x} = \int_{-1}^1 g\prs{x} x \diff x = \left. \frac{ax^4}{4} + \frac{bx^3}{3} + \frac{cx^2}{2} \right|_{x=-1}^1 = \frac{2b}{3} \\
+\text{.} 0 &= x^2\prs{0} = \trs{g\prs{x}, x^2} = \int_{-1}^1 g\prs{x} x^2 \diff x = \left. \frac{ax^5}{5} + \frac{bx^4}{4} + \frac{cx^3}{3} \right|_{x=-1}^1 = \frac{2a}{5} + \frac{2c}{3}
+\end{align*}
+מהמשוואה השנייה נקבל
+$b = 0$.
+מהמשוואה הראשונה פחות
+$3$
+פעמים השנייה נקבל
+\[1 = \frac{2a}{3} - 3 \cdot \frac{2a}{5} + 0 = \frac{10a - 18a}{15}\]
+ולכן
+$a = -\frac{15}{8}$.
+אז מהמשוואה השלישית נקבל
+\[c = -\frac{3a}{5} = -\frac{9}{8}\]
+ולכן
+\[\text{.} g\prs{x} = -\frac{15}{8} x^2 - \frac{9}{8}\]
+
+אז
+\[\text{.} C = \norm{g} = \int_{-1}^1 -\frac{15}{8} x^2 - \frac{9}{8} \diff x = -\frac{7}{2}\]
+\end{enumerate}
+\end{solution}
+
+\end{document}

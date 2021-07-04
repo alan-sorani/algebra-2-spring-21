@@ -1,0 +1,536 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+\usepackage{ytableau}
+
+\usepackage{graphicx, txfonts}
+
+\newcommand{\heart}{\ensuremath\varheartsuit}
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 10 \textenglish{---}
+תכונות של העתקות, פירוק לערכים סינגולריים,
+פירוק פולארי ותבניות בילינאריות
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{העתקות נורמליות וכו'}
+
+\subsection{חזרה}
+
+\begin{definition}
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$F = \mbb{R}$
+($\mbb{F} = \mbb{C}$).
+$T \in \endo_{\mbb{F}}\prs{V}$
+תיקרא
+\begin{itemize}
+\item \emph{נורמלית}
+אם
+$T^* T = T T^*$.
+\item \emph{צמודה לעצמה (הרמיטית)}
+אם
+$T = T^*$.
+\item \emph{אורתוגונלית (יוניטרית)}
+אם
+$T^* = T^{-1}$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[משפט הפירוק הספקטרלי]
+$T \in \endo_{\mbb{C}}\prs{V}$
+נורמלית אם ורק אם קיים בסיס אורתונורמלי לפיו היא אלכסונית.
+\end{theorem}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+בתרגיל זה נראה שכל העתקה היא צירוף לינארי של
+$4$
+העתקות יוניטריות.
+
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{C}$
+ותהי
+$T \in \endo_{\mbb{C}}\prs{V}$.
+\begin{enumerate}
+\item נניח כי
+$T$
+הרמיטית ועם ערכים עצמיים אי־שליליים.
+הראו כי יש
+$S \in \endo_{\mbb{C}}\prs{V}$
+הרמיטית עם ערכים עצמיים אי־שליליים עבורה
+$S^2 = T$.
+נסמנה
+$\sqrt{T}$.
+
+\item
+נניח כי
+$T$
+הרמיטית. הראו כי הערכים העצמיים של
+$T$
+ממשיים.
+
+\item נסמן ב־%
+$\sigma\prs{T}$
+את אוסף הערכים העצמיים של
+$T$
+ונסמן
+\[\text{.} c \prs{T} \ceq \max\set{\abs{\lambda}}{\lambda \in \sigma\prs{T}}\]
+תהי
+\[\text{.} \tilde{T} \ceq \frac{T}{c\prs{T}}\]
+הראו כי
+$\id_V - \tilde{T}$
+הרמיטית עם ערכים עצמיים אי־שליליים.
+
+\item הראו כי
+$T$
+צירוף לינארי של שתי העתקות הרמיטיות.
+
+\item 
+נניח ש־%
+$T$
+הרמיטית.
+הראו ש־%
+$T$
+צירוף לינארי של שתי העתקות יוניטריות.
+
+\item
+הסיקו כי
+$T$
+צירוף לינארי של ארבע העתקות יוניטריות.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item $T$
+הרמיטית, לכן נורמלית ולכן לפי משפט הפירוק הספקטרלי קיים בסיס אורתונורמלי
+$B = \prs{v_1, \ldots, v_n}$
+עבורו
+$\brs{T}_B$
+אלכסונית עם ערכים עצמיים
+$\lambda_1, \ldots, \lambda_n \geq 0$
+על האלכסון.
+נגדיר
+\begin{align*}
+S \colon V &\to V \\
+v_i &\mapsto \sqrt{\lambda_i} v_i
+\end{align*}
+ואז
+\begin{align*}
+\text{.} S\prs{v_i} = \lambda_i v_i
+\end{align*}
+נקבל
+$\brs{S}_B = \brs{T}_B$
+ולכן
+$S = T$.
+$S$
+הרמיטית כי
+$\overline{\brs{S}_B}^t = \brs{S}_B$
+וכי
+$B$
+בסיס אורתונורמלי.
+
+\item 
+כמו מקודם, קיים בסיס אורתונורמלי
+$B = \prs{v_1, \ldots, v_n}$
+של
+$V$
+לפיו
+$T$
+לכסינה.
+אבל,
+$\brs{T}_B = \overline{\brs{T}_B}^t$
+ולכן לכל
+$i \in [n]$
+מתקיים
+$\lambda_i = \overline{\lambda_i}$,
+ואז
+$\lambda_i$
+ממשי.
+
+\item
+יהי
+$B$
+בסיס אורתונורמלי עבורו
+$\brs{T}_B$
+אלכסונית. אז
+\[\brs{\tilde{T}}_B = \frac{1}{c\prs{T}} \brs{T}_B\]
+ונקבל כי הערכים העצמיים של
+$\tilde{T}$
+בקטע
+$\brs{0,1}$.
+אז גם
+$\brs{\id_V - \tilde{T}^2}_B$
+אלכסונית עם ערכים עצמיים בקטע
+$\brs{0,1}$.
+כיוון ש־%
+$B$
+אורתונורמלי, נקבל כי
+$\id_V - \tilde{T}^2$
+הרמיטית.
+
+\item נכתוב
+\[\text{.} T = \frac{T+T^*}{2} + \frac{T-T^*}{2}\]
+מתקיים
+\begin{align*}
+\prs{\frac{T + T^*}{2}}^* &= \frac{T^* + T^{**}}{2} = \frac{T+T^*}{2} \\
+\prs{\frac{T - T^*}{2}}^* &= \frac{T^* - T^{**}}{2} = \frac{T^* - T}{2}
+\end{align*}
+אבל
+\[\prs{\frac{T-T^*}{2i}}^* = i \prs{\frac{T-T^*}{2}}^* = -i {\frac{T-T^*}{2}} = \frac{T - T^*}{2i}\]
+ולכן
+\begin{align*}
+T &= \frac{T+T^*}{2} + i \prs{\frac{T-T^*}{2i}}
+\end{align*}
+צירוף לינארי של שתי העתקות הרמיטיות.
+
+\item 
+מספיק להראות כי
+$\tilde{T}$
+צירוף של שתי העתקות יוניטריות, לכן נניח
+$c\prs{T} = 1$.
+נרצה
+$f\prs{T}, g\prs{T}$
+יוניטריות עבורן
+\[\text{.} T = \frac{f\prs{T} + g\prs{T}}{2}\]
+כמו מקודם, נכתוב
+$f\prs{T} = A + iB$
+עבור
+$A,B$
+הרמיטיות.
+אם ניקח
+$g\prs{T} = A - iB$
+נקבל
+\[\text{.} T = \frac{A + iB + A - iB}{2} = A\]
+אז
+$f\prs{T} = T + iB$.
+$T$
+הרמיטית ולכן נורמלית ומתחלפת עם
+$T^*$.
+לכן היא מתחלפת עם
+$B$.
+מיוניטריות נקבל
+\begin{align*}
+\id_V &= f\prs{T} f\prs{T}^*
+\\&= \prs{T + iB} \prs{T - iB}
+\\&= T^2 + B^2
+\end{align*}
+ואז
+\[\text{.} B^2 = \id_V - T^2\]
+כיוון שראינו ש־%
+$\id_V - T^2$
+הרמיטית עם ערכים עצמיים אי־שליליים ולכן קיים לה שורש.
+ניקח
+$B = \sqrt{\id_V - T^2}$.
+אז אכן מתקיים
+$\id_V = T^2 + B^2 = f\prs{T} f\prs{T}^*$
+ולכן
+$f\prs{T}$
+יוניטרית.
+נשים לב כי
+$g\prs{T} = f\prs{T}^*$
+ולכן גם
+$g\prs{T}$
+יוניטרית.
+\item ראינו כי 
+$T = \alpha H_1 + \beta H_2$
+צירוף של שתי העתקות הרמיטיות וכי
+$H_1, H_2$
+כל אחת צירוף של שתי העתקות יוניטריות, לכן
+\[T = \alpha \prs{a U_1 + b U_2} + \beta \prs{c U_3 + d U_4}\]
+צירוף לינארי של ארבע העתקות יוניטריות.
+\end{enumerate}
+\end{solution}
+
+\section{פירוק לערכים סינגולריים}
+
+\subsection{חזרה}
+
+\begin{definition}[ערך סינגולרי]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+\emph{הערכים הסינגולריים של
+$T$}
+הם הערכים העצמיים של
+$\sqrt{T^* T}$,
+כאשר כל אחד נספר מספר פעמים כריבוי הגיאומטרי שלו.
+\end{definition}
+
+\begin{theorem}[פירוק לערכים סינגולריים]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+קיימים בסיסים אורתונורמליים
+$B,C$
+של
+$V$
+עבורם
+$\brs{T}^B_C$
+אלכסונית כאשר ערכי האלכסון הם הערכים הסינגולריים של
+$T$
+כולל כפילויות.
+\end{theorem}
+
+\begin{theorem}[פירוק לערכים סינגולריים של מטריצה]
+תהי
+$A \in M_{n \times m}\prs{\mbb{F}}$.
+קיימות
+$U \in M_n\prs{\mbb{F}}$
+ו־%
+$V \in M_m\prs{\mbb{F}}$
+אורתוגונליות (יוניטריות) וקיימת מטריצה מלבנית אלכסונית
+$\Sigma$
+עבורן
+\[\text{.} A = U \Sigma V^*\]
+\end{theorem}
+
+\subsection{חישוב}
+
+\begin{algorithm}[מציאת \textenglish{SVD}]
+כאשר נרצה למצוא פירוק לערכים סינגולריים נבצע את השלבים הבאים.
+
+\begin{enumerate}
+\item נמצא בסיס אורתונורמלי של וקטורים עצמיים עבור
+$T^* T$. אפשר לעשות את זה למשל לפי גרם־שמידט.
+נסדר אותו לפי סדר יורד של הערכים העצמיים.
+זה יהיה הבסיס
+$B$.
+
+\item עבור כל וקטור
+$v$
+ב־%
+$B$
+נסתכל על
+$\frac{1}{\sigma} T\prs{v}$
+כאשר
+$\sigma$
+הערך הסינגולרי המתאים לו.
+אם
+$B = \prs{v_1, \ldots, v_n}$
+נקבל קבוצה סדורה אורתונורמלית
+\[\text{.} \tilde{C} = \prs{\frac{1}{\sigma_1} T\prs{v_1}, \ldots, \frac{1}{\sigma_n} T\prs{v_n}}\]
+
+\item אם אנו עובדים עם מטריצות, נשלים את
+$\tilde{C}$
+לבסיס אורתונורמלי
+$C$
+של
+$\prs{\mbb{F}}^m$.
+אחרת ניקח
+$C = \tilde{C}$.
+\end{enumerate}
+\end{algorithm}
+
+\begin{example}
+תהי
+\[\text{.} A = \pmat{1 & -1 \\ 0 & 1 \\ 1 & 0} \in M_{3,2}\prs{\mbb{C}}\]
+מתקיים
+$A A^* = \pmat{2 & -1 \\ - 1 & 2}$.
+הערכים העצמיים של
+$A A^*$
+הם
+$3,1$
+ולכן הערכים הסינגולריים של
+$A$
+הם
+$\sqrt{3}, 1$.
+$e_1 - e_2$
+וקטור עצמי של
+$3$
+ו־%
+$e_1 + e_2$
+וקטור עצמי של
+$1$.
+ננרמל את שני הוקטורים ונקבל בסיס אורתונורמלי
+$B = \prs{\frac{e_1 - e_2}{\sqrt{2}}, \frac{e_1 + e_2}{\sqrt{2}}}$
+של
+$\mbb{C}^2$.
+
+נגדיר
+\begin{align*}
+\tilde{C} &= \prs{\frac{1}{\sqrt{3}} A \prs{\frac{e_1 - e_2}{\sqrt{2}}}, A\prs{\frac{e_1 + e_2}{\sqrt{2}}}}
+\\&= \prs{\frac{1}{\sqrt{6}} \pmat{2\\-1\\1}, \frac{1}{\sqrt{2}} \pmat{0\\1\\1}}
+\end{align*}
+ונשלים קבוצה סדורה זאת לבסיס אורתונורמלי של
+$\mbb{C}^3$.
+נסמן
+$w = \pmat{a\\b\\c}$
+ונפתור את המשוואות
+\begin{align*}
+2a - b + c &= 0\\
+b + c &= 0
+\end{align*}
+כדי לקבל
+$w = \pmat{1\\1\\-1}$.
+כעת,
+$\norm{w} = 3$
+לכן לאחר נרמול נקבל
+$v_3 = \frac{1}{\sqrt{3}} \pmat{1\\1\\-1}$.
+נגדיר
+\begin{align*}
+\text{.} C \ceq \tilde{C} * \prs{v_3}
+\end{align*}
+
+אז
+\[A = \brs{\id_{\mbb{C}^3}}^C_E \pmat{\sqrt{3} & 0 \\ 0 & 1 \\ 0 & 0} \brs{\id_{\mbb{C}^2}}^E_B\]
+כאשר מתקיים
+\[\brs{\id_{\mbb{C}^2}}^E_B = \prs{\brs{\id_{\mbb{C}^2}}^B_E}^* = \frac{1}{\sqrt{2}} \pmat{1 & - 1 \\ 1 & 1}\]
+וגם
+\[\text{.} \brs{\id_{\mbb{C}^3}}^C_E = \pmat{\frac{2}{\sqrt{6}} & 0 & \frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}}}\]
+\end{example}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+הוכיחו או הפריכו: הערכים הסינגולריים של
+$T^2$
+הם ריבועי הערכים הסינגולריים של
+$T$.
+\end{exercise}
+
+\begin{solution}
+הטענה איננה נכונה, למשל עבור
+$A = \pmat{0 & 1 \\ 0 & 0}$.
+\end{solution}
+
+\section{פירוק פולארי}
+
+\subsection{חזרה}
+
+\begin{definition}[אופרטור מוגדר אי־שלילית]
+$T \in \endo_{\mbb{F}}\prs{V}$
+צמוד לעצמו (הרמיטי) נקרא
+\emph{מוגדר אי־שלילית}
+אם
+$\trs{Tv, v} \geq 0$
+לכל
+$v \in V$.
+\end{definition}
+
+\begin{theorem}[פירוק פולארי]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+יש איזומטריה
+$S \in \endo_{\mbb{F}}\prs{V}$
+עבורה
+$T = S \sqrt{T^* T}$.
+\end{theorem}
+
+\begin{remark}
+האופרטור
+$T^* T$
+מוגדר אי־שלילית כי
+$\trs{T^* Tv, v} = \trs{Tv, Tv} \geq 0$
+לכל
+$v \in V$.
+ראינו בתרגול הקודם שעבור
+$\mbb{F} = \mbb{C}$
+יש לו שורש יחיד מוגדר אי־שלילית, וכי שורש זה הרמיטי.
+\end{remark}
+
+\begin{algorithm}
+כדי למצוא פירוק פולארי ניעזר בפירוק לערכים סינגולריים.
+ניתן לכתוב
+$A = W \Sigma V^*$.
+ניקח
+$P = V \Sigma V^*$
+ו־%
+$U = W V^*$.
+אז
+$P$
+מוגדרת אי־שלילית כמטריצה צמודה ל־%
+$\Sigma$,
+ו־%
+$U$
+אורתוגונלית (יוניטרית) כהרכבה של כאלה.
+\end{algorithm}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+מצאו את הפירוק הפולארי עבור
+\begin{align*}
+T \colon \mbb{R}^3 &\to \mbb{R}^3 \\
+\text{.} \hphantom{lalala} \pmat{x\\y\\z} &\mapsto \pmat{z \\ 2x \\ 3y}
+\end{align*}
+\end{exercise}
+
+\begin{solution}
+מתקיים
+\begin{align*}
+\brs{T}_E &= \pmat{0 & 0 & 1 \\ 2 & 0 & 0 \\ 0 & 3 & 0} \\
+\brs{T^*}_E &= \pmat{0 & 2 & 0 \\ 0 & 0 & 3 \\ 1 & 0 & 0} \\
+\brs{T^* T}_E &= \pmat{4 & 0 & 0 \\ 0 & 9 & 0 \\ 0 & 0 & 1}
+\end{align*}
+ולכן הערכים הסינגולריים של
+$T$
+הם
+$3,2,1$.
+יש לנו בסיס אורתונורמלי
+$B = \prs{e_2, e_1, e_3}$
+של וקטורים עצמיים.
+כדי לקבל את הבסיס השני, נפעיל את
+$T$
+וננרמל.
+נקבל
+\begin{align*}
+\text{.} C &= \pmat{\frac{1}{3} T\prs{e_2}, \frac{1}{2} T\prs{e_1}, T\prs{e_3}}
+= \prs{e_3, e_2, e_1}
+\end{align*}
+אז
+\begin{align*}
+\text{.} \brs{T}_E = W \Sigma V^*
+\end{align*}
+עבור
+\begin{align*}
+\Sigma &= \brs{\sqrt{T^* T}}_B = \pmat{3&0&0\\0&2&0\\0&0&1} \\
+V &= \brs{\id_{\mbb{C}^3}}^B_E = \pmat{0&1&0\\1&0&0\\0&0&1}\\
+\text{.} W &= \brs{\id_{\mbb{C}^3}}^C_E = \pmat{0&0&1\\0&1&0\\1&0&0}
+\end{align*}
+מתקיים
+\[V \Sigma V^* = P^B_E \brs{\sqrt{T^* T}}_B P^E_B = \brs{\sqrt{T^* T}}_E\]
+ולכן
+\begin{align*}
+\brs{T}_E &= W \Sigma V^*
+\\&=
+W V^* V \Sigma V^*
+\\&=
+W V^* \brs{\sqrt{T^* T}}_E
+\\&=
+\brs{\sqrt{T^* T}}^E_C
+\end{align*}
+נסמן
+$U \ceq W V^*$,
+שהינה יוניטרית כמכפלת יוניטריות ונסמן
+$S \ceq \prs{\rho^E_E}^{-1}\prs{U}$,
+שהינה יוניטרית כי היא מיוצגת על ידי מטריצה יוניטרית בבסיס אורתונורמלי.
+נקבל
+$T = S \sqrt{T^* T}$.
+כאשר
+\[\text{.} \brs{S}_E = U = WV^* = \pmat{0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0}\]
+\end{solution}
+
+\begin{remark}
+באופן כללי ראינו בתרגיל כי
+$\brs{T}_E =  P^C_E P^B_E$
+כאשר
+$B,C$
+הבסיסים מהפירוק לערכים סינגולריים.
+\end{remark}
+
+\end{document}

@@ -75,6 +75,24 @@ B_k &= \prs{v_{k,1}, \ldots, v_{k,n_k}}
 \[\text{.} B_1 * \ldots * B_k = \prs{v_{1,1}, \ldots, v_{1,n_1}, v_{2,1} \ldots, v_{2,n_2}, \ldots, v_{k,1}, \ldots, v_{k, n_k}}\]
 \end{definition}
 
+\begin{definition}[סכום ישר של העתקות]
+יהי
+$V = \bigoplus_{i \in [k]} V_i$
+ותהיינה
+$T_i \in \endo_{\mbb{F}}\prs{V_i}$.
+נגדיר
+\emph{את הסכום הישר שלהן}
+על ידי
+\begin{align*}
+\bigoplus_{i \in [k]} T_i \colon V &\to V \\
+\sum_{i \in [k]} \alpha_i v_i &\mapsto \sum_{i \in [k]} \alpha_i T\prs{v_i}
+\end{align*}
+כאשר
+$v_i \in V_i$
+לכל
+$i \in [k]$.
+\end{definition}
+
 \subsection{תרגילים}
 
 \begin{exercise}
@@ -144,7 +162,7 @@ $B$
 $\mbb{F}^n$
 בו אין ב־%
 $\brs{T}_B$
-בלוקים לא טריוויאליים.
+יותר מבלוק אחד.
 \end{exercise}
 
 \begin{remark}
@@ -152,7 +170,7 @@ $\brs{T}_B$
 $A \in M_n\prs{\mbb{F}}$
 היא אלכסונית בלוקים עם בלוק מגודל
 $n \times n$,
-כך שאין משמעות לשאלה האם מטריצה היא אלכסונית בלוקים. יש טעם לשאול האם יש במטריצה בלוקים שאינם טריוויאליים, או האם היא אלכסונית בלוקים עם גדלים מסוימים של בלוקים.
+כך שאין משמעות לשאלה האם מטריצה היא אלכסונית בלוקים. יש טעם לשאול האם יש במטריצה בלוקים עם יותר מבלוק אחד, או עם גדלים מסוימים של בלוקים.
 \end{remark}
 
 \begin{solution}
@@ -185,6 +203,41 @@ $\brs{T}_B$
 אינה אלכסונית בלוקים באופן לא טריוויאלי.
 נרצה לתאר באופן כללי את הקשר בין מטריצות אלכסוניות בלוקים לבין תת־מרחבים שמורים.
 
+\begin{remark}
+יהיו
+$B_1, \ldots, B_k$
+בסיסים עבור מרחבים וקטוריים
+$V_1, \ldots, V_k$.
+נרצה שהקבוצה הסדורה
+$B \ceq B_1 * \ldots * B_k$
+תהיה בסיס עבור
+$V_1 \oplus \ldots \oplus V_k$,
+אבל אם למשל ניקח כל
+$B_i$
+להיות הבסיס הסטנדרטי של
+$\mbb{R}^n$
+זאת תהיה קבוצה עם חזרות.
+
+נוכל תמיד לקחת את המרחבים
+$V_1, \ldots, V_k$
+להיות זרים על ידי בחירת מרחבים וקטוריים איזומורפיים
+$\tilde{V}_i \ceq V_i \times \set{i}$
+עם פעולות חיבור וכפל לפי הרכיב הראשון.
+למשל,
+\[V_1 = \set{\prs{v,1}}{v \in V_1}\]
+עם
+\begin{align*}
+\prs{u,1} + \prs{v,1} &= \prs{u+v,1} \\
+\text{.} \alpha \prs{u,1} &= \prs{\alpha u,1}
+\end{align*}
+לכן ההנחה שהמרחבים
+$V_1, \ldots, V_k$
+זרים אינה מגבילה את הכלליות, ובמקרה זה ראינו כי
+$B$
+בסיס של
+\[\text{.} V_1 \oplus \ldots \oplus V_k\]
+\end{remark}
+
 \begin{exercise}
 תהי
 $T \in \endo_{\mbb{F}}\prs{V_1 \oplus \ldots \oplus V_k}$
@@ -193,6 +246,9 @@ $B_1, \ldots, B_k$
 בסיסים עבור
 $V_1, \ldots, V_k$
 בהתאמה.
+נניח כי
+$V_1, \ldots, V_k$
+זרים.
 יהיו
 $n_i \ceq \dim_{\mbb{F}} V_i$
 ויהי
@@ -220,6 +276,18 @@ $T = \bigoplus_{i \in [k]} T_i$.
 \end{exercise}
 
 \begin{solution}
+ עבור
+$i \in [k]$
+ נסמן
+\[\text{.} m_i \ceq \prs{\sum_{j \in [i-1]} n_i} + 1\]
+אז זה ש־%
+$\brs{T}_B$
+מטריצה
+$\prs{n_1, \ldots, n_k}$%
+־אלכסונית בלוקים אומר שלכל
+$j \in [k]$
+מתקיים
+\[\text{.} \forall i \in \brs{m_j, m_{j+1}-1} \colon \brs{T}_B e_i \in \spn\set{e_\ell}{\ell \in \brs{m_j, m_j + n_j - 1}}\]
 \begin{description}
 \item[1 גורר 2:]
 נניח כי
@@ -230,15 +298,14 @@ $\prs{n_1, \ldots, n_k}$%
 $v \in V_i$.
 אז
 \begin{align*}
-\text{.} \brs{T v}_B &= \brs{T}_B \brs{v}_B \in \spn\set{\brs{T}_B e_j}{j \in [n_1]} \subseteq \spn\set{e_j}{j \in [n_1]}
+\text{.} \brs{T v}_B &= \brs{T}_B \brs{v}_B \in \spn\set{\brs{T}_B e_j}{j \in [m_i, m_i+n_i-1]} \subseteq \spn\set{e_j}{j \in [m_i, m_i+n_i-1]}
 \end{align*}
 מתקיים
-\[\rho_B\prs{V_1} = \mbb{F}^{n_1} \times \set{0} \leq \mbb{F}^n\]
-כי $\rest{\rho_B}{V_1}$ חד־חד ערכית ומשוויון מימדים.
+\[\rho_B\prs{V_1} = \spn\set{e_i}{i \in \brs{m_i, m_i+n_i - 1}} \leq \mbb{F}^n\]
 לכן
-\[Tv = \rho_B^{-1}\prs{\brs{Tv}_B} \in \rho_B^{-1}\prs{\spn\set{e_j}{j \in [n_1]}} = V_1\]
+\[Tv = \rho_B^{-1}\prs{\brs{Tv}_B} \in \rho_B^{-1}\prs{\spn\set{e_i}{i \in \brs{m_i, m_i+n_i-1}}} = V_i\]
 ולכן
-$V_1$
+$V_i$
 מרחב
 $T$%
 ־שמור.
@@ -258,10 +325,15 @@ $T_i = \rest{T}{V_i} \in \endo_{\mbb{F}}\prs{V_i}$.
 $v \in V_i$
 מתקיים
 \[T\prs{v} = T_i\prs{v} \in V_i\]
-לכן
-\[\prs{\brs{T\prs{v}}_B}_{\ell} = 0\]
-לכל
-$\ell \notin \brs{n_1 + \ldots + n_{i-1} + 1, n_1 + \ldots + n_i}$.
+לכן עבור
+$j \in \brs{m_i, m_i+n_i - 1}$
+מתקיים
+\[\brs{T}_B e_j = \brs{T v_j}_B \in \rho_B\prs{V_i} = \spn\set{e_j}{j \in \brs{m_i, m_i+n_i-1}}\]
+ולכן
+$\brs{T}_B$
+מטריצה
+$\prs{n_1, \ldots, n_k}$%
+־אלכסונית בלוקים.
 \end{description}
 \end{solution}
 
@@ -332,7 +404,7 @@ $W_1, W_2$
 מתקיים
 \[P_1 \prs{e_1 + e_2} = e_1\]
 אבל
-\[\text{.} P_2 \prs{e_1 + e_2} = e_1 + e_2\]
+\[\text{.} P_2 \prs{e_1 + e_2} = 0\]
 \end{example}
 
 \begin{definition}[הטלה]

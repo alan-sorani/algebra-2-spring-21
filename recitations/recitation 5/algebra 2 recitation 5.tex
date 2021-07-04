@@ -1,0 +1,582 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 5 \textenglish{---} נילפוטנטיות
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{נילפוטנטיות}
+
+\subsection{חזרה}
+
+\begin{definition}[העתקה נילפוטנטית]
+העתקה
+$T \in \endo_{\mbb{F}}\prs{V}$
+נקראת
+\emph{נילפוטנטית}
+אם יש
+$k \in \mbb{N}_+$
+עבורו
+$T^k = 0$.
+ה־%
+$k$
+המינימלי הזה נקרא
+\emph{אינדקס הנילפוטנטיות של
+$T$}.
+\end{definition}
+
+\subsection{תרגילים}
+
+\begin{remark}
+נניח לאורך התרגול כי
+$V$
+מרחב וקטורי סוף־מימדי.
+\end{remark}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטית מאינדקס
+$k$.
+הראו כי
+$k \leq n$.
+\end{exercise}
+
+\begin{solution}
+ראינו כי
+$\ker\prs{T^k} \leq \ker\prs{T^n}$,
+לכן אם
+$T^k = 0$
+נקבל
+$\ker\prs{T^k} = V \leq \ker\prs{T^n}$
+כלומר
+$\ker\prs{T^n} = V$
+כלומר
+$T^n = 0$.
+ממינימליות
+$k$
+נקבל
+$k \leq n$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$\mbb{F}$
+סגור אלגברית ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+הראו ש־%
+$T$
+ נילפוטנטית אם ורק אם הערך העצמי היחיד שלה הוא
+$0$.
+מצאו דוגמא נגדית כאשר
+$\mbb{F}$
+אינו סגור אלגברית.
+\end{exercise}
+
+\begin{solution}
+נניח כי
+$\lambda \in \mbb{F}$
+ערך עצמי של
+$T \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטית.
+יש
+$k \in \mbb{N}_+$
+עבורו
+$T^k = 0$.
+יהי
+$v \in V$
+וקטור עצמי של
+$T$
+עם ערך עצמי
+$\lambda$.
+אז
+$T^k v = \lambda^k v = 0$
+לכן
+$\lambda = 0$.
+
+נניח כי
+$S \in \endo_{\mbb{F}}\prs{V}$
+עם ערך עצמי יחיד
+$0$.
+כיוןן ש־%
+$\mbb{F}$
+סגור־אלגברית,
+יש בסיס
+$B$
+כך ש־%
+$\brs{S}_B$
+משולשת עליונה, ונקבל שיש על האלכסון שלה אפסים כי
+$0$
+ערך עצמי יחיד של
+$S$.
+נכתוב
+$B = \prs{v_1, \ldots, v_n}$
+וגם
+$V_i \ceq \spn\prs{v_1, \ldots, v_i}$
+לכל
+$i \in [n]$.
+נסיק כי
+$S V_i \subseteq V_{i-1}$
+לכל
+$i \in [n]$,
+וגם
+$S V_1 = 0$.
+אז
+\[S^n V = S^n V_n = S^{n-1} V_{n-1} = \ldots = S V_1 = 0\]
+כלומר
+$S^n = 0$.
+
+עבור
+$\mbb{F} = \mbb{R}$
+ניקח את
+$T = L_A$
+עבור
+\[A = \pmat{0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0}\]
+שהערך העצמי הממשי היחיד שלה הוא
+$0$
+(כי
+$\pm i \notin \mbb{R}$)
+אבל
+$A^4 = \pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0}$
+לכן
+$T^4 = e_1 = e_1$.
+כלומר
+$T^4 \neq 0$
+ולכן
+$T$
+אינה נילפוטנטית.
+\end{solution}
+
+\begin{examples}
+\begin{description}
+\item[העתקות נילפוטנטיות:]
+ההעתקה
+$L_A$
+נילפוטנטית עבור כל אחת מהמטריצות הבאות.
+\begin{itemize}
+\item $A = \pmat{0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0}$.
+\item כל $A$
+משולשת עליונה עם
+$0$
+על כל האלכסון הראשי, כפי שראינו בתרגיל האחרון.
+\item $A = \pmat{0 & 0 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0}$.
+\end{itemize}
+\item[העתקות שאינן נילפוטנטיות:]
+עבור המטריצות הבאות,
+$L_A$
+אינה נילפוטנטית.
+\begin{itemize}
+\item $A = \pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0}$.
+מתקיים
+$Ae_1 = e_1$
+ולכן
+$1$
+ערך עצמי ולא יתכן כי
+$L_A$
+נילפוטנטית.
+\item $A = \pmat{1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1}$.
+מתקיים
+$A\prs{e_1 + e_2 + e_3} = 3 \prs{e_1 + e_2 + e_3}$
+לכן
+$3$
+ערך עצמי, ולא יתכן כי
+$L_A$
+נילפוטנטית.
+\item $A = \pmat{0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 0} \in M_3\prs{\mbb{R}}$.
+מתקיים
+$A^4 = \pmat{1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0} \neq 0$
+לכן
+$L_A^4 \neq 0$
+וראינו שאינדקס הנילפוטנטיות חייב להיות לכל היותר
+$3$
+במקרה זה. לכן
+$L_A$
+אינה נילפוטנטית.
+\end{itemize}
+\end{description}
+\end{examples}
+
+\begin{exercise}
+הראו כי
+$T \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטית אם ורק אם לכל
+$v \in V$
+יש
+$k \in \mbb{N}_+$
+עבורו
+$T^k v = 0$.
+\end{exercise}
+
+\begin{solution}
+נניח כי
+$T$
+נילפוטנטית מאינדקס
+$k$.
+אז
+$T^k v = 0 v = 0$
+לכל
+$v \in V$.
+
+נניח להיפך כי לכל
+$v \in V$
+יש
+$k \in \mbb{N}_+$
+עבורו
+$T^k v = 0$.
+אז
+$v \in \ker\prs{T^k}$.
+אבל, ראינו כי
+\[\ker\prs{T} \leq \ker\prs{T^2} \leq \ker\prs{T^3} \leq \ldots\]
+מתייצבת, לכן יש
+$m \in \mbb{N}_+$
+עבורו
+$\ker\prs{T^k} \subseteq \ker\prs{T^m}$
+לכל
+$k \in \mbb{N}_+$.
+נקבל
+$v \in \ker\prs{T^m}$
+לכל
+$v \in V$,
+לכן
+$T^m = 0$.
+\end{solution}
+
+\begin{exercise}
+הראו שצירוף לינארי של העתקות נילפוטנטיות מתחלפות הוא נילפוטנטי.
+מצאו דוגמה נגדית עבור העתקות נילפוטנטיות שאינן מתחלפות.
+\end{exercise}
+
+\begin{solution}
+יהיו
+$T_1. T_2 \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטיות מאינדקסים
+$k_1, k_2$
+בהתאמה וכך שמתקיים
+$T_1 T_2 = T_2 T_1$.
+יהי
+$\alpha \in \mbb{F}$.
+
+מתקיים
+\begin{align*}
+\prs{\alpha T_1}^{k_1} = \alpha^{k_1} T_1^{k_1} = \alpha^{k_1} 0 = 0
+\end{align*}
+לכן
+$\alpha T_1$
+נילפוטנטית מאינדקס קטן או שווה ל־%
+$k$.
+כעת
+\begin{align*}
+\text{.} \prs{T_1 + T_2}^{k_1 + k_2 + 1} &= \sum_{i=0}^{k_1 + k_2} \binom{k_1 + k_2}{i} T_1^i T_2^{k_1 + k_2 - i}
+\end{align*}
+כאשר
+$i \geq k_1$
+מתקיים
+$T_1^i = 0$
+וכאשר
+$i < k_1$
+מתקיים
+$k_1 + k_2 - i \geq k_2$
+לכן
+$T_2^{k_1 + k_2 - i} = 0$.
+נקבל בסך הכל כי
+$T_1 + T_2$
+נילפוטנטית מאינדקס קטן או שווה
+$k_1 + k_2$.
+
+בלי ההנחה שההעתקות מתחלפות, אפשר לקחת
+\begin{align*}
+T_1 &= \pmat{0 & 1 \\ 0 & 0}, \\
+T_2 &= \pmat{0 & 0 \\ 1 & 0}
+\end{align*}
+כאשר שתיהן נילפוטנטיות מאינדקס 2, אבל
+\[T_1 + T_2 = \pmat{0 & 1 \\ 1 & 0}\]
+הפיכה ולכן אינה נילפוטנטית (אין לה ערך עצמי
+$0$).
+\end{solution}
+
+\begin{exercise}
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטית.
+הראו כי
+$\det\prs{T} = \tr\prs{T} = 0$.
+\end{exercise}
+
+\begin{solution}
+ראינו בהרצאה שיש בסיס
+$B$
+של
+$V$
+כך ש־%
+$\brs{T}_B$
+משולשת עליונה.
+כיוון שכל הערכים העצמיים של
+$T$
+שווים לאפס, נקבל שיש
+$0$
+על האלכסון.
+אז
+$\det\prs{T} = \det\prs{\brs{T}_B} = 0$
+כמכפלת איברי האלכסון וגם
+$\tr\prs{T} = \tr\prs{\brs{T}_B} = 0$
+כסכום איברי האלכסון.
+\end{solution}
+
+\begin{exercise}
+תהי
+$T$
+נילפוטנטית מאינדס
+$k$.
+הראו שהעתקות
+$\prs{\id_V \pm T}$
+הפיכות ומצאו את ההופכיות שלהן.
+\end{exercise}
+
+\begin{solution}
+אנו יודעים כי
+\[\sum_{k \in \mbb{N}} r^k = \frac{1}{1-r}\]
+עבור
+$r < 0$.
+נרצה אם כן שההופכית של
+$\id_V - T$
+תהיה
+$\id_V + T + \ldots + T^{k-1}$.
+אכן,
+\begin{align*}
+\prs{\id_V - T}\prs{\id_V + T + \ldots + T^{k-1}} &= \sum_{i = 0}^{k-1} T^{i} - \sum_{i = 1}^k T^^i
+\\&= \id_V - T^k
+\\&= \id_V - 0
+\\ \text{.} \hphantom{\prs{\id_V - T}\prs{\id_V + T + \ldots + T^{k-1}}} &= \id_V
+\end{align*}
+
+כעת, אם
+$T$
+נילפוטנטית מאינדקס
+$k$
+גם
+$-T$
+נילפוטנטית מאינדקס
+$k$,
+לכן ההופכית של
+$\id_V + T = \id_V - \prs{-T}$
+היא
+\[\text{.} \id_V - T + T^2 - T^3 + \ldots + \prs{-1}^{k-1} T^{k-1}\]
+\end{solution}
+
+\begin{exercise}
+הראו כי
+\begin{align*}
+D \colon \mbb{F}_n\brs{x} &\to \mbb{F}_n\brs{x} \\
+p &\mapsto p'
+\end{align*}
+נילפוטנטית.
+\end{exercise}
+
+\begin{solution}
+לכל
+$p \in \mbb{F}_n\brs{x}$
+מתקיים
+$\deg_{\mbb{F}}\prs{p} \leq n$
+לכן
+$D^{n-1}\prs{p}$
+פולינום קבוע, ולכן
+$D^n p = 0$.
+\end{solution}
+
+\begin{exercise}
+הראו כי
+\begin{align*}
+D \colon \mbb{F}\brs{x} &\to \mbb{F}\brs{x} \\
+p &\mapsto p'
+\end{align*}
+אינה נילפוטנטית.
+\end{exercise}
+
+\begin{solution}
+נניח בשלילה כי
+$D$
+נילפוטנטית מאינדקס
+$k$.
+אז
+$D^k x^{k+1} = 0$,
+אבל
+\begin{align*}
+D^k x^{k+1} &= \prs{k+1} D^{k-1} x^k
+\\&= \ldots
+\\&= \prs{k+1}!
+\\&\neq 0
+\end{align*}
+בסתירה.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+נילפוטנטית מאינדקס
+$k$.
+לכל
+$i \in [k]$
+נסמן
+$n_i \ceq \dim \ker\prs{T^i}$.
+הראו שמתקיים
+\begin{align*}
+\text{.} 0 < n_1 < n_2 < \ldots < n_{k-1} < n_k = n
+\end{align*}
+\end{exercise}
+
+\begin{solution}
+מתקיים
+$\ker\prs{T^k} = \ker\prs{0} = V$
+לכן
+$n_k = \dim\prs{V} = n$.
+אם
+$n_1 = 0$
+נקבל
+$\dim \ker\prs{T} = 0$
+לכן
+$T$
+חד־חד ערכית ולכן הפיכה, בסתירה לנילפוטנטיות.
+
+אם
+$n_i = n_{i+1}$
+עבור
+$i \in [k-1]$
+נקבל
+$\ker\prs{T^i} = \ker\prs{T^{i+1}}$.
+אבל, ראינו שבמקרה זה
+$\ker\prs{T^i} = \ker\prs{T^j}$
+לכל
+$j \geq i$.
+בפרט
+$\ker\prs{T^i} = \ker\prs{T^k} = V$,
+כלומר
+$i = k$
+בסתירה להנחה
+$i \in \brs{k-1}$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+עם בסיס
+$B \prs{v_1, \ldots, v_n}$.
+תהי
+\begin{align*}
+T \colon V &\to V \\
+v_1 &\mapsto 0 \\
+\text{.} \forall i > 1: v_i &\mapsto v_{i-1}
+\end{align*}
+הראו כי
+$T$
+נילפוטנטית מאינדקס
+$n$
+וכיתבו את
+$\brs{T}_B$.
+\end{exercise}
+
+\begin{solution}
+מתקיים
+\[\brs{T}_B = \pmat{0 & 1 & 0 & \ldots & 0 \\ 0 & 0 & 1 & \ddots & \vdots \\ \vdots & \ddots & 0 & \ddots & 0 \\ 0 & 0 & \ddots & 0 & 1 \\ 0 & 0 & \cdots & 0 & 0}\]
+וזאת משולשת עליונה עם
+$0$
+על האלכסון, לכן כפי שתיארנו מקודם
+$T^n = 0$.
+מאידך,
+$T^{n-1}v_n = v_1 \neq 0$
+לכן האינדקס של
+$T$
+שווה
+$n$.
+\end{solution}
+
+\begin{definition}[מטריצה נילפוטנטית]
+תהי
+$A \in M_n\prs{\mbb{F}}$.
+נאמר כי
+$A$
+נילפוטנטית אם
+$L_A$
+נילפוטנטית ונגדיר את אינדקס הנילפוטנטיות של
+$A$
+להיות זה של
+$L_A$.
+\end{definition}
+
+\begin{remark}
+לחלופין,
+$A$
+נילפוטנטית אם יש
+$k \in \mbb{N}_+$
+עבורו
+$A^k = 0$.
+הערך המינימלי של
+$k$
+כזה הוא אינדקס הנילפוטנטיות של
+$A$.
+\end{remark}
+
+\begin{exercise}
+תהי
+$A \in M_n\prs{\mbb{F}}$
+אלכסונית בלוקים
+$\prs{n_1, \ldots, n_k}$
+כאשר כל בלוק
+$A_i$
+נילפוטנטי מאינדקס
+$k_i$.
+הראו כי
+$A$
+נילפוטנטית מאינדקס
+$\max_{i \in [k]} n_i$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$n' \ceq \max_{i \in [k]} n_i$.
+מתקיים
+\[A^{n'} = \pmat{A_1^{n'} & \cdots & 0 \\ 0 & \ddots & 0 \\ 0 & 0 & A_{k}^{n'}} = 0\]
+כי
+$n' \geq n_i$
+לכל
+$i \in [k]$.
+אם
+$n'' < n'$
+יש
+$i \in [k]$
+עבורו
+$n_i > n''$.
+אז
+$A_i^{n''} \neq 0$
+ממינימליות
+$n_i$.
+אז
+$A^{n''} \neq 0$.
+לכן
+$n'$
+אינדקס הנילפוטנטיות של
+$A$.
+\end{solution}
+
+\end{document}

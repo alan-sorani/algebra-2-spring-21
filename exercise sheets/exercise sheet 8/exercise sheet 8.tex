@@ -1,0 +1,118 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 8 \\
+העתקות נורמליות, צמודות לעצמן ואורתוגונליות
+\\
+\small{14.06.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}%1
+\begin{enumerate}
+\item הראו כי עבור
+$A,B \in M_n\prs{\mbb{F}}$
+מתקיים
+\[\text{.} \tr\prs{BA} = \sum_{i=1}^n \sum_{j=1}^n b_{i,j} a_{j,i}\]
+\item הסיקו שעבור
+$A,B \in M_n\prs{\mbb{F}}$
+מתקיים
+\[\text{.} \tr\prs{B^t A} = \sum_{i=1}^n \sum_{j=1}^n a_{i,j} b_{i,j}\]
+\item עבור
+$i,j \in [n]$
+נסמן ב־%
+$E_{i,j}$
+את המטריצה עבורה
+\[\prs{E_{i,j}}_{k,\ell} = \delta_{i,k} \delta_{j,\ell}\]
+(כלומר, שיש בה $1$ במקום ה־%
+$i,j$
+ו־$0$ בכל שאר המקומות).
+נסמן
+\[E \ceq \prs{E_{1,1}, E_{1,2}, \ldots, E_{1,n}, E_{2,1}, \ldots, E_{2,n}, \ldots, E_{n,1}, \ldots, E_{n,n}}\]
+ונקרא לו
+\emph{הבסיס הסטנדרטי של
+$M_n\prs{\mbb{F}}$}.
+הסיקו כי
+\[\tr\prs{B^t A} = \trs{A,B}_E \ceq \trs{\brs{A}_E, \brs{B}_E}\]
+כאשר המכפלה הפנימית בצד ימין היא הסטנדרטית על
+$\mbb{R}^{n^2}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%2
+יהי
+$V = M_n\prs{\mbb{R}}$
+עם המכפלה הפנימית
+$\trs{A,B} = \tr\prs{B^t A}$
+ותהי
+$B \in V$.
+נגדיר אופרטור
+\begin{align*}
+T_B \colon V &\to V \\
+\text{.} A &\mapsto BA
+\end{align*}
+\begin{enumerate}
+\item חשבו את
+$T_B^*$.
+\item עבור אילו מטריצות
+$B$
+ההעתקה
+$T_B$
+נורמלית?
+\item עבור אילו מטריצות
+$B$
+ההעתקה
+$T_B$
+צמודה לעצמה?
+\item עבור אילו מטריצות
+$B$
+ההעתקה
+$T_B$
+אורתוגונלית?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%3
+יהי
+$V = M_2\prs{\mbb{R}}$
+עם המכפלה הפנימית
+$\trs{A,B} = \tr\prs{B^t A}$
+ותהי
+\begin{align*}
+T \colon V &\to V \\
+\text{.} \hphantom{lala} A &\mapsto \pmat{1 & 2 \\ 3 & 4}^{-1} A \pmat{1 & 2 \\ 3 & 4}
+\end{align*}
+
+מצאו את
+$T^*$.
+\end{exercise}
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 5 \\
+בסיס ז'ורדן
+\\
+\small{תאריך הגשה: 18.05.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}%1
+מצאו עבור המטריצות
+$A$
+הבאות מטריצת ז'ורדן
+$J$
+ומטריצה הפיכה
+$P$
+עבורן
+$J = P^{-1} A P$.
+
+\begin{enumerate}
+\item
+$A = \pmat{0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0}$
+\item $A = \pmat{0&1&1&0&1\\0&0&1&1&1\\0 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0}$
+\item $A = \pmat{7&1&-8&-1\\0&3&0&0\\4&2&-5&1\\0&-4&0&-1}$
+\item $A=\pmat{1 & 2 & 2 & 1 \\ 2 & - 1 & -3 & -2 \\ -2 & 3 & 5 & 2 \\ -1 & 2 & 2 & 3}$
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%2
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{C}$,
+תהי
+$T \in \endo_{\mbb{C}}\prs{V}$
+ויהי
+$W \lneq V$
+תת־מרחב
+$T$%
+־שמור.
+הוכיחו כי קיים
+$\lambda \in \mbb{C}$
+ערך עצמי של 
+$T$
+וקיים
+$v \in V \setminus W$
+עבורם מתקיים
+$\prs{T-\lambda \id_V} v \in W$.
+\end{exercise}
+
+\begin{exercise}%3
+\begin{enumerate}
+\item מצאו את צורת ז'ורדן של
+$J_n\prs{\lambda}^{-1}$
+עבור
+$\lambda \in \mbb{C}\setminus\set{0}$
+ועבור
+$n \in \mbb{N}_+$.
+
+\item תהי
+$A \in M_n\prs{\mbb{C}}$
+הפיכה.
+מצאו את צורת ז'ורדן של
+$A^{-1}$.
+
+\item מצאו תנאי הכרחי ומספיק על
+$A \in M_n\prs{\mbb{C}}$
+כך שיתקיים
+$A \sim A^{-1}$.
+\end{enumerate}
+\end{exercise}
+
+\end{document}

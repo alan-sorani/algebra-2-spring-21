@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 10 \\
+תבניות ריבועיות
+\\
+\small{01.07.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+תהי
+$A \in M_n\prs{\mbb{R}}$
+סימטרית. הראו כי יש תת־מרחב
+$W \leq \mbb{R}^n$
+עבורו לכל
+$w \in W \setminus \set{0}$
+מתקיים
+$\trs{Aw, w} > 0$.
+\end{exercise}
+
+\begin{exercise}
+קבעו עבור אילו ערכי
+$a \in \mbb{R}$
+המטריצה
+\[A = \pmat{a & 3 & - 1 \\ 3 & 2 & 0 \\ -1 & 0 & 3} \in M_3\prs{\mbb{R}}\]
+מוגדרת חיובית.
+\end{exercise}
+
+\begin{exercise}
+תהי
+\[\text{.} Q\prs{x,y} = x^2 - 10xy - 3y^2 \in \mbb{R}\brs{x,y}\]
+מצאו בסיס
+$B$
+של
+$\mbb{R}^2$
+עבורו
+$\brs{Q}_B$
+בצורת סילבסטר.
+\end{exercise}
+
+\end{document}

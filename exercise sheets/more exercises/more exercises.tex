@@ -602,4 +602,477 @@ $V$.
 \end{enumerate}
 \end{exercise}
 
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי ממימד
+$n \in \mbb{N}_+$
+ותהי
+\[0 < n_1 < n_2 < \ldots < n_{k-1} < n_k = n\]
+סדרת מספרים.
+
+\begin{enumerate}
+\item נניח כי
+$n_i - n_{i-1}$
+מונוטונית יורדת (לאו דווקא ממש).
+הראו שיש העתקה
+$T \in \endo_{\mbb{F}}\prs{V}$
+עבורה
+$n_i = \dim\ker\prs{T^i}$
+לכל
+$i \in [k]$.
+\item נניח כי יש
+$i \in [k]$
+עבורו
+$n_{i+1} - n_i > n_i - n_{i-1}$.
+הראו שאין העתקה
+$T \in \endo_{\mbb{F}}\prs{V}$
+עבורה
+$n_i = \dim\ker\prs{T^i}$
+לכל
+$i \in [k]$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+\begin{itemize}
+\item במקרה
+$k = 1$
+ניקח בסיס
+$B$
+של
+$V$,
+וראינו כי
+$T \in \endo_{\mbb{F}}\prs{V}$
+עם
+\[\brs{T}_B = J_n\prs{0} \ceq \pmat{0 & 1 & 0 & \ldots & 0 \\ 0 & 0 & 1 & \ddots & \vdots \\ \vdots & \ddots & 0 & \ddots & 0 \\ 0 & 0 & \ddots & 0 & 1 \\ 0 & 0 & \cdots & 0 & 0}\]
+נילפוטנטית מאינדקס
+$n$.
+
+\item  באופן כללי, נרצה להשתמש בדוגמא הנ"ל כדי לבנות את המקרה הכללי.
+אם
+$V = \bigoplus_{j \in \brs{\ell}} V_j$
+ונתונות
+$T_j \in \endo_{\mbb{F}}\prs{V_j}$
+מתקיים
+\[\ker\prs{\bigoplus_{j \in \brs{\ell}} T_j} = \bigoplus_{j \in \brs{\ell}} \ker\prs{T_j}\]
+לכן
+\begin{align*}
+\dim \ker\prs{\prs{\bigoplus_{j \in \brs{\ell}} T_j}^i} &= \dim \ker\prs{\bigoplus_{j \in \brs{\ell}} T_j^i}
+\\ &= \dim \bigoplus_{j \in \brs{\ell}} \ker\prs{T_j^i}
+\\ \text{.} \hphantom{\ker\prs{\prs{\bigoplus_{j \in \brs{\ell}} T_j}^i}} &= \sum_{j \in \brs{\ell}} \dim \ker\prs{T_j^i}
+\end{align*}
+נסמן
+$n_0 = 0$
+וגם
+$m_i = n_i - n_{i-1}$.
+אז
+\begin{align*}
+\text{.} \sum_{i \in [k]} m_i = n_k - 0 = n_k = n
+\end{align*}
+יהי
+$B$
+בסיס ל־%
+$V$
+ותהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+עם
+\begin{align*}
+\brs{T}_B &= \pmat{A_1 & & 0 \\ & \ddots & \\ 0 & & A_\ell}
+\end{align*}
+כאשר
+$m_1 - m_2$
+הבלוקים הראשונים הם
+$\prs{0} = J_1\prs{0}$,
+כאשר
+$m_2 - m_3$
+הבלוקים שאחריהם הם
+$J_2\prs{0}$
+וכאשר באופן כללי יש
+$m_i - m_{i+1}$
+בלוקים שהם
+$J_i\prs{0}$
+לכל
+$i \in [k-1]$
+וגם
+$m_k$
+בלוקים שהם
+$J_k\prs{0}$.
+נקבל שסכום הבלוקים הוא
+\[\sum_{i \in [k-1]} i\prs{m_i - m_{i+1}} + k m_k = \sum_{i \in [k]} m_i = n\]
+לכן באמת אפשר לקחת
+$\brs{T}_B$
+כזאת.
+
+נקבל
+\[V = \bigoplus_{j \in \brs{\ell}} V_j\]
+והעתקות
+$T_j \in \endo_{\mbb{F}}\prs{V_j}$
+עבורן
+$\dim \ker\prs{T_j^i} = \min\set{i, \dim V_j}$
+וגם
+\[\text{.} T = \bigoplus_{j \in \brs{\ell}} T_j\]
+עבור
+$i < k$
+נקבל
+\begin{align*}
+\dim \ker\prs{T^i} &= \sum_{j \in \brs{\ell}} \dim \ker\prs{T_j^i}
+\\&= \sum_{s \in \brs{i}} s\prs{m_s - m_{s+1}} + i\prs{\sum_{s = i+1}^{k-1} \prs{m_s - m_{s+1}} + m_k}
+\\&= \sum_{s \in [i]} m_s - i m_{i+1} + i m_{i+1}
+\\&= \sum_{s \in [i]} n_s - n_{s-1}
+\\&= \sum_{s \in [i]} n_s - \sum_{s = 0}^{i-1} n_s
+\\&= n_i - n_0
+\\&= n_i
+\end{align*}
+כנדרש.
+\end{itemize}
+\item נניח שיש
+$T$
+כזאת.
+מתקיים
+\[n_{i+1} - n_i = \dim \ker\prs{T^{i+1}} - \dim \ker\prs{T^{i}}\]
+לכן יש
+$m_{i+1} \ceq n_{i+1} - n_i$
+וקטורים בלתי־תלויים לינארית
+$v_1, \ldots, v_{m_{i+1}}$
+ב־%
+$\ker\prs{T^{i+1}} \setminus \ker\prs{T^i}$.
+נראה כי
+$T\prs{v_1}, \ldots, T\prs{v_{m_i+1}}$
+בלתי־תלויים לינארית.
+יהי
+\[\sum_{j \in [m_{i+1}]} \alpha_j T\prs{v_j} = 0\]
+צירוף לינארי שלהם ששווה
+$0$.
+אז
+\begin{align*}
+0 &= \sum_{j \in [m_{i+1}]} \alpha_j T\prs{v_j}
+\\&= T\prs{\sum_{j \in [m_{i+1}]} \alpha_j v_j}
+\end{align*}
+כלומר
+\[\sum_{j \in [m_{i+1}]} \alpha_j v_j \in \ker \prs{T} \subseteq \ker\prs{T^i}\]
+בסתירה להנחה על ה־%
+$v_j$.
+כעת,
+$T\prs{v_1}, \ldots, T\prs{v_{m_{i + 1}}} \notin \ker\prs{T^{i-1}}$
+כי אחרת
+\begin{align*}
+T^{i}\prs{v_j} = T^{i-1}\prs{T\prs{v_j}} = 0
+\end{align*}
+בסתירה להנחה.
+לכן
+$T\prs{v_1}, \ldots, T\prs{v_{m_{i+1}}}$
+הם
+$m_{i+1}$
+וקטורים בלתי־תלויים לינארית ב־%
+$\ker\prs{T^i} - \ker\prs{T^{i-1}}$.
+לכן
+$n_i - n_{i-1} \geq m_{i+1} = n_{i+1} - n_i$
+בסתירה לנתון.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+עבור פולינום מתוקן
+$p \in \mbb{F}\brs{x}$
+נכתוב
+\[p\prs{x} = \sum_{i = 0}^n c_i x^i\]
+כאשר
+$c_n = 1$,
+ונגדיר את
+\emph{המטריצה המלווה של
+$p$}
+על ידי
+\[\text{.} C\prs{p} \ceq \pmat{0 & 0 & \cdots & 0 & -c_0 \\ 1 & 0 & \cdots & 0 & -c_1 \\ 0 & 1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \dots & 1 & -c_{n-1}} \in M_n\prs{\mbb{F}}\]
+
+\begin{enumerate}
+\item יהי
+$p \in \mbb{F}\brs{x}$
+ממעלה
+$n$.
+מצאו את הפולינום האופייני ואת הפולינום המינימלי של
+$C\prs{p}$.
+\item הראו שהתנאים הבאים שקולים עבור
+$A \in M_n\prs{\mbb{F}}$.
+\begin{enumerate}[label = (\roman*)]
+\item $A$
+דומה ל־%
+$C\prs{p_A}$.
+\item הפולינום האופייני של
+$A$
+שווה לפולינום המינימלי שלה.
+\item יש וקטור
+$v \in \mbb{F}^n$
+ציקלי עבור
+$A$,
+במובן ש־%
+$\prs{v, Av, \ldots, A^{n-2}v, A^{n-1}v}$
+בסיס של
+$V$.
+\end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+\begin{itemize}
+\item
+מתקיים
+\begin{align*}
+\text{.} p_{C\prs{p}} &= \det\prs{I - xC\prs{p}}
+= \det\pmat{x & 0 & \cdots & 0 & c_0 \\ -1 & x & \cdots & 0 & c_1 \\ 0 & -1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & \dots & -1 & x + c_{n-1}}
+\end{align*}
+ניעזר בכך שהטרמיננטה אינווריאנטית תחת הוספת כפולה של שורה לשורה אחרת.
+נוסיף את השורה האחרונה כפול
+$x$
+לזאת שלפניה. לאחר מכן נוסיף את השורה ה־%
+$n-1$
+כפול
+$x$
+לזאת שלפניה ונמשיך כך עד שנקבל מטריצה
+\begin{align*}
+\pmat{0 & 0 & \cdots & 0 & y \\ -1 & 0 & \cdots & 0 & * \\ 0 & -1 & \cdots & 0 & * \\ \vdots & \vdots & \ddots & \ddots & \vdots \\ 0 & 0 & \dots & -1 & *}
+\end{align*}
+כאשר
+\[\text{.} y = a_0 + x\prs{a_1 + x\prs{a_2 + x\prs{\ldots \prs{a_{n-2} + x\prs{a_{n-1} + x}} \ldots}}} = \sum_{i=0}^n c_i x^i = f\]
+אז
+\[\text{.} p_{C\prs{p}} = \prs{-1}^{n-1} \det \pmat{-1 & x & \cdots & 0 \\ 0 & -1 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & - 1} = \prs{-1}^{n-1} \prs{-1}^{n-1} f = f\]
+\item
+יהי
+$g \in \mbb{F}_{n-1}\brs{x}$
+ונכתוב
+\[\text{.} g\prs{x} = \sum_{i = 0}^{n-1} b_i x^i\]
+אז
+\begin{align*}
+g\prs{C\prs{p}}\prs{e_1} &= \sum_{i = 0}^{n-1} b_i C\prs{p}^i e_1
+\\&= \sum_{i=0}^{n-1} b_i e_{1+i}
+\end{align*}
+וביטוי זה שונה מאפס כאשר
+$g \neq 0$
+כי אז יש
+$b_i \neq 0$
+עבור
+$i$
+כלשהו.
+
+לכן
+$\deg\prs{m_{C\prs{p}}} \geq n$
+ולכן
+$m_{C\prs{p}} = p_{C\prs{p}}$.
+\end{itemize}
+
+\item
+\begin{description}
+\item[1 גורר 2:]
+נניח כי
+$A$
+דומה ל־%
+$C\prs{p_A}$.
+ראינו כי
+$p_{C\prs{p_A}} = m_{C\prs{p_A}}$
+ונקבל
+\[p_A = p_{C\prs{p_A}} = m_{C\prs{p_A}} = m_A\]
+כנדרש.
+
+
+\item[2 גורר 3:]
+כיוון שהפולינום המינימלי של
+$A$
+שווה לפולינום האופייני שלה, הוא מדרגה
+$n$.
+לכן לכל
+$v \in V \setminus \set{0}$
+הקבוצה הסדורה
+$\prs{v, Av, \ldots, A^{n-1} v}$
+בלתי־תלויה לינארית. כיוון שהיא מגודל
+$n$
+היא גם בסיס.
+
+\item[3 גורר 1:]
+יהי
+\[B \ceq \prs{v, Av, \ldots, A^{n-1} v}\]
+הבסיס הנתון.
+נרצה להראות כי
+\[\text{.} \brs{L_A}_B = C\prs{p_A}\]
+ניתן לראות כי
+$n-1$
+העמודות הראשונות בשתי המטריצות שוות, מהגדרת
+$B$.
+כעת נכתוב
+\[p_A\prs{x} = \sum_{i=0}^n c_i x^i\]
+ואז מקיילי־המילטון
+\begin{align*}
+\text{.} A^n = - \sum_{i=0}^{n-1} c_i A^i
+\end{align*}
+לכן
+\begin{align*}
+L_A \prs{A^{n-1} v} &= A^n v = - \sum_{i=0}^{n-1} c_i A^i v
+\end{align*}
+ולכן העמודה ה־%
+$n$
+של
+$\brs{L_A}_B$
+היא
+$\pmat{-c_0 \\ \vdots \\ - c_{n-1}}$,
+כנדרש.
+\end{description}
+\end{enumerate}
+\end{solution}
+
+\begin{definition}[פולינום מינימלי של וקטור]
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+ויהי
+$v \in V$.
+\emph{הפולינום המינימלי של
+$T$
+ביחס ל־%
+$v$}
+הוא הפולינום המתוקן
+$m_{T,v}$
+מהמעלה הנמוכה ביותר עבורו
+\[\text{.} m_{T,v}\prs{T}\prs{v} = 0\]
+\end{definition}
+
+\begin{exercise}
+מטריצה מהצורה
+\[\pmat{0 & 0 & \cdots & 0 & -c_0 \\ 1 & 0 & \cdots & 0 & -c_1 \\ 0 & 1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \dots & 1 & -c_{n-1}} \in M_n\prs{\mbb{F}}\]
+נקראת
+\emph{בלוק רציונלי}.
+מטריצת בלוקים שכל בלוקיה הם בלוקים רציונליים נקראת
+\emph{מטריצה רציונלית קנונית}.
+
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$.
+הראו שקיים בסיס
+$B$
+של
+$V$
+עבורו
+$\brs{T}_B$
+מטריצה רציונלית קנונית.
+\end{exercise}
+
+\begin{solution}
+עבור וקטור
+$v \in V$
+נסמן
+\begin{align*}
+d &\ceq \deg_{\mbb{F}} m_{T,v}\prs{x} \\
+B_v &\ceq \prs{v, Tv, T^2 v, \ldots, T^{d-1} v} \\
+\text{.} \trs{v} &\ceq \spn B_v
+\end{align*}
+מהגדרת
+$m_{T,v}$
+נקבל כי
+$B_v$
+בלתי־תלויה לינארית.
+נקבל מהתרגיל הקודם כי
+$\brs{\rest{T}{\trs{v}}}_{B_v}$
+בלוק רציונלי לכל
+$v \in V$.
+
+לכן די למצוא וקטורים
+$v_1, \ldots, v_k \in V$
+עבורם
+\[\text{.} V = \bigoplus_{i \in [k]} \trs{v_i}\]
+עבור שרשרת ז'ורדן מקסימלית
+\[\prs{\prs{T-\lambda \id_V}^{k-1} v, \ldots, \prs{T-\lambda\id_V} v, v}\]
+מתקיים
+\[\text{.} m_{T,v}\prs{x} = \prs{x-\lambda}^k\]
+אז
+\[B_v = \prs{v, Tv, T^2v, \ldots, T^{k-1} v}\]
+בלתי־תלויה לינארית.
+ניקח
+\[B = B_{v_1} * \ldots * B_{v_k}\]
+עבור
+$\prs{v_1, \ldots, v_k}$
+אוסף הוקטורים בראש שרשראות ז'ורדן המקסימליות של
+$T$
+(לפי בסיס כלשהו).
+אז
+\[V = \bigoplus_{i \in [k]} \trs{v_i}\]
+כמסקנה ממשפט ז'ורדן ונקבל כי
+$\brs{T}_B$
+מטריצה רציונלית קנונית.
+\end{solution}
+
+\begin{exercise}[זהות הפולריזציה]
+יהי
+$V$
+מרחב מכפלה פנימית מעל
+$\mbb{R}$.
+הראו שלכל
+$u,v \in V$
+מתקיים
+\[\text{.} \trs{u,v} = \frac{\norm{u+v}^2 - \norm{u-v}^2}{4}\]
+\end{exercise}
+
+\begin{solution}
+עבור
+$u,v$
+מתקיים
+\begin{align*}
+\frac{\norm{u+v}^2 - \norm{u-v}^2}{4}
+&=
+\frac{\trs{u+v,u+v} - \trs{u-v,u-v}}{4}
+\\&=
+\frac{\trs{u,u}+\trs{u,v}+\trs{v,u}+\trs{v,v} - \prs{\trs{u,u} - \trs{u,v} - \trs{v,u} + \trs{v,v}}}{4}
+\\&=
+\frac{2\trs{u,v} + 2 \trs{v,u}}{4}
+\\&= \frac{4 \trs{u,v}}{4}
+\\ \text{.} \hphantom{\frac{\norm{u+v}^2 - \norm{u-v}^2}{4}} &= \trs{u,v}
+\end{align*}
+\end{solution}
+
+\begin{exercise}
+תהי
+$g$
+תבנית בילינארית.
+הראו כי יש
+$w \in V$
+עבורו
+$g\prs{w,w} = 0$,
+ אם ורק אם יש
+$n_0 > 0$
+בצורת סילבסטר של
+$g$.
+\end{exercise}
+
+\begin{solution}
+יהי
+$C = \prs{u_1, \ldots, u_n}$
+בסיס של
+$V$
+עבורו
+$\brs{g}_C$
+בצורת סילבסטר ונניח כי
+$n_0 > 0$.
+אז
+$g\prs{u_n, u_n} = 0$.
+
+להיפך, נניח כי יש
+$w \in V$
+עבורו
+$g\prs{w,w} = 0$.
+נסמן
+$w_1 = w$
+ונשלים לבסיס אורתונורמלי
+$B = \prs{w_1, \ldots, w_n}$.
+ננרמל על ידי
+\[\tilde{u}_i \ceq \fcases{\frac{w_i}{\sqrt{g\prs{w_i,w_i}}} & g\prs{w_i, w_i} \neq 0 \\ w_i & g\prs{w_i, w_i} = 0}\]
+וניקח שינוי סדר
+$u_i$
+עבורו
+$u_n = \tilde{u}_1$
+ועבורו בבסיס
+$C = \prs{u_1, \ldots, u_n}$
+המטריצה
+$\brs{g}_C$
+היא בצורת סילבסטר.
+\end{solution}
+
 \end{document}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.7) (preloaded format=xelatex 2020.8.12)  12 APR 2021 12:38
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.7) (preloaded format=xelatex 2020.8.12)  21 APR 2021 16:32
 entering extended mode
 **"./algebra 2 recitation 3.tex"
 ("algebra 2 recitation 3.tex"
@@ -1851,30 +1851,33 @@ Package hyperref Info: bookmark level for unknown remark defaults to 0 on input
 Missing character: There is no ‎ in font Open Sans Hebrew Bold/OT:script=hebr;l
 anguage=dflt;!
 Package hyperref Info: bookmark level for unknown exercise defaults to 0 on inp
-ut line 81.
-Package hyperref Info: bookmark level for unknown solution defaults to 0 on inp
 ut line 99.
+Package hyperref Info: bookmark level for unknown solution defaults to 0 on inp
+ut line 117.
  [1
 
-]
-Missing character: There is no ‎ in font Open Sans Hebrew Bold/OT:script=hebr;l
-anguage=dflt;!
- [2]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 316.
-Package hyperref Info: bookmark level for unknown fact defaults to 0 on input l
-ine 348.
-Missing character: There is no ‎ in font Open Sans Hebrew Bold/OT:script=hebr;l
-anguage=dflt;!
+] [2]
+Overfull \hbox (10.80739pt too wide) detected at line 302
+[]
+ []
 
-Overfull \hbox (16.38728pt too wide) in paragraph at lines 447--460
+Missing character: There is no ‎ in font Open Sans Hebrew Bold/OT:script=hebr;l
+anguage=dflt;!
+Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
+t line 388.
+Package hyperref Info: bookmark level for unknown fact defaults to 0 on input l
+ine 420.
+Missing character: There is no ‎ in font Open Sans Hebrew Bold/OT:script=hebr;l
+anguage=dflt;!
+[3]
+Overfull \hbox (16.38728pt too wide) in paragraph at lines 519--532
 [][]\TU/OpenSansHebrew(0)/m/n/10 נשלים את $\OML/cmm/m/it/10 B [][]\OT1/cmr/m/n/
 10 = []$ \TU/OpenSansHebrew(0)/m/n/10 לבסיס $\OML/cmm/m/it/10 C \OT1/cmr/m/n/10
  = []$ \TU/OpenSansHebrew(0)/m/n/10 של $\U/msb/m/n/10 R[]$ \TU/OpenSansHebrew(0
 )/m/n/10 ואז $\OML/cmm/m/it/10 W [][]\OT1/cmr/m/n/10 = [] []$[]
  []
 
-[3] [4]
+[4] [5]
 \tf@thm=\write6
 \openout6 = `"algebra 2 recitation 3.thm"'.
 
@@ -1928,17 +1931,17 @@ braces):
 >  {english/babelname}  =>  {american}
 >  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
 >  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
- [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 712.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 712.
+ [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 784.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 784.
  ("algebra 2 recitation 3.aux" Setting \if@calendar@hebrew
 Setting \if@calendar@hebrew)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 712.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 712.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 784.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 784.
 Package rerunfilecheck Info: File `"algebra 2 recitation 3".out' has not change
 d.
 (rerunfilecheck)             Checksum: <no file>.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 712.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 784.
  ) 
 Here is how much of TeX's memory you used:
  35078 strings out of 414493
@@ -1949,4 +1952,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  68i,19n,86p,1298b,1028s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on algebra 2 recitation 3.pdf (5 pages).
+Output written on algebra 2 recitation 3.pdf (6 pages).

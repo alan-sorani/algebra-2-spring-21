@@ -1,0 +1,80 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 9 \\
+פירוק לערכים סינגולריים, והפירוק הפולארי
+\\
+\small{22.06.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{R}$
+ותהי
+$T \in \endo_{\mbb{R}}\prs{V}$.
+הראו שקיימת איזומטריה
+$S \in \endo_{\mbb{F}}\prs{V}$
+עבורה
+\[\text{.} T = \sqrt{T T^*} S\]
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי מעל
+$\mbb{R}$
+ותהי
+$T \in \endo_{\mbb{R}}\prs{V}$.
+יהיו
+$s$
+ו־%
+$S$
+הערכים הסינגולריים הכי קטן והכי גדול של
+$T$,
+בהתאמה.
+\begin{enumerate}
+\item הראו כי
+$s \norm{v} \leq \norm{Tv} \leq S\norm{v}$
+לכל
+$V$.
+\item הראו כי
+$s \leq \abs{\lambda} \leq S$
+לכל ערך עצמי
+$\lambda$
+של
+$T$.
+\end{enumerate}
+\end{exercise}
+
+\end{document}

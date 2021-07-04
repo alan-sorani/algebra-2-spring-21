@@ -1,0 +1,94 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 7 \\
+מכפלות פנימיות וגרם־שמידט
+\\
+\small{תאריך הגשה: 02.06.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}%1
+יהי
+$V$
+מרחב מכפלה פנימית ותהי
+$T \colon V \to V$
+לינארית. הוכיחו:
+\begin{enumerate}
+\item אם
+$T^* T = 0$
+אז
+$T = 0$.
+\item אם
+$T, T^*$
+מתחלפות,
+$\ker T = \ker T^*$.
+\item $\prs{T^*}^{-1} = \prs{T^{-1}}^*$.
+\item $\ker \prs{T^*} = \prs{\im\prs{T}}^\perp$.
+\item $\im \prs{T^*} = \prs{\ker\prs{T}}^\perp$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+על
+$\mbb{R}_3\brs{x}$
+נגדיר מכפלה פנימית לפי
+\[\text{.} \trs{p,q} = \int_0^1 p\prs{x} q\prs{x} \diff x\]
+מצאו בסיס אורתונורמלי של
+$\mbb{R}_3\brs{x}$
+לפיו להעתקת הגזירה יש צורה משולשת עליונה.
+\end{exercise}
+
+\begin{exercise}%3
+יהי
+\[\text{.} W = \spn\prs{\pmat{1\\2\\3}, \pmat{4\\5\\6}} \leq \mbb{R}^3\]
+מצאו את המרחק של
+$\pmat{7\\8\\9}$
+מ־%
+$W$.
+\end{exercise}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית עם בסיס אורתונורמלי
+$\prs{v_1, \ldots, v_n}$,
+ויהיו
+$u_1, \ldots, u_n \in V$
+עבורם
+\[\text{.} \forall i \in \brs{n} \colon \norm{v_i - u_i} < \frac{1}{\sqrt{n}}\]
+הוכיחו כי
+$\prs{u_1, \ldots, u_n}$
+בסיס של
+$V$.
+\end{exercise}
+
+\end{document}

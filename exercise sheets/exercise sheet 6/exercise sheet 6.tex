@@ -1,0 +1,160 @@
+\documentclass[a4paper,10pt,twoside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%
+% Styling %
+%%%%%%%%%%%%
+
+\usepackage{enumitem}
+
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+%%%%%%%%%%%%%
+% Counters  %
+%%%%%%%%%%%%%
+
+\setcounter{section}{1}
+
+%%%%%%%%%%
+% Title  %
+%%%%%%%%%%
+\title{
+אלגברה ב' - גיליון תרגילי בית 6 \\
+הפולינום המינימלי וההעתקה המשוכלפת
+\\
+\small{תאריך הגשה: 25.05.2021}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{exercise}
+עבור פולינום מתוקן
+$p \in \mbb{F}\brs{x}$
+נכתוב
+\[p\prs{x} = \sum_{i = 0}^n c_i x^i\]
+כאשר
+$c_n = 1$,
+ונגדיר את
+\emph{המטריצה המלווה של
+$p$}
+על ידי
+\[\text{.} C\prs{p} \ceq \pmat{0 & 0 & \cdots & 0 & -c_0 \\ 1 & 0 & \cdots & 0 & -c_1 \\ 0 & 1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \dots & 1 & -c_{n-1}} \in M_n\prs{\mbb{F}}\]
+נתון כי עבור
+$p \in \mbb{F}\brs{x}$
+הפולינומים האופייני והמינימלי של
+$C\prs{p}$
+שווים ל־%
+$p$
+(הוכחה לכך מופיעה ברשימות תרגול 7).
+
+\begin{enumerate}
+\item הראו שהתנאים הבאים שקולים עבור
+$A \in M_n\prs{\mbb{F}}$.
+
+מותר להניח כי
+$\mbb{F}$
+סגור אלגברית, למרות שזה לא נחוץ.
+
+\begin{enumerate}[label = (\roman*)]
+\item $A$
+דומה ל־%
+$C\prs{p_A}$.
+\item הפולינום האופייני של
+$A$
+שווה לפולינום המינימלי שלה.
+\item יש וקטור
+$v \in \mbb{F}^n$
+ציקלי עבור
+$A$,
+במובן ש־%
+$\prs{v, Av, \ldots, A^{n-2}v, A^{n-1}v}$
+בסיס של
+$V$.
+\end{enumerate}
+\item עבור
+$T \in \endo_{\mbb{F}}\prs{V}$
+ו־%
+$v \in V$
+נגדיר את
+\emph{הפולינום המינימלי של
+$T$
+ביחס ל־%
+$v$}
+להיות הפולינום המתוקן
+$m_{T,v}$
+מהמעלה הנמוכה ביותר עבורו
+$m_{T,v}\prs{T}\prs{v} = 0$.
+\\
+הראו כי
+$\deg_{\mbb{F}}m_{T,v} \geq k$
+אם ורק אם
+\[ \prs{v, Tv, \ldots, T^{k-1} v}\]
+בלתי־תלויה לינארית.
+
+\item
+מטריצה מהצורה
+\[\pmat{0 & 0 & \cdots & 0 & -c_0 \\ 1 & 0 & \cdots & 0 & -c_1 \\ 0 & 1 & \cdots & 0 & -c_2 \\ \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & \dots & 1 & -c_{n-1}} \in M_n\prs{\mbb{F}}\]
+נקראת
+\emph{בלוק רציונלי}.
+מטריצת בלוקים שכל בלוקיה הם בלוקים רציונליים נקראת
+\emph{מטריצה רציונלית קנונית}.
+
+תהי
+$T \in \endo_{\mbb{F}}\prs{V}$
+עבור
+$\mbb{F}$
+סגור אלגברית.
+הראו שקיים בסיס
+$B$
+של
+$V$
+עבורו
+$\brs{T}_B$
+מטריצה רציונלית קנונית.
+
+\emph{רמז:}
+השתמשו בבסיס ז'ורדן כדי לבנות תת־מרחבים מהצורה
+\[\spn\prs{v, Av, \ldots, A^{n-1}}\]
+וכך ש־%
+$V$
+הוא הסכום הישר שלהם.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}%2
+עבור
+$T \in \hom_{\mbb{F}}\prs{V,W}$
+נגדיר
+\begin{align*}
+T^t \colon W^* &\to V^* \\
+\text{.} \hspace{3em} f &\mapsto f \circ T
+\end{align*}
+
+\begin{enumerate}
+\item הראו כי עבור
+$T \in \endo_{\mbb{F}}\prs{V}$
+מתקיים
+$T^t \sim T$.
+\item 
+הראו כי
+עבור
+$A \in M_{n}\prs{\mbb{F}}$
+מתקיים
+$L_{A^t} \sim R_A$
+וגם
+$L_A^t \sim L_{A^t}$.
+הסיקו כי מתקיים
+\[\text{.} L_A \sim L_{A^t} \sim R_A \sim R_{A^t}\]
+\end{enumerate}
+\end{exercise}
+
+\end{document}

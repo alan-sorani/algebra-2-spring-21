@@ -1,0 +1,630 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+\usepackage{ytableau}
+
+\usepackage{graphicx, txfonts}
+
+\newcommand{\heart}{\ensuremath\varheartsuit}
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 13 \textenglish{---}
+קריטריון סילבסטר
+ותרגילים ממבחנים
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{קריטריון סילבסטר}
+
+\begin{theorem}[קריטריון סילבסטר]
+$A \in M_n\prs{\mbb{R}}$
+מוגדרת חיובית אם ורק אם
+\[\Delta_i \ceq \det \pmat{a_{1,1} & \cdots & a_{1,i} \\ \vdots & \ddots & \vdots \\ a_{i,1} & a_{i,i}} > 0\]
+לכל
+$i \in [n]$.
+\end{theorem}
+
+\begin{definition}[מינור ראשי]
+$\Delta_i$
+נקרא
+\emph{המינור הראשי ה־%
+$i$}.
+\end{definition}
+
+\begin{exercise}
+מצאו תנאי על המינורים של
+$A \in M_n\prs{\mbb{R}}$
+על מנת ש־%
+$A$
+תהיה מוגדרת שלילית.
+\end{exercise}
+
+\begin{solution}
+נרצה וריאציה על קריטריון סילבסטר עבור מטריצות מוגדרות שלילית.
+נשים לב כי
+$A$
+מוגדרת שלילית אם ורק אם
+$-A$
+מוגדרת חיובית, כיוון ש־%
+$\trs{Av, v} < 0$
+אם ורק אם
+$\trs{-Av, v} = -\trs{A,v} > 0$.
+נסמן ב־%
+$\Delta'_i$
+את המינור הראשי ה־%
+$i$
+של
+$-A$.
+אז
+\[\text{.} \Delta_i' = \det\prs{-\pmat{a_{1,1} & \cdots & a_{1,i} \\ \vdots & \ddots & \vdots \\ a_{i,1} & \cdots & a_{i,i}}} = \prs{-1}^i \Delta_i\]
+כעת,
+$A$
+מוגדרת שלילית אם ורק אם
+$-A$
+מוגדרת חיובית, אם ורק אם
+$\Delta_i' > 0$
+לכל
+$i \in \brs{n}$
+אם ורק אם
+$\prs{-1}^i \Delta_i > 0$
+לכל
+$i \in \brs{n}$.
+\end{solution}
+
+\begin{exercise}
+הראו כי
+\[A \ceq \pmat{-1 & 1 & 0 & 1 \\ 1 & -3 & 0 & 0 \\ 0 & 0 & -1 & -1 \\ 1 & 0 & -1 & -3}\]
+מוגדרת שלילית.
+\end{exercise}
+
+\section{תרגילים ממבחנים}
+
+\begin{exercise}%1
+\begin{enumerate}
+\item הראו כי ל־%
+$A \ceq \pmat{0&1\\1&1}, B \ceq \pmat{1&1\\1&0} \in M_2\prs{\mbb{Z}_2}$
+אין צורת ז'ורדן ב־%
+$M_2\prs{\mbb{Z}_2}$.
+
+\item הראו כי כל מטריצה אחרת ב־%
+$M_2\prs{\mbb{Z}_2}$
+דומה למטריצת ז'ורדן.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+מתקיים
+\begin{align*}
+\det\prs{A}, \det\prs{B} &= -1 = 1 \\
+\text{.} \tr\prs{A}, \tr\prs{B} &=  1
+\end{align*}
+מהשוויון הראשון הערך העצמי היחיד של
+$A,B$
+הוא
+$1$.
+אז אם יש צורת ז'ורדן היא
+$\pmat{1 & 0 \\ 0 & 1}$
+או
+$\pmat{1 & 1 \\ 0 & 1}$,
+אך בשני המקרים האלו העקבה היא
+$2 = 0$,
+בסתירה.
+
+\item
+תהי
+$C \in M_2\prs{\mbb{Z}_2} \setminus \set{A,B}$.
+אם
+$\tr\prs{C} = 1$
+נקבל
+\[\text{.} C \in \set{\pmat{0 & 1 \\ 0 & 1}, \pmat{0 & 0 \\ 1 & 1}, \pmat{1 & 1 \\ 0 & 0}, \pmat{1 & 0 \\ 1 & 0}, \pmat{1 & 0 \\ 0 & 0}, \pmat{0 & 0 \\ 0 & 1}}\]
+אז
+\begin{enumerate}
+\item אם
+$C = \pmat{0 & 0 \\ 1 & 1}$
+נכתוב
+$B = \pmat{e_1 + e_2, e_2}$
+ואז
+\begin{align*}
+C \prs{e_1 + e_2} &= C e_1 + C e_2 = e_2 + e_2 = 0 \\
+C e_2 &= e_2
+\end{align*}
+לכן
+$B$
+בסיס ז'ורדן של
+$C$
+וצורת ז'ורדן לפיו היא
+$\pmat{0 & 0 \\ 0 & 1}$.
+
+\item אם
+$C = \pmat{0 & 1 \\ 0 & 1}$
+היא המטריצה המשוחלפת של
+המטריצה הקודמת, ולכן לפי תרגיל משיעורי הבית יש לה צורת ז'ורדן והיא זהה לזאת הקודמת.
+
+\item אם
+$C = \pmat{1 & 1 \\ 0 & 0}$
+נכתוב
+$B \ceq \pmat{e_1 + e_2, e_1}$
+ואז
+$B$
+בסיס ז'ורדן כמו במקרה הראשון.
+
+\item אם
+$C = \pmat{1 & 0 \\ 1 & 0}$
+היא המטריצה המשוחלפת של המטריצה הקודמת, ולכן לפי תרגיל משיעורי הבית יש לה צורת ז'ורדן והיא זהה לזאת הקודמת.
+
+\item שאר המטריצות כבר בצורת ז'ורדן.
+\end{enumerate}
+
+אם
+$\tr\prs{C} = 0$
+נקבל
+\[\text{.} C \in \set{\pmat{0 & 1 \\ 1 & 0}, \pmat{1 & 1 \\ 1 & 1}, \pmat{0 & 0 \\ 1 & 0}, \pmat{1 & 0 \\ 1 & 1}, \pmat{0 & 1 \\ 0 & 0}, \pmat{1 & 1 \\ 0 & 1}, \pmat{0 & 0 \\ 0 & 0}, \pmat{1 & 0 \\ 0 & 1}}\]
+אז
+\begin{enumerate}
+\item אם
+$C = \pmat{0 & 1 \\ 1 & 0}$
+נכתוב
+$B \ceq \prs{e_1 + e_2, e_1}$
+ואז
+\begin{align*}
+C\prs{e_1 + e_2} &= C e_1 + C e_2 = e_2 + e_1 = e_1 + e_2 \\
+C e_1 &= e_2 = e_1 + e_2 - e_1 = \prs{e_1 + e_2} + e_1
+\end{align*}
+ולכן
+$B$
+בסיס ז'ורדן וצורת ז'ורדן היא
+$\pmat{1 & 1 \\ 0 & 1}$.
+
+\item אם
+$C = \pmat{1 & 1 \\ 1 & 1}$
+נכתוב
+$B = \pmat{e_1 + e_2, e_1}$
+ואז
+\begin{align*}
+C \prs{e_1 + e_2} &= 2\prs{e_1 + e_2} = 0 \\
+C e_1 &= e_1 + e_2
+\end{align*}
+ולכן
+$B$
+בסיס ז'ורדן וצורת ז'ורדן היא
+$\pmat{1 & 1 \\ 0 & 1}$.
+
+\item אם
+$C = \pmat{0 & 0 \\ 1 & 0}$
+או
+$C = \pmat{1 & 0 \\ 1 & 1}$
+היא מטריצה משוכלפת של מטריצה ז'ורדן ולכן יש לה צורת ז'ורדן עם בסיס
+$B = \pmat{e_2, e_1}$.
+
+\item שאר האופציות כבר בצורת ז'ורדן.
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}%2
+יהי
+$V$
+מרחב מכפלה פנימית מרוכב סוף־מימדי.
+
+\begin{enumerate}
+\item
+
+תהי
+$T \in \endo_{\mbb{C}}\prs{V}$.
+הראו ש־%
+$T$
+נורמלית אם ורק אם יש פולינום
+$p \in \mbb{C}\brs{x}$
+עבורו
+$T^* = p\prs{T}$.
+
+היעזרו בעובדה הבאה.
+
+\begin{theorem}[אינטרפולציית לגרנג']
+תהיינה
+$x_1, \ldots, x_k, y_1, \ldots, y_k \in \mbb{C}$.
+קיים פולינום
+$p \in \mbb{C}\brs{x}$
+ממעלה
+$k+1$
+המקיים
+$p\prs{x_i} = y_i$
+לכל
+$i \in \brs{k}$.
+\end{theorem}
+
+\item
+
+הוכיחו כי
+$T_1, T_2$
+מתחלפות אם ורק אם
+$T_1^*, T_2$
+מתחלפות.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item אם יש
+$p \in \mbb{C}\brs{x}$
+עבורו
+$T^* = p\prs{T}$
+אז
+$T$
+נורמלית כי העתקה מתחלפת עם פולינום בה.
+
+בכיוון השני, נניח כי
+$T$
+נורמלית.
+אז יש בסיס
+$B$
+אורתונורמלי עבורו
+\[\brs{T}_B = \mrm{diag}\prs{\lambda_1, \ldots, \lambda_n}\]
+עבור ערכים
+$\lambda_i \in \mbb{C}$.
+כיוון ש־%
+$B$
+אורתונורמלי מתקיים
+\[\text{.}\brs{T^*}_B = \brs{T}_B^* = \mrm{diag}\prs{\bar{\lambda}_1, \ldots, \bar{\lambda}_n}\]
+מאינטרפולציית לגרנג', קיים פולינום
+$p \in \mbb{C}\brs{x}$
+עבורו
+$p\prs{\lambda_i} = \bar{\lambda}_i$
+אז
+\[\brs{T^*}_B = p\prs{\brs{T}_B} = \brs{p\prs{T}}_B\]
+ולכן
+$T^* = p\prs{T}$,
+כנדרש.
+
+\item נניח כי
+$T_1 T_2 = T_2 T_1$
+ונראה כי
+$T_1^* T_2 = T_2 T_1^*$.
+הכיוון השני ינבע על ידי שימוש באותה תכונה עם
+$T_1^*$
+במקום
+$T_1$.
+
+$T_1$
+נורמלית ולכן
+$T_1 = p\prs{T_1}$
+עבור \emph{איזשהו}
+$p \in \mbb{C}\brs{x}$.
+נכתוב
+$p\prs{x} = \sum_{i \in [d]} a_i x^i$
+ואז
+\begin{align*}
+T_1^* T_2 &= p\prs{T_1} T_2
+\\&= \sum_{i \in [d]} a_i T_1^i T_2
+\\&= \sum_{i \in [d]} a_i T_2 T_1^i
+\\&= T_2 \sum_{i \in [d]} a_i T_1^i
+\\&= T_2 p\prs{T_1}
+\\&= T_2 T_1^*
+\end{align*}
+כנדרש.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}%3
+יהי
+$V$
+מרחב מכפלה פנימית מרוכב ממימד סופי ותהיינה
+$S,T \in \endo_{\mbb{C}}\prs{V}$
+יוניטריות.
+הוכיחו או מצאו דוגמא נגדית עבור כל אחד מהסעיפים הבאים.
+
+\begin{enumerate}
+\item $S+T$
+נורמלית.
+\item $S \circ T$
+נורמלית.
+\item אם
+$S,T$
+מתחלפות אז
+$S+T$
+נורמלית.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item מתקיים
+\begin{align*}
+\prs{S+T}^* \circ \prs{S+T} &= \prs{S^* + T^*} \circ \prs{S+T}
+\\&=
+S^* \circ S + S^* \circ T + T^* \circ S + T^* \circ T
+\\&=
+2 \id_V + S^* \circ T + T^* \circ S
+\end{align*}
+וגם
+\begin{align*}
+\prs{S+T} \circ \prs{S+T}^* &= \prs{S + T} \circ \prs{S^* + T^*}
+\\&= S \circ S^* + S \circ T^* + T \circ S^* + T \circ T^*
+\\ \hphantom{\prs{S+T} \circ \prs{S+T}^*} &= 2\id_V + S \circ T^* + T \circ S^*
+\end{align*}
+לכן נרצה לדעת האם בהכרח
+\[\text{.} S^* \circ T + T^* \circ S = S \circ T^* + T \circ S^*\]
+
+כדי למצוא דוגמא נגדית, נצטרך שלפחות אחת מבין
+$S,T$
+לא תהיה צמודה לעצמה.
+ניקח
+\begin{align*}
+S \colon \mbb{C}^2 &\to \mbb{C}^2 \\
+\pmat{x \\ y} &\mapsto \pmat{y \\ x}
+\end{align*}
+וכן
+\begin{align*}
+T \colon \mbb{C}^2 &\to \mbb{C}^2 \\
+\text{.} \pmat{x \\ y} &\mapsto \pmat{\frac{x+y}{\sqrt{2}} \\ \frac{x-y}{\sqrt{2}}}
+\end{align*}
+$E$
+בסיס אורתונורמלי ולכן
+\begin{align*}
+\brs{S^*}_E &= \brs{S}_E^t = \pmat{0 & 1 \\ 1 & 0}^t = \pmat{0 & 1 \\ 1 & 0} = \brs{S}_E
+\end{align*}
+וגם
+\begin{align*}
+\text{.} \brs{T^*}_E &= \brs{T}_E^t = \pmat{1/\sqrt{2} & 1/\sqrt{2} \\ }^t = \pmat{ 0 & 1 \\ 0 & 1}
+\end{align*}
+כעת
+\begin{align*}
+\brs{S^* \circ T + T^* \circ S}_E &=
+\brs{S^*}_E \brs{T}_E + \brs{T^*}_E \brs{S}_E
+\\&=
+\pmat{0 & 1 \\ 1 & 0} \pmat{0 & 0 \\ 1 & 1} + \pmat{0 & 1 \\ 0 & 1} \pmat{0 & 1 \\ 1 & 0}
+\\&=
+\pmat{1 & 1 \\ 0 & 0} + \pmat{1 & 0 \\ 1 & 0}
+\end{align*}
+אבל
+\begin{align*}
+\pmat{S \circ T^* + T \circ S^*}_E &= \brs{S}_E \brs{T^*}_E + \brs{T}_E \brs{S^*}_E
+\\&= \pmat{0 & 1 \\ 1 & 0} \pmat{0 & 1 \\ 0 & 1} + \pmat{0 & 0 \\ 1 & 1} \pmat{0 & 1 \\ 1 & 0}
+\\&= \pmat{0 & 0 \\ 1 & 1} + \pmat{1 & 0 \\ 1 & 0}
+\end{align*}
+ואלו מטריצות שונות.
+
+\item מתקיים
+\begin{align*}
+\prs{S \circ T}^* \circ \prs{S \circ T} &= T^* \circ S^* \circ S \circ T
+\\&=
+T^* \circ S \circ S^* \circ T
+\\&=
+T ^* \circ T
+\\&=
+\id_V
+\end{align*}
+לכן
+$S \circ T$
+יוניטרית ובפרט נורמלית.
+
+\begin{remark}
+ראיתם בתרגול שהרכבה של העתקות יוניטריות היא יוניטרית, ולכן אין צורך בפירוט מעבר לכך כפי שהתרגיל מנוסח.
+\end{remark}
+
+\item 
+כמו מקודם,
+מתקיים
+\begin{align*}
+\prs{S+T}^* \circ \prs{S+T} &= \prs{S^* + T^*} \circ \prs{S+T}
+\\&=
+S^* \circ S + S^* \circ T + T^* \circ S + T^* \circ T
+\\&=
+2 \id_V + S^* \circ T + T^* \circ S
+\end{align*}
+וגם
+\begin{align*}
+\prs{S+T} \circ \prs{S+T}^* &= \prs{S + T} \circ \prs{S^* + T^*}
+\\&= S \circ S^* + S \circ T^* + T \circ S^* + T \circ T^*
+\\ \hphantom{\prs{S+T} \circ \prs{S+T}^*} &= 2\id_V + S \circ T^* + T \circ S^*
+\end{align*}
+כעת,
+$S,T$
+מתחלפות, לכן גם
+$S^*, T$
+מתחלפות וגם
+$S, T^*$
+מתחלפות, ונקבל שוויון.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+יהיו
+$v_1, \ldots, v_n \in \mbb{R}^n$.
+הראו כי
+$B \ceq \prs{v_1, \ldots, v_n}$
+בסיס של
+$\mbb{R}^n$
+אם ורק אם למטריצת
+\textenglish{Gram}
+של
+$B$
+\[\mrm{Gr}\prs{B} \ceq \pmat{\trs{v_1, v_1} & \cdots & \trs{v_1, v_n} \\ \vdots & \ddots & \vdots \\ \trs{v_n, v_1} & \cdots & \trs{v_n, v_n}} = \prs{\trs{v_i, v_j}}_{i,j \in \brs{n}}\]
+יש דטרמיננטה חיובית.
+\end{exercise}
+
+\begin{solution}
+נניח כי
+$B$
+בסיס.
+אז
+$\mrm{Gr}\prs{B}$
+המטריצה המייצגת של המכפלה הפנימית הסטנדרטית לפי
+$B$.
+לכן קיים
+$a \in \mbb{R}$
+עבורו
+\[\det\prs{\mrm{Gr}\prs{B}} = a^2 \det\prs{I_n} = a^2\]
+(כי
+$\mrm{Gr}\prs{B} = P^t I_n P$
+וכי הדטרמיננטה כפלית).
+כיוון ש־%
+$\mrm{Gr}\prs{B}$
+הפיכה, לא יתכן
+$a = 0$
+ולכן
+$\det\prs{\mrm{Gr}\prs{B}} = a^2 > 0$.
+
+בכיוון השני, נניח ש־%
+$B$
+אינו בסיס. אז יש סקלרים
+$\alpha_1, \ldots, \alpha_{n-1} \in \mbb{R}$
+עבורם
+\[\text{.} v_n = \sum_{i \in [n-1]} \alpha_i v_i\]
+נקבל
+\begin{align*}
+\text{.} \prs{\mrm{Gr}\prs{B}} &= \pmat{\trs{v_1, v_1} & \cdots & \trs{v_1, \sum_{i \in [n-1]} \alpha_i v_i} \\ \vdots & \ddots & \vdots \\ \trs{v_n, v_1} & \cdots & \trs{v_i, \sum_{i \in [n-1]} \alpha_i v_i}}
+=
+\pmat{\trs{v_1, v_1} & \cdots & \sum_{i \in [n-1]} \alpha_i \trs{v_1, v_i} \\ \vdots & \ddots & \vdots \\ \trs{v_n, v_1} & \cdots & \sum_{i \in [n-1]} \alpha_i \trs{v_i, v_i}}
+\end{align*}
+לכן, העמודה הימנית של
+$\mrm{Gr}\prs{B}$
+היא צירוף לינארי של שאר העמודות, ולכן
+$\det\prs{\mrm{Gr}\prs{B}} = 0$.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב וקטורי סוף־מימדי מעל
+$\mbb{R}$.
+תהי
+$g$
+מכפלה פנימית על
+$V$
+ותהי
+$h$
+תבנית בילינארית סימטרית על
+$V$.
+הוכיחו שקיים בסיס
+$B$
+של
+$V$
+עבורו
+$\brs{h}_B, \brs{g}_B$
+שתיהן אלכסוניות.
+\end{exercise}
+
+\begin{solution}
+נסמן
+$n \ceq \dim_{\mbb{R}}\prs{V}$.
+יהי
+$E$
+בסיס אורתונורמלי של
+$V$
+ביחס ל־%
+$g$.
+אז
+$\brs{g}_E = I_n$.
+כעת,
+$\brs{h}_E$
+סימטרית כי
+$h$
+סימטרית, ולכן יש מטריצה
+$Q \in M_n\prs{\mbb{R}}$
+אורתוגונלית עבורה
+$Q^t \brs{h}_E Q$
+אלכסונית.
+נרצה
+$Q = P^B_E$
+ולכן נגדיר
+$B \ceq \prs{Q^{-1} v_1, \ldots, Q^{-1} v_n}$
+עבור
+$E \ceq \prs{v_1, \ldots, v_n}$.
+אז
+\begin{align*}
+\brs{g}_B &= \prs{P^B_E}^t \brs{g}_E P^B_E = Q^t \brs{g}_E Q = Q^t I_n Q = Q^t Q = I_n \\
+\brs{h}_B &= \prs{P^B_E}^t \brs{h}_E P^B_E = Q^t \brs{h}_E Q
+\end{align*}
+שתיהן אלכסוניות, כנדרש.
+\end{solution}
+
+\begin{exercise}
+יהי
+$V$
+מרחב מכפלה פנימית ממימד
+$n \in \mbb{N}$
+מעל
+$\mbb{R}$.
+יהיו
+$U,W \leq V$
+עבורם
+$V = U \oplus W$.
+עבור
+$v = u + w$
+כאשר
+$u \in U, w \in W$
+נגדיר
+$T\prs{v} = u - w$.
+הניחו כי
+$T$
+לינארית והראו כי
+$T$
+צמודה לעצמה אם ורק אם
+$U \perp W$.
+\end{exercise}
+
+\begin{solution}
+נניח כי
+$U \perp W$.
+יהי
+$B$
+בסיס אורתונורמלי ל־%
+$U$
+ויהי
+$C$
+בסיס אורתונורמלי ל־%
+$W$.
+אז
+$D \ceq B * C$
+בסיס אורתונורמלי ל־%
+$V$.
+נקבל כי בבסיס זה
+\[\brs{T}_D = \pmat{\brs{\rest{T}{U}}_B & 0 \\ 0 & \brs{\rest{T}{W}}_C} = \pmat{I_k & 0 \\ 0 & - I_\ell}\]
+עבור
+$k \ceq \dim U, \ell \ceq \dim W$.
+כיוון ש־%
+$D$
+אורתונורמלי, מתקיים
+\begin{align*}
+\text{.} \brs{T^*}_D &= \brs{T}_D^t = \pmat{I_k & 0 \\ 0 & - I_{\ell}}^t = \pmat{I_k & 0 \\ 0 & - I_{\ell}} = \brs{T}_D
+\end{align*}
+לכן,
+$T^* = T$,
+כנדרש.
+
+נניח כעת כי
+$T^* = T$
+ויהיו
+$u \in U$
+ו־%
+$w \in W$.
+מתקיים
+\begin{align*}
+\trs{u,w} &= \trs{Tu, w}
+\\&= \trs{u, T^*  w}
+\\&= \trs{u, T w}
+\\&= \trs{u, -w}
+\\&= -\trs{u,w}
+\end{align*}
+לכן
+$\trs{u,w} = 0$
+ולכן
+$u \perp w$.
+נקבל כי
+$U \perp W$.
+\end{solution}
+
+\end{document}

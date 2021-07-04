@@ -1,0 +1,435 @@
+\documentclass[a4paper,10pt,oneside,openany]{article}
+
+\usepackage[lang=hebrew]{maths}
+\usepackage{hebrewdoc}
+\usepackage{stylish}
+\usepackage{lipsum}
+\let\bs\blacksquare
+\usepackage{ytableau}
+
+\usepackage{graphicx, txfonts}
+
+\newcommand{\heart}{\ensuremath\varheartsuit}
+
+\title{
+אלגברה ב' (104168) \textenglish{---} אביב 2020-2021
+\\
+תרגול 11 \textenglish{---}
+תבניות בילינאריות
+}
+\author{אלעד צורני}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{תבניות בילינאריות}
+
+\subsection{חזרה}
+
+\begin{definition}[תבנית בילינארית]
+\emph{תבנית בילינארית}
+על מרחב וקטורי
+$V$
+מעל
+$\mbb{F} \in \set{\mbb{R}, \mbb{C}}$
+היא העתקה
+\[\trs{\cdot,\cdot} \colon V \times V \to \mbb{F}\]
+לינארית בשני הרכיבים.
+\end{definition}
+
+\begin{remark}
+מעל
+$\mbb{C}$
+בדרך כלל עוסקים בתבניות ססקווילינאריות במקום תבניות בילינאריות, שנדבר עליהן בהמשך.
+\end{remark}
+
+\begin{definition}[מטריצות חופפות]
+מטריצות
+$A,B \in M_n\prs{\mbb{F}}$
+נקראות
+\emph{חופפות}
+אם קיימת
+$P \in M_n\prs{\mbb{F}}$
+הפיכה
+עבורה
+$B = P^t A P$.
+\end{definition}
+
+\begin{remark}
+חפיפת מטריצות היא יחס שקילות.
+אם
+$B = P^t A P$
+וגם
+$C = Q^t B Q$
+אז
+\[\text{.} C = Q^t P^t A P Q = \prs{PQ}^t A \prs{PQ}\]
+\end{remark}
+
+\begin{definition}[מטריצה מייצגת לתבנית בילינארית]
+עבור העתקה בילינארית
+$f \colon V \times V \to \mbb{F}$
+ובסיס
+$B = \prs{v_i}_{i \in [n]}$
+של
+$V$
+נסמן ב־%
+$\brs{f}_B$
+את המטריצה עם
+$\prs{\brs{f}_B}_{i,j} = f\prs{v_i, v_j}$.
+\end{definition}
+
+\begin{remark}
+מטריצות
+$A,B \in M_n\prs{\mbb{R}}$
+חופפות אם ורק אם הן מייצגות את אותה תבנית בילינארית בבסיסים שונים.
+\end{remark}
+
+\begin{remark}
+ניתן לשחזר את התבנית הבילינארית מהמטריצה המייצגת. עבור
+$g$
+בילינארית ועבור בסיס
+$C$
+מתקיים
+\[\text{.} g\prs{u,v} = \brs{u}_C^t \brs{g}_C \brs{v}_C\]
+למעשה
+$g \mapsto \brs{g}_C$
+איזומורפיזם בין מרחב התבניות הבילינאריות והמרחב
+$M_n\prs{\mbb{R}}$.
+\end{remark}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+תהיינה
+\begin{align*}
+f \colon \mbb{R}^2 \times \mbb{R}^2 &\to \mbb{R} \\
+\prs{\pmat{x_1 \\ x_2}, \pmat{y_1 \\ y_2}} &\mapsto x_1 y_2 - x_2 y_1 \\
+g \colon \mbb{R}^2 \times \mbb{R}^2 &\to \mbb{R} \\
+\text{.} \prs{\pmat{x_1 \\ x_2}, \pmat{y_1 \\ y_2}} &\mapsto \prs{x_1 + y_1}^2 - x_2 y_2
+\end{align*}
+קבעו האם
+$f,g$
+בילינאריות.
+\end{exercise}
+
+\begin{solution}
+\begin{itemize}
+\item מתקיים
+\[f\prs{y,x} = y_1 x_2 - y_2 x_1 = -f\prs{x,y}\]
+ולכן מספיק לבדוק לינאריות ברכיב הראשון.
+אכן
+\[\text{.} f\prs{x + \alpha x', y} = \prs{x_1 + \alpha x_1'} y_2 - \prs{x_2 + \alpha x_2'} y_1 = x_1 y_2 - x_2 y_1 + \alpha\prs{x_1' y_2 - x_2' y_1} = f\prs{x,y} + \alpha f\prs{x',y}\]
+
+\item $g$
+אינה תבנית בילינארית.
+מתקיים
+\[g\prs{\pmat{2\\2}, \pmat{0\\1}} = 2^2 - 2 = 2\]
+אבל
+\[\text{.} 2g\prs{\pmat{1\\1}, \pmat{0\\1}} = 2\prs{1^1 - 1} = 0\]
+\end{itemize}
+\end{solution}
+
+\begin{exercise}
+תהיינה
+$A,B,P \in M_n\prs{\mbb{R}}$
+כאשר
+$P$
+הפיכה ומתקיים
+$B = P^t A P$.
+
+הוכיחו או הפריכו את הטענות הבאות.
+\begin{enumerate}
+\item $\det\prs{A} = \det\prs{B}$.
+\item ל־%
+$A,B$
+יש אותם ערכים עצמיים.
+\item $\rank\prs{A} = \rank\prs{B}$.
+\item $A$
+הפיכה אם ורק אם
+$B$
+הפיכה, וכאשר זה מתקיים
+$A^{-1}, B^{-1}$
+חופפות.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item מתקיים
+\[\det\prs{B} = \det\prs{P^t A P} = \det\prs{P^t} \det\prs{A} \det\prs{P}\]
+ולכן יש שוויון אם ורק אם
+$\det\prs{P^t} \det\prs{P} = 1$.
+אבל,
+$\det\prs{P^t} = \det\prs{P}$
+ולכן זה מתקיים אם ורק אם
+$\det\prs{P} \in \set{\pm 1}$.
+זה לא חייב להיות המצב. למשל, נוכל לקחת
+$A = I_n, B = 4I_n, P = 2I_n$.
+
+\item הדוגמא הקודמת מראה שהערכים העצמיים לא נשמרים.
+
+\item הדרגה נשמרת כי
+$P^t, P$
+הפיכות.
+
+\item נניח כי
+$A$
+הפיכה. אז
+$B$
+הפיכה כי הדרגות שלהן שוות.
+נשים לב כי
+\[B^{-1} = \prs{P^t A P}^{-1} = P^{-1} A^{-1} \prs{P^t}^{-1}\]
+ועבור
+$\tilde{P} = \prs{P^t}^{-1}$
+נקבל
+$B^{-1} = \tilde{P}^t A^{-1} \tilde{P}$.
+\end{enumerate}
+\end{solution}
+
+\section{חוק האינרציה של סילבסטר}
+
+\subsection{חזרה}
+
+\begin{theorem}[סילבסטר]
+תהי
+$A \in M_n\prs{\mbb{R}}$
+סימטרית.
+$A$
+חופפת למטריצה יחידה מהצורה
+$\pmat{I_{\prs{n_+}} & & \\ & - I_{\prs{n_{-}}} & \\ & & 0_{\prs{n_0}}}$.
+מטריצה זאת נקראת
+\emph{צורת סילבסטר הקנונית של
+$A$}.
+$n_+$
+ו־%
+$n_-$
+נקראים
+\emph{אינדקס האינרציה החיובי והשלילי}
+של
+$A$,
+בהתאמה.
+ההפרש
+$n_+ - n_-$
+נקרא
+\emph{הסיגנטורה}
+של
+$A$.
+\end{theorem}
+
+\begin{remark}
+משפט סילבסטר אומר באופן שקול שלכל תבנית בילינארית סימטרית
+$g$
+קיים בסיס
+$C$
+עבורו
+$\brs{g}_C$
+בצורת סילבסטר.
+\end{remark}
+
+\subsection{תרגילים}
+
+\begin{exercise}
+תהי
+$A \in M_n\prs{\mbb{R}}$
+סימטרית.
+\begin{enumerate}
+\item הוכיחו כי
+$A, A^3$
+חופפות.
+\item הוכיחו כי אם
+$A$
+הפיכה, היא חופפת ל־%
+$A^{-1}$.
+\item תהי
+$B \in M_n\prs{\mbb{R}}$
+ונניח כי
+\begin{align*}
+p_A\prs{x} &= x^2 - 2 \\
+\text{.} p_B\prs{x} &= x^2 + 2x - 3
+\end{align*}
+האם
+$A,B$
+בהכרח חופפות?
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\begin{enumerate}
+\item
+ל־%
+$A,A^3$
+יש אותם אינדקסיי אינרציה כי הערכים העצמיים של
+$A^3$
+הם
+$\lambda^3$
+עבור
+$\lambda$
+ערך עצמי של
+$A$.
+לכן ל־%
+$A,A^3$
+אותה צורת סילבסטר, ולכן הן חופפות.
+
+\item כמו מקודם, כאשר הערכים העצמיים של
+$A^{-1}$
+הם
+$\frac{1}{\lambda}$
+עבור
+$\lambda$
+ערך עצמי של
+$A$.
+
+\item נמצא שורשים של הפולינומים.
+\begin{align*}
+x^2 - 2 &= \prs{x+\sqrt{2}}\prs{x-\sqrt{2}} \\
+x^2 + 2x - 3 &= x^2 + 3x - \prs{x+3} = \prs{x-1}\prs{x+3}
+\end{align*}
+לכן לכל אחד מהפולינומים ערך עצמי אחד חיובי ואחד שלילי. לכן צורות סילבסטר של
+$A,B$
+שתיהן
+$\pmat{1 & 0 \\ 0 & -1}$
+ולכן הן חופפות.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+מצאו את צורת סילבסטר של
+\[\text{.} A = \pmat{0 & 1 & 1 & \cdots & 1 \\ 1 & 0 & -1 & \cdots & -1 \\ 1 & -1 & 0 & \cdots & -1 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 1 & -1 & -1 & \cdots & 0} \in M_n\prs{\mbb{R}}\]
+\end{exercise}
+
+\begin{solution}
+כדי למצוא את צורת סילבסטר, נחפש ערכים עצמיים.
+נשים לב כי
+$1$
+ערך עצמי מריבוי
+$n-1$.
+אז הערך העצמי הנוסף הוא
+$\tr\prs{A} -\prs{n-1}\cdot 1 = -n+1$.
+אם
+$n = 1$
+מתקיים
+$A = \prs{0}$.
+אחרת צורת סילבסטר היא
+$\pmat{I_{n-1} & \\ & -1}$.
+\end{solution}
+
+\begin{algorithm}
+כדי למצוא בסיס
+$C$
+עבורו
+$\brs{g}_C$
+בצורת סילבסטר נבצע את השלבים הבאים.
+
+\begin{enumerate}
+\item נמצא בסיס
+$\tilde{C} = \prs{v_1, \ldots, v_n}$
+של
+$V$
+עבורו
+$\brs{g}_{\tilde{C}}$
+אלכסונית, בעזרת לכסון אורתוגונלי.
+
+\item
+נגדיר
+\[\text{.} u_i = \fcases{\frac{v_i}{\sqrt{\abs{\lambda_i}}} & \lambda_i \neq 0 \\ v_i & \lambda_i = 0}\]
+
+\item על ידי בחירת סדר מתאים של ה־%
+$u_i$
+נקבל בסיס
+$C$
+המקיים את הנדרש.
+\end{enumerate}
+\end{algorithm}
+
+\begin{exercise}
+תהי
+$A = \pmat{2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2}$.
+מצאו מטריצה
+$P \in M_3\prs{\mbb{R}}$
+עבורה
+$P^t A P$
+בצורת סילבסטר.
+\end{exercise}
+
+\begin{solution}
+נתחיל במציאת ערכים עצמיים של
+$A$.
+נשים לב כי
+$1$
+ערך עצמי של
+$A$
+מריבוי
+$2$.
+הערך העצמי הנוסף הוא
+$\tr\prs{A} - 2\cdot 1 = 4$.
+בסיס מתאים הוא
+$B = \prs{\pmat{1\\1\\1}, \pmat{1\\0\\-1}, \pmat{0\\1\\-1}}$.
+
+נבצע את תהליך גרם־שמידט על כל אחד מהמרחבים העצמיים, כדי לקבל בסיס אורתונורמלי
+\[\text{.} \tilde{C} \ceq \prs{v_1, v_2, v_3} = \prs{\pmat{1/\sqrt{3} \\ 1/\sqrt{3} \\ 1/\sqrt{3}}, \pmat{1/\sqrt{2} \\ 0 \\ -1/\sqrt{2}}, \pmat{-\sqrt{6}/6 \\ \sqrt{6}/3 \\ -\sqrt{6}/6}}\]
+נחלק את הוקטורים העצמיים ב־%
+$\sqrt{\lambda_i}$
+ונקבל בסיס
+\[\text{.} C \ceq \prs{\pmat{1/2\sqrt{3}\\1/2\sqrt{3}\\1/2\sqrt{3}}, \pmat{1/\sqrt{2} \\ 0 \\ -1/\sqrt{2}}, \pmat{-\sqrt{6}/6 \\ \sqrt{6}/3 \\ -\sqrt{6}/6}}\]
+תהי
+\[P = \pmat{1/2\sqrt{3} & 1/\sqrt{2} & -\sqrt{6}/6 \\ 1/2\sqrt{3} & 0 & \sqrt{6}/3 \\ 1/2\sqrt{3} & -1/\sqrt{2} & -\sqrt{6}/6}\]
+ונקבל כי
+\[P^t A P = I_3\]
+בצורת סילבסטר.
+\end{solution}
+
+\begin{remark}
+לפעמים חישוב הערכים העצמיים יכול להיות מסובך. נוכל בעצם למצוא את צורת סילבסטר ואת הבסיס המתאים לה בלי מציאת המרחבים העצמיים.
+לשם כך, נשים לב כי אם
+$E$
+מטריצה אלמנטרית, הכפל
+$A \mapsto A E^t$
+נקבע על פי אותן פעולות על עמודות
+$A$
+כמו פעולות
+$E$
+על השורות. נוכל אם כן לדרג את
+$A$
+לפי שורה ועמודה במקביל, כאשר בכל שלב נבצע את אותה פעולה על השורות ואז על העמודות (או להיפך). נקבל מטריצה
+$P$
+כמכפלת המטריצות האלמנטריות, שעבורה
+$PAP^t$
+תהיה בצורת סילבסטר.
+\end{remark}
+
+\begin{exercise}
+מצאו
+$P \in M_4\prs{\mbb{R}}$
+הפיכה עבורה
+$P A P^t$
+בצורת סילבסטר, כאשר
+\[\text{.} A = \pmat{1 & 2 & 3 & 4 \\ 2 & 5 & 6 & 7 \\ 3 & 6 & 8 & 9 \\ 4 & 7 & 9 & 10}\]
+\end{exercise}
+
+\begin{solution}
+נבצע דירוג שורה ועמודה במקביל.
+\begin{align*}
+A &\to \pmat{1 & 0 & 0 & 0 \\ 2 & 1 & 0 & -1 \\ 3 & 0 & -1 & -3 \\ 4 & -1 & -3 & -6} \to \pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & -1 & -3 \\ 0 & -1 & -3 & -6}
+\\&\to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & -3 \\ 0 & -1 & -3 & -7} \to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & -3 \\ 0 & 0 & -3 & -7}
+\\&\to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & -3 & 2}
+\to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 2}
+\\&\to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & -1}
+\\&\to
+\pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1}
+\end{align*}
+עבור
+\begin{align*}
+P &= \pmat{1&0&0&0\\0&1&0&0\\0&0&\frac{1}{\sqrt{2}}&0\\0&0&0&1} \pmat{1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0}\pmat{1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&-3&1} \pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1} \pmat{1 & 0 & 0 & 0 \\ -2 & 1 & 0 & 0 \\ -3 & 0 & 1 & 0 \\ -4 & 0 & 0 & 1}
+\end{align*}
+נקבל כי
+\[PAP^t = \pmat{1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & -1}\]
+צורת סילבסטר קנונית.
+\end{solution}
+
+\end{document}
